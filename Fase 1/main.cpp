@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Lista_Simple.cpp"
+#include "Lista_Circular_Doble.cpp"
 using namespace std;
 
 //      --- COLORES ---
@@ -20,20 +20,27 @@ void menu(){
 }
 
 void crearSimple(){
-    Lista_Simple lista;
-    lista.insertarInicio("aux","aux","34","20");
-    lista.insertarInicio("Josue","EDD","100","21");
-    lista.insertarInicio("Mike","mike123","25","18");
-    lista.insertarInicio("Dany","dann3","11","30");
+    Lista_Circular_Doble lista;
+    lista.insertarInicio("aux","123","1","20");
+    lista.insertarInicio("Josue","EDD","2","21");
+    lista.insertarInicio("Mike","mike123","3","18");
+    lista.insertarInicio("Dany","dann3","4","30");
+    lista.insertarInicio("Alexby","alex","5","5");
+    lista.insertarInicio("Auronm","playas","6","150");
     // lista.verLista();
-    lista.verLista2();
     lista.isPrimero();
     lista.isUltimo();
-    bool ans = lista.whereis("Josue");
-    cout<<ans<<endl;
+    // bool ans = lista.whereis("Josue");
+    // lista.eliminarUltimo();
+    // lista.eliminarUltimo();
+    cout<<""<<endl;
+    // lista.isPrimero();
+    // lista.isUltimo();
+    lista.crearGrafica();
+
 }
 
 int main(){
-    // crearSimple();
-    menu();
+    crearSimple();
+    // menu();
 }

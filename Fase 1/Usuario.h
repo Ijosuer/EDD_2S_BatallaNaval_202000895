@@ -10,7 +10,7 @@ class Usuario{
     string coins;
     string edad;
     Usuario* siguiente;
-
+    Usuario* anterior;
     //Constructor
     Usuario(string _name,string _pwd,string _coins,string _edad){
         name = _name;
@@ -18,6 +18,7 @@ class Usuario{
         coins = _coins;
         edad = _edad;
         siguiente = NULL;
+        anterior = NULL;
     }
     private:
     

@@ -2,31 +2,40 @@
 #include <string>
 using namespace std;
 
-class Lista_Simple{
+class Lista_Circular_Doble{
     //metodos y atributos
     public:
+    string texto_grafica;
     Usuario* primero = NULL;
     Usuario* ultimo = NULL;
     int len;
     
     //Constructor
-    Lista_Simple(){
+    Lista_Circular_Doble(){
         primero = NULL;
         ultimo = NULL;
         len = 0;
+        texto_grafica = "";
     }
     //---Metodos---
     
     //Metodo insertar
     void insertarInicio(string _name,string _pwd,string _coins,string _edad);
-    void verLista();
+    //Metodo unir NODOS
+    void unirNodos();
+    //Metodo eliminar ultimo nodo
+    void eliminarUltimo();
     //Metodo mostar
-    void verLista2();
+    void verLista();
+    //Graficar
+    void report();
+    void crearGrafica();
     //Metodo primer Usuario   
     void isPrimero();
     //Metodo ultimo Usuario   
     void isUltimo();
     //Metodo buscar Usuario
     bool whereis(string _name);
+
     private:
 };
