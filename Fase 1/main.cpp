@@ -2,8 +2,21 @@
 #include "Lista_Simple.cpp"
 using namespace std;
 
+//      --- COLORES ---
+string RED = "\u001b[34;1m",GREEN ="\u001b[32m",YELLOW = "\u001b[33m",BLUE = "\u001b[34m";
+string MAGENTA = "\u001b[35m",CYAN = "\u001b[36m",WHITE = "\u001b[37m",RESET = "\u001b[0m";
+string BGblack = "\u001b[40;1m", BGr = "\u001b[0m";
+//      --- ---- ---
+
 void menu(){
-    cout<<"HOLA:D"<<endl;
+    cout<<BGblack<<GREEN<<"***********"<<YELLOW<<" MENU "<<GREEN<<"************"<<WHITE<<BGr<<endl;
+    cout<<BGblack<<"*                           *"<<BGr<<endl;
+    cout<<BGblack<<"* 1."<<MAGENTA<<" Carga Masiva"<<WHITE<<"           *"<<BGr<<endl;
+    cout<<BGblack<<"* 2."<<MAGENTA <<" Registrar Usuarios"<<WHITE<<"     *"<<BGr<<endl;
+    cout<<BGblack<<"* 3."<<MAGENTA <<" Login             "<<WHITE<<"     *"<<BGr<<endl;
+    cout<<BGblack<<"* 4."<<MAGENTA <<" Reportes          "<<WHITE<<"     *"<<BGr<<endl;
+    cout<<BGblack<<"*"<<CYAN<<" -> Salir del juego        "<<WHITE<<"*"<<BGr<<endl;
+    cout<<BGblack<<GREEN<<"*****************************"<<RESET<<BGr<<endl;
 }
 
 void crearSimple(){
@@ -21,6 +34,6 @@ void crearSimple(){
 }
 
 int main(){
-    crearSimple();
+    // crearSimple();
     menu();
 }
