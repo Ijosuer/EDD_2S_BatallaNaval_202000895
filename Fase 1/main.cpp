@@ -1,4 +1,9 @@
 #include <iostream>
+#include <fstream>
+#include <jsoncpp/json/json.h>
+#include <jsoncpp/json/value.h>
+// #include <SHA256.h>
+
 #include "Lista_Circular_Doble.cpp"
 using namespace std;
 
@@ -40,7 +45,64 @@ void crearSimple(){
 
 }
 
+void leerJson(){
+    // Let's parse it
+    Json::Value root;
+    Json::Reader reader;
+    ifstream file("./prueba.json");
+    bool parsedSuccess = reader.parse(file,root,false);
+
+    if (not parsedSuccess) {
+        // Report failures and their locations
+        // in the document.
+        cout << "Failed to parse JSON" << endl
+             << reader.getFormatedErrorMessages()
+             << endl;
+    }
+    Json::Value::Members mem = root.getMemberNames();
+    for (int i = 0; i < root.size(); i++){
+    Json::Value child = root[mem[i]];
+        for(auto& element : child){
+            for (int i = 0; i < element.size(); i++){
+                /* code */
+            Json::Value::Members mem2 = element.getMemberNames();
+            Json::Value child2 = element[mem2[i]];
+            // cout << "name: " << mem2[i] << ", child: " << child2 << endl;
+            // cout  << mem2[i] << ": " << child2.asString() << endl;
+                if(mem2[i] == "id"){
+                    cout<<child2.asString();
+                }else if (mem2[i] == "nombre"){
+                    cout<<" "+child2.asString();
+                }else if (mem2[i] == "categoria"){
+                    cout<<" "+child2.asString();
+                }else if (mem2[i] == "precio"){
+                    cout<<" "+child2.asString();
+                }else if (mem2[i] == "src"){
+                    cout<<" "+child2.asString()<<endl;
+                }else if (mem2[i] == "nick"){
+                    cout<<" "+child2.asString();
+                }else if (mem2[i] == "password"){
+                    cout<<" "+child2.asString()<<endl;
+                }else if (mem2[i] == "monedas"){
+                    cout<<" "+child2.asString();
+                }else if (mem2[i] == "edad"){
+                    cout<<"\n"+child2.asString();
+                }
+            }
+        }
+    }
+    
+    // cout << "name: " << mem[2] << ", child: " << child << endl;
+    // cout<<"\n"<<endl;
+    
+//    cout << element << endl;
+}
+
+// void crearQueue(){}
+
 int main(){
-    crearSimple();
+    // crearSimple();
     // menu();
+    leerJson();
+    return 1;
 }
