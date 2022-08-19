@@ -43,12 +43,12 @@ void Lista_Circular_Doble::report(){
     Usuario* aux = primero;
     string text = "";
     text+="rankdir=LR; \n node[shape=egg,style=filled,color=khaki,fontname=\"Century Gothic\"]; graph [fontname = \"Century Gothic\"];\n";
-    text+="labelloc = \"t;\"label = \"Cursos\";\n";
+    text+="labelloc = \"t;\"label = \"Usuarios\";\n";
 
     try
     {
         while(aux != NULL){
-        text+="x"+aux->coins+"[dir=both label = \"Codigo = "+(aux->coins)+"\\nNombre = "+(aux->name)+"\\n Creditos = "+(aux->pwd)+ "\"]";
+        text+="x"+aux->coins+"[dir=both label = \"Monedas = "+(aux->coins)+"\\nNombre = "+(aux->name)+"\\nEdad = "+(aux->edad)+"\\n Pwd = "+(aux->pwd)+ "\"]";
             // cout<<text<<endl;
             text+="x"+(aux->coins)+"-> x"+(aux->siguiente->coins)+"\n";
             // cout<<text<<endl;
@@ -56,7 +56,7 @@ void Lista_Circular_Doble::report(){
             // cout<<text<<endl;
             aux=aux->siguiente;
         if (aux!=primero){
-                text+="x"+(aux->coins)+"[dir=both label = \"Codigo = "+(aux->coins)+"\\nNombre = "+aux->name+"\\n Creditos = "+(aux->pwd)+ "\"]";
+                text+="x"+(aux->coins)+"[dir=both label = \"Monedas = "+(aux->coins)+"\\nNombre = "+(aux->name)+"\\nEdad = "+(aux->edad)+"\\n Pwd = "+(aux->pwd)+ "\"]";
                 // cout<<text<<endl;
         }    
         if (aux==ultimo){
@@ -77,7 +77,7 @@ void Lista_Circular_Doble::report(){
 void Lista_Circular_Doble::crearGrafica(){
     report();
     string contenido = "digraph G {\n\n";
-    string filename("texto.txt");
+    string filename("texto_usuarios.txt");
     fstream file_out;
     file_out.open(filename, std::ios_base::out);
     if (!file_out.is_open()) {
@@ -109,16 +109,41 @@ void Lista_Circular_Doble::isUltimo(){
     cout<<"Este es el ultimo NODO.sig: "<<ultimo->siguiente->name<<endl;
 }
 
-bool Lista_Circular_Doble::whereis(string _name){
-    cout<<"Encuentras el nodo "<<_name<<"?"<<endl;
+bool Lista_Circular_Doble::whereis(string _name, string _pwd){
     Usuario* tmp = primero;
     for (int i = 0; i < len; i++){
-        if(tmp->name == _name){
-            cout<<"Simon aki esta"<<endl;
+        if(tmp->name == _name && tmp->pwd == _pwd){
             return true;
         }else{
             tmp = tmp->siguiente;
         }
     }
     return false;
+}
+
+bool Lista_Circular_Doble::editar(string _name,string _pwd,string _edad){
+    Usuario* tmp = primero;
+    for (int i = 0; i < len; i++){
+        if(tmp->name == _name && tmp->pwd == _pwd){
+            tmp->name = _name;
+            tmp->pwd = _pwd;
+            tmp->edad= _edad;
+            return true;
+        }else{
+            tmp = tmp->siguiente;
+        }
+    }
+    return false;
+}
+
+string Lista_Circular_Doble::dataEdad(string _name){
+    Usuario* tmp = primero;
+    for (int i = 0; i < len; i++){
+        if(tmp->name == _name){
+            return tmp->edad;
+        }else{
+            tmp = tmp->siguiente;
+        }
+    }
+    return "";
 }

@@ -10,12 +10,12 @@
         {"id":"3", "categoria":"leyenda", "precio":"1000", "nombre":"barco3", "src":""}
     ],
     "tutorial":{
-        "ancho":"",
-        "alto":"",
+        "ancho":"20",
+        "alto":"15",
         "movimientos":[
-            {"x": "", "y":""},
-            {"x": "", "y":""},
-            {"x": "", "y":""}
+            {"x": "1", "y":"1"},
+            {"x": "2", "y":"2"},
+            {"x": "3", "y":"3"}
         ]
     }
 }

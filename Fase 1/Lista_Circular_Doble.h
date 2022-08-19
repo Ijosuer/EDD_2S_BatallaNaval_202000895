@@ -35,7 +35,10 @@ class Lista_Circular_Doble{
     //Metodo ultimo Usuario   
     void isUltimo();
     //Metodo buscar Usuario
-    bool whereis(string _name);
-
+    bool whereis(string _name, string _pwd);
+    //Retornar edad
+    string dataEdad(string _name);
+    //Editar data de un usuario
+    bool editar(string _name,string _pwd,string _edad);
     private:
 };
