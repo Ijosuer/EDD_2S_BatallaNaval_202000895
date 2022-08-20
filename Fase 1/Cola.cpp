@@ -35,6 +35,32 @@ void Cola::Dequeue(){
     }
 }
 
+void Cola::show(){
+    string WHITE = "\u001b[37m";
+    string BLUE = "\u001b[34m";
+    string text = "";
+    Nodo* tmp = primero;
+    while (tmp != NULL)
+    {
+        if (tmp != primero)
+        {
+            if (tmp == ultimo)
+            {
+                text += "("+BLUE+tmp->x+","+tmp->y+WHITE+")";
+                cout<<text<<endl;
+                break;
+            }else{
+            text += WHITE+"  ("+BLUE+tmp->x+","+tmp->y+WHITE+")"+"->";
+            tmp = tmp->siguiente;
+                
+            }
+        }else{
+        tmp = tmp->siguiente;
+        }
+    }
+    
+}
+
 void Cola::report(){
     Nodo* tmp = primero;
     int size = len;

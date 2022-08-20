@@ -9,6 +9,7 @@
         "utility": "cpp",
         "typeinfo": "cpp",
         "string": "cpp",
-        "new": "cpp"
+        "new": "cpp",
+        "fstream": "cpp"
     }
 }

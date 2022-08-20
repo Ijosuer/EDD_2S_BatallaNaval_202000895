@@ -23,7 +23,7 @@ void Lista_Circular_Doble::insertarInicio(string _name,string _pwd,string _coins
 
 void Lista_Circular_Doble::eliminarUltimo(){
     if(primero == NULL){
-        cout<<"NO hay nodos D:"<<endl;
+        cout<<"\nERROR LISTA VACIA 💢\n"<<endl;
     }else if(primero == ultimo){
         primero = ultimo = NULL;
     }else{
@@ -121,10 +121,10 @@ bool Lista_Circular_Doble::whereis(string _name, string _pwd){
     return false;
 }
 
-bool Lista_Circular_Doble::editar(string _name,string _pwd,string _edad){
+bool Lista_Circular_Doble::editar(string _anterior,string _name,string _pwd,string _edad){
     Usuario* tmp = primero;
     for (int i = 0; i < len; i++){
-        if(tmp->name == _name && tmp->pwd == _pwd){
+        if(tmp->name == _anterior){
             tmp->name = _name;
             tmp->pwd = _pwd;
             tmp->edad= _edad;
@@ -146,4 +146,45 @@ string Lista_Circular_Doble::dataEdad(string _name){
         }
     }
     return "";
+}
+
+void Lista_Circular_Doble::eliminarPrimero(){
+    if(len == 0){
+        cout<<"\nERROR LISTA VACIA 💢\n"<<endl;
+    }else if(primero == ultimo){
+        primero = ultimo = NULL;
+    }else{
+        primero = primero->siguiente;
+    }
+    unirNodos();
+}
+
+void Lista_Circular_Doble::eliminarUsuario(string _name){
+    Usuario* tmp = primero;
+    for (int i = 0; i < len; i++){
+        if(tmp->name == _name ){
+            // return true;
+            if(tmp == primero){
+                eliminarPrimero();
+                cout<<BGblack<<BLUE+"✅ Usuario "+GREEN+_name+" Eliminado con exito"<<BGr+"\n"<<endl;
+                break;
+            }else if(tmp == ultimo){
+                eliminarUltimo();
+                cout<<BGblack<<BLUE+"✅ Usuario "+GREEN+_name+" Eliminado con exito"<<BGr+"\n"<<endl;
+                break;
+            }else{
+                tmp->anterior->siguiente = tmp->siguiente;
+                tmp->siguiente->anterior = tmp->anterior;
+                cout<<BGblack<<BLUE+"✅ Usuario "+GREEN+_name+" Eliminado con exito"<<BGr+"\n"<<endl;
+                break;
+            }
+        }else{
+            tmp = tmp->siguiente;
+            if(tmp == primero){
+                cout<<RED+"\nNO se puede eliminar este usuario! 💢\n"<<endl;
+                break;
+            }
+        }
+    }
+    // return false;
 }

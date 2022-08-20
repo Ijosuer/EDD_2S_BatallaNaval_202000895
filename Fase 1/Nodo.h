@@ -6,8 +6,8 @@ class Nodo{
     public:
     string x;
     string y;
-    Nodo* siguiente;
-    Nodo* anterior;
+    Nodo* siguiente= NULL;
+    Nodo* anterior= NULL;
 
     // Constructor
     Nodo(string _x , string _y){

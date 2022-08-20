@@ -9,6 +9,14 @@ class Lista_Circular_Doble{
     Usuario* primero = NULL;
     Usuario* ultimo = NULL;
     int len;
+
+//      --- COLORES ---
+string RED = "\u001b[31m",GREEN ="\u001b[32m",YELLOW = "\u001b[33m",BLUE = "\u001b[34m";
+string MAGENTA = "\u001b[35m",CYAN = "\u001b[36m",WHITE = "\u001b[37m",RESET = "\u001b[0m";
+string BGblack = "\u001b[40;1m", BGr = "\u001b[0m";
+//      --- ---- ---
+
+
     
     //Constructor
     Lista_Circular_Doble(){
@@ -39,6 +47,10 @@ class Lista_Circular_Doble{
     //Retornar edad
     string dataEdad(string _name);
     //Editar data de un usuario
-    bool editar(string _name,string _pwd,string _edad);
+    bool editar(string _anterior,string _name,string _pwd,string _edad);
+    //Eliminar primer nodo;
+    void eliminarPrimero();
+    //Eliminar Usuario;
+    void eliminarUsuario(string _name);
     private:
 };

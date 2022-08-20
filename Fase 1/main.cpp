@@ -1,8 +1,10 @@
 #include <iostream>
 #include <fstream>
+#include <string>
 #include <jsoncpp/json/json.h>
 #include <jsoncpp/json/value.h>
 // #include <SHA256.h>
+#include <unistd.h>
 
 #include "Lista_Circular_Doble.cpp"
 #include "Cola.cpp"
@@ -29,6 +31,17 @@ void menu(){
     cout<<BGblack<<GREEN<<"*****************************"<<RESET<<BGr<<endl;
 }
 
+void reportes_menu(){
+    cout<<BGblack<<WHITE<<"********"<<YELLOW<<"📝 Reportes "<<WHITE<<"********"<<WHITE<<BGr<<endl;
+    cout<<BGblack<<"*                             *"<<BGr<<endl;
+    cout<<BGblack<<"* 1."<<BLUE<<" Visualizar Graphviz"<<WHITE<<"       *"<<BGr<<endl;
+    cout<<BGblack<<"* 2."<<BLUE <<" Listado de Usuarios [edad]"<<WHITE<<"          *"<<BGr<<endl;
+    cout<<BGblack<<"* 3."<<BLUE <<" Listado de Articulos [precios]"<<WHITE<<"          *"<<BGr<<endl;
+    cout<<BGblack<<"* 4."<<CYAN<<" Regresar                 "<<WHITE<<"*"<<BGr<<endl;
+    cout<<BGblack<<YELLOW<<"*******************************"<<RESET<<BGr<<endl;
+
+}
+
 void login(){
     cout<<BGblack<<YELLOW<<"*------"<<MAGENTA<<" 💥BATTLESHIP💥 "<<YELLOW<<"-------*"<<WHITE<<BGr<<endl;
     cout<<BGblack<<"*                             *"<<BGr<<endl;
@@ -39,6 +52,17 @@ void login(){
     cout<<BGblack<<"* 5."<<BLUE<<" Realizar movimientos     "<<WHITE<<"*"<<BGr<<endl;
     cout<<BGblack<<"*"<<CYAN<<" 6. Regresar                 "<<WHITE<<"*"<<BGr<<endl;
     cout<<BGblack<<YELLOW<<"*******************************"<<RESET<<BGr<<endl;
+}
+
+void tutorial_menu(){
+Nodo* tmp = cola.primero;
+cout<<BGblack<<YELLOW<<"********"<<MAGENTA<<"👾 Tutorial "<<YELLOW<<"********"<<WHITE<<BGr<<endl;
+    cout<<" "<<CYAN<<"Tablero:"<<WHITE<<endl;
+    cout<<"    "<<BLUE<<"Ancho:"<<WHITE+" "+tmp->x<<endl;
+    cout<<"    "<<BLUE<<"Alto:"<<WHITE+" "+tmp->y<<endl;
+    cout<<" "<<CYAN<<"Movimientos:"<<WHITE<<endl;
+    cola.show();
+    cout<<BGblack<<YELLOW<<"*******************************\n"<<RESET<<BGr<<endl;
 }
 
 void cargaMasiva(string _ruta){
@@ -164,10 +188,12 @@ cargaMasiva("archivos/archivo.json");
     pila.peek();
 }
 
-int main(){
-    menu();
-    string op;
-    string nickname, edad,pwd ="";
+void iniciarJuego(){
+menu();
+    string op;//maneja menu
+    string nickname, edad,pwd ="";//new usuario
+    string newNickname,newPwd,newEdad = "";//editar info
+
     bool flag = false;
     cout<<"Ingrese una opcion"<<endl;
     cin >> op;
@@ -185,32 +211,35 @@ int main(){
             cin >> nickname;
             cout<<WHITE<<"->"<<"Ingrese Pwd: "+CYAN;
             cin >> pwd;
+            cout<<WHITE<<"->"<<"Ingrese Edad: "+CYAN;
+            cin >> edad;
 
-            //Llamar al metodo buscar en mis usuarios
-            bool ans = lista.whereis(nickname,pwd);
-            if (ans == true){
-                flag = true;
-                edad = lista.dataEdad(nickname);
-                cout<<RESET<<endl;
-                cout<<BGblack<<BLUE+"✅ Bienvenido al sistema "+GREEN+nickname<<BGr+"\n"<<endl;
-                menu();
-                cout<<GREEN+"Ingrese una opcion"+RESET<<endl;
-                cin >> op;
-            }else{
-                cout<<RED+"\nCREDENCIALES INCORRECTAS! 💢\n"<<endl;
-                menu();
-                cout<<GREEN+"Ingrese una opcion"+RESET<<endl;
-                cin >> op;
-            }
+            //Llamar al metodo agrega usuarios
+            lista.insertarInicio(nickname,pwd,"0",edad);
+            cout<<BGblack<<BLUE+"\n✅ Usuario "+GREEN+nickname+BLUE+" agregado con exito!"<<BGr<<"\n"<<endl;
+            menu();
+            cout<<GREEN+"Ingrese una opcion"+RESET<<endl;
+            cin >> op;
+
+        }else if(op == "3"){ //Loginssss
+            cout<<BGblack<<GREEN<<"*****"<<YELLOW<<" Iniciar Sesion "<<GREEN<<"******"<<WHITE<<BGr<<endl;
+            cout<<"\n";
+            cout<<WHITE<<"->"<<"Ingrese Nickname: "+CYAN;
+            cin >> nickname;
+            cout<<WHITE<<"->"<<"Ingrese Pwd: "+CYAN;
+            cin >> pwd;
             
-        }else if(op == "3"){ //Login
+            //Llamar al metodo busca usuarios
+            flag = lista.whereis(nickname,pwd);
+        
             if(flag == true){
+                cout<<BGblack<<BLUE+"\n✅ Bienvenido al sistema "+GREEN+nickname<<BGr+"\n"<<endl;
                 login();
                 cout<<GREEN+"Ingrese una opcion"+RESET<<endl;
                 cin >> op;
                 while(op != "6"){
                     if(op == "1"){
-                        string newNickname,newPwd,newEdad = "";
+                        edad = lista.dataEdad(nickname);
                         cout<<BGblack<<WHITE<<"*****"<<YELLOW<<" Editar Datos "<<WHITE<<"******"<<WHITE<<BGr<<endl;
                         cout<<BGblack<<"* "<<BLUE<<" Nickname: "<<WHITE<<nickname<<BGr<<endl;
                         cout<<BGblack<<"* "<<BLUE<<" Edad: "<<WHITE<<edad<<BGr<<endl;
@@ -223,14 +252,17 @@ int main(){
                         cout<<WHITE<<"->"<<"Ingrese nueva Password: "+CYAN;
                         cin >> newPwd;
                         cout<<BGblack<<WHITE<<"\n*****"<<YELLOW<<" Editar Datos "<<WHITE<<"******"<<WHITE<<BGr<<endl;
-                        cout<<BGblack<<"* "<<BLUE<<" Nickname: "<<WHITE<<nickname<<BGr<<endl;
-                        cout<<BGblack<<"* "<<BLUE<<" Edad: "<<WHITE<<edad<<BGr<<endl;
-                        cout<<BGblack<<"* "<<BLUE<<" Password: "<<WHITE<<pwd<<BGr<<endl;
+                        cout<<BGblack<<"* "<<BLUE<<" Nickname: "<<WHITE<<newNickname<<BGr<<endl;
+                        cout<<BGblack<<"* "<<BLUE<<" Edad: "<<WHITE<<newEdad<<BGr<<endl;
+                        cout<<BGblack<<"* "<<BLUE<<" Password: "<<WHITE<<newPwd<<BGr<<endl;
                         cout<<BGblack<<YELLOW<<"*************************"<<RESET<<BGr<<endl;
-                        bool ans =lista.editar(nickname,pwd,edad);
+                        bool ans =lista.editar(nickname,newNickname,newPwd,newEdad);
                         if (ans == true){
+                            nickname = newNickname;
+                            edad = newEdad;
+                            pwd = newPwd;
                             cout<<BGblack<<BLUE+"✅ Cambio exitoso "+GREEN+nickname<<BGr+"\n"<<endl;
-                            menu();
+                            login();
                             cout<<GREEN+"Ingrese una opcion"+RESET<<endl;
                             cin >> op;
                         }else{
@@ -241,9 +273,44 @@ int main(){
                         }
 
                     }else if(op == "2"){
-                        cout<<"Desplegar menu eliminar"<<endl;
+                        string ans = "";
+                        cout<<RED+"\n🚩Desea eliminar su cuenta de manera permanente "+WHITE+"["+RED+"s"+WHITE+"/"+RED+"n"+WHITE+"] : ";
+                        cin>>ans;
+                        if(ans == "s"){
+                            ans = "";
+                            lista.eliminarUsuario(nickname);
+                            break;
+                            menu();
+                            cout<<GREEN+"Ingrese una opcion"+RESET<<endl;
+                            cin >> op;
+
+                        }else if(ans == "n"){
+                            ans = "";
+                            cout<<BGblack<<BLUE+"\n😎 OK tu cuenta no sera eliminada "<<BGr+"\n"<<endl;
+                            login();
+                            cout<<GREEN+"Ingrese una opcion"+RESET<<endl;
+                            cin >> op;
+                        }else{
+                            ans = "";
+                            cout<<RED+"\nIngrese un comando valido! 💢\n"<<endl;
+                            cout<<RED+"\n🚩⚠️Desea eliminar su cuenta de manera permanente "+WHITE+"["+RED+"s"+WHITE+"/"+RED+"n"+WHITE+"] : ";
+                            cin>>ans;
+                        }
                     }else if(op == "3"){
-                        cout<<"Desplegar ver tutorial"<<endl;
+                        cout<<">Desplegar ver tutorial"<<endl;
+                        tutorial_menu();
+                        cout<<GREEN+"Ingrese una opcion"+RESET<<endl;
+                        cin >> op;
+                    }else if(op == "4"){
+                        cout<<">Ir a Tienda"<<endl;
+                        login();
+                        cout<<GREEN+"Ingrese una opcion"+RESET<<endl;
+                        cin >> op;
+                    }else if(op == "5"){
+                        cout<<">Hacer movimientos"<<endl;
+                        login();
+                        cout<<GREEN+"Ingrese una opcion"+RESET<<endl;
+                        cin >> op;
                     }else{
                         cout<<RED+"Ingrese un comando valido! 💢\n"<<endl;
                         login();
@@ -255,11 +322,43 @@ int main(){
                 cout<<GREEN+"Ingrese una opcion"+RESET<<endl;
                 cin >> op;
             }else{
-                cout<<RED+"\n🔒Por favor inicia sesion❗\n"<<endl;
+                cout<<RED+"\n🔒Credenciales incorrectas❗\n"<<endl;
                 menu();
                 cout<<GREEN+"Ingrese una opcion"+RESET<<endl;
                 cin >> op;
             }
+        }else if(op == "4"){ //Reportes
+            reportes_menu();
+            cout<<GREEN+"Ingrese una opcion"+RESET<<endl;
+            cin >> op;
+            while(op != "4"){
+                if(op == "1"){
+                    cout<<BGblack<<BLUE+"✅ Cambio exitoso "+GREEN+nickname<<BGr+"\n"<<endl;
+
+                    reportes_menu();
+                    cout<<GREEN+"Ingrese una opcion"+RESET<<endl;
+                    cin >> op;
+                }else if(op == "2"){
+                    cout<<BGblack<<BLUE+"Listando Usuarios por edad ⬆️ "+GREEN+nickname<<BGr+"\n"<<endl;
+                    reportes_menu();
+                    cout<<GREEN+"Ingrese una opcion"+RESET<<endl;
+                    cin >> op;
+                }else if(op == "3"){
+                    cout<<BGblack<<BLUE+"Listando Articulos por precio ⬆️ "+GREEN+nickname<<BGr+"\n"<<endl;
+                    reportes_menu();
+                    cout<<GREEN+"Ingrese una opcion"+RESET<<endl;
+                    cin >> op;
+                
+                }else{
+                    cout<<RED+"\nIngrese un comando valido! 💢\n"<<endl;
+                    reportes_menu();
+                    cout<<GREEN+"Ingrese una opcion"+RESET<<endl;
+                    cin >> op;
+                }
+            }
+                menu();
+                cout<<GREEN+"Ingrese una opcion"+RESET<<endl;
+                cin >> op;
         }else{
             cout<<RED+"\nIngrese un comando valido! 💢\n"<<endl;
             menu();
@@ -267,6 +366,18 @@ int main(){
             cin >> op;
         }
     }
+}
 
+int main(){
+    // iniciarJuego();
+    cola.Enqueue("100","50");
+    cola.Enqueue("2","2");
+    cola.Enqueue("3","3");
+    cola.Enqueue("4","4");
+    cola.Enqueue("5","5");
+    cola.Enqueue("6","6");
+    // cola.show();
+    
+    tutorial_menu();
     return 1;
 }

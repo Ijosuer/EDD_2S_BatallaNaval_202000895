@@ -1,3 +1,4 @@
+#pragma once
 #include <stddef.h>
 #include <string> 
 using namespace std;
@@ -5,22 +6,18 @@ using namespace std;
 class Articulo{
     //Atributos y metodos
     public:
-    string categoria;
     string id;
     string nombre;
     string precio;
     string src;
-    Articulo* siguiente;
-    Articulo* anterior;
+    Articulo* abajo;
     //Constructor
-    Articulo(string _categoria,string _id,string _name,string _precio, string _src){
-        categoria = _categoria;
+    Articulo(string _id,string _name,string _precio, string _src){
         id = _id;
         nombre = _name;
         precio = _precio;
         src = _src;
-        siguiente = NULL;
-        anterior = NULL;
+        abajo = NULL;
     }
     private:
     

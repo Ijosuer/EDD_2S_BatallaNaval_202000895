@@ -18,6 +18,7 @@ class Cola{
     //Metodo insertar
     void Enqueue(string _x, string _y);
     void Dequeue();
+    void show();
     void report();
     void crearGrafica();
     private:
