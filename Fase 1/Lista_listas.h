@@ -21,6 +21,7 @@ class Lista_listas{
     void showArticulos(string _nameCategoria);
     void show();
     void report();
+    bool whereIs(string _categoria);
     void crearGrafica();
     private:
 };

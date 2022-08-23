@@ -7,6 +7,7 @@
 #include <unistd.h>
 
 #include "Lista_Circular_Doble.cpp"
+#include "Lista_listas.cpp"
 #include "Cola.cpp"
 #include "Stack.cpp"
 using namespace std;
@@ -17,9 +18,13 @@ string MAGENTA = "\u001b[35m",CYAN = "\u001b[36m",WHITE = "\u001b[37m",RESET = "
 string BGblack = "\u001b[40;1m", BGr = "\u001b[0m";
 //      --- ---- ---
 
+//Instancias de estructuras
 Lista_Circular_Doble lista;
+Lista_listas lista_listas;
 Cola cola;
 Stack pila;
+// ****------****
+
 void menu(){
     cout<<BGblack<<GREEN<<"*********"<<YELLOW<<"🎮 MENU 💣"<<GREEN<<"**********"<<WHITE<<BGr<<endl;
     cout<<BGblack<<"*                           *"<<BGr<<endl;
@@ -86,21 +91,24 @@ void cargaMasiva(string _ruta){
     cout<<mem[j]<<endl;
         for(auto& element : child){
             if (mem[j]=="articulos"){
+                string id, categoria,precio,nombre,src = "";
                 for (int i = 0; i < element.size(); i++){
                 Json::Value::Members mem2 = element.getMemberNames();
                 Json::Value child2 = element[mem2[i]];
                 // cout << "name: " << mem2[i] << ", child: " << child2 << endl;
                 // cout  << mem2[i] <<endl;
                     if(mem2[i] == "id"){
-                        cout<<child2.asString();
+                        id = child2.asString();
                     }else if (mem2[i] == "categoria"){
-                        cout<<" "+child2.asString();
+                        categoria = child2.asString();
+                        lista_listas.insertarCategoria(categoria);
                     }else if (mem2[i] == "precio"){
-                        cout<<" "+child2.asString();
+                        precio = child2.asString();
                     }else if (mem2[i] == "nombre"){
-                        cout<<" "+child2.asString()<<endl;
+                        nombre= child2.asString();
                     }else if (mem2[i] == "src"){
-                        cout<<" "+child2.asString()<<endl;
+                        src = child2.asString();
+                        lista_listas.insertarArticulo(categoria,id,nombre,precio,src);
                     };
                 }   
             }else if(mem[j] == "usuarios"){
@@ -370,14 +378,29 @@ menu();
 
 int main(){
     // iniciarJuego();
-    cola.Enqueue("100","50");
-    cola.Enqueue("2","2");
-    cola.Enqueue("3","3");
-    cola.Enqueue("4","4");
-    cola.Enqueue("5","5");
-    cola.Enqueue("6","6");
+    // cargaMasiva("archivos/archivo.json");
+    // cola.Enqueue("100","50");
+    // cola.Enqueue("2","2");
+    // cola.Enqueue("3","3");
+    // cola.Enqueue("4","4");
+    // cola.Enqueue("5","5");
+    // cola.Enqueue("6","6");
     // cola.show();
-    
-    tutorial_menu();
+    cout<<""<<endl;
+    lista_listas.insertarCategoria("Raro");
+    lista_listas.insertarCategoria("Epico");
+    lista_listas.insertarCategoria("Legendario");
+    lista_listas.insertarArticulo("Raro","0","raro1","600","");
+    lista_listas.insertarArticulo("Raro","1","raro1","600","");
+    lista_listas.insertarArticulo("Raro","2","raro","600","");
+    lista_listas.insertarArticulo("Epico","3","epicgames1","800","");
+    lista_listas.insertarArticulo("Epico","4","epicgames2","900","");
+    lista_listas.insertarArticulo("Epico","5","epicgames2","900","");
+    lista_listas.insertarArticulo("Legendario","6","leyenda2","1000","");
+    lista_listas.insertarArticulo("Legendario","7","leyenda3","1000","");
+    lista_listas.insertarArticulo("Legendario","8","leyenda8","1000","");
+    lista_listas.crearGrafica();
+    lista_listas.show();
+    // tutorial_menu();
     return 1;
 }

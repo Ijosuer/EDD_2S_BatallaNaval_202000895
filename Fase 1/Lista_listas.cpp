@@ -9,10 +9,15 @@ using namespace std;
 //Programar los metodos
 
 void Lista_listas::insertarCategoria(string _nameCategoria){
-    Categoria* tmp = new Categoria(_nameCategoria);
+    bool flag;
+    flag = whereIs(_nameCategoria);
+    if(flag == true){
+        return;
+    }else{
+    Categoria*  tmp = new Categoria(_nameCategoria);
     tmp->siguiente = cabecera;
     cabecera = tmp;
-
+    }
 }
 
 void Lista_listas::insertarArticulo(string _categoria,string _id,string _name,string _precio, string _src){
@@ -33,14 +38,54 @@ void Lista_listas::report(){
     Categoria* aux = cabecera;
     Articulo* tmp = aux->abajo;
     string text = "";
-    text+="rankdir=LR; \n node[shape=egg,style=filled,color=khaki,fontname=\"Century Gothic\"]; graph [fontname = \"Century Gothic\"];\n";
+    int i = 0;
+    text+="rankdir=LR; \n node[shape=house,style=filled,color=peru,fontname=\"Century Gothic\"]; graph [fontname = \"Century Gothic\"];\n";
     text+="labelloc = \"t;\"label = \"Articulos\";\n";
     while(aux != NULL){
-        text+="x"+aux->categoria+"[dir=both label = \"Categoria = "+(aux->categoria)+ "\"]";
+        text+="\nx"+aux->categoria+"[dir=both label = \"Categoria = "+(aux->categoria)+ "\",fontcolor=white]";
         text+="x"+(aux->categoria)+"-> x"+(aux->siguiente->categoria)+"\n";
-        aux = aux->siguiente;
+        cout<<text<<endl;
+            while(tmp != NULL){
+                text+="\nx"+tmp->id+"[dir=both label = \"Barco = "+(tmp->nombre)+ "\",  color=cyan4, shape=hexagon]";
+                text+="x"+(tmp->id)+"-> x"+(tmp->abajo->id)+"\n";
+                if(i == 0){
+                    text+="x"+(aux->categoria)+"-> x"+(tmp->id)+"\n";
+                    cout<<"\n\n\n"+text<<endl;
+                    i++;
+                }else{
+                    i=0;
+                }
+                    tmp = tmp->abajo;
+
+                if(tmp->abajo == NULL){
+                    text+="\nx"+tmp->id+"[dir=both label = \"Barco = "+(tmp->nombre)+ "\",  color=cyan4, shape=hexagon]";
+                    aux = aux->siguiente;
+                    tmp = aux->abajo;
+                cout<<"\n\n\n"+text<<endl;
+                    break;
+                }
+        }
+
         if(aux->siguiente == NULL){
-            text+="x"+aux->categoria+"[dir=both label = \"Categoria = "+(aux->categoria)+ "\"]";
+            text+="\nx"+aux->categoria+"[dir=both label = \"Categoria = "+(aux->categoria)+ "\",fontcolor=white]";
+            
+                while(tmp != NULL){
+                    // tmp = aux->abajo;
+                if(tmp->abajo == NULL){
+                    text+="\nx"+tmp->id+"[dir=both label = \"Barco = "+(tmp->nombre)+ "\",  color=cyan4, shape=hexagon]";
+                    text+="x"+(aux->categoria)+"-> x"+(tmp->id)+"\n";
+                    cout<<"\n\n\n"+text<<endl;
+                    break;
+                }else{
+                    text+="x"+tmp->id+"[dir=both label = \"Barco = "+(tmp->nombre)+ "\",  color=cyan4, shape=hexagon]";
+                    text+="x"+(tmp->id)+"-> x"+(tmp->abajo->id)+"\n";
+
+                    text+="x"+(aux->categoria)+"-> x"+(tmp->id)+"\n";
+                    tmp = tmp->abajo;
+
+                }
+            }
+            
             texto_grafica = text;
             break;
         }
@@ -48,17 +93,36 @@ void Lista_listas::report(){
     
 }
 
+bool Lista_listas::whereIs(string _name){
+    Categoria* tmp = cabecera;
+    if(tmp == NULL){
+        return false;
+    }
+    while(tmp != NULL){
+        if(tmp->categoria == _name){
+            break;
+            return true;
+        }else{
+            tmp = tmp->siguiente;
+            if(tmp == cabecera){
+                break;
+                return false;
+            }
+        }
+    }
+}
+
 void Lista_listas::crearGrafica(){
     report();
     string contenido = "digraph G {\n\n";
-    string filename("Articulos_texto.txt");
+    string filename("Barcos.txt");
     fstream file_out;
     file_out.open(filename, std::ios_base::out);
     if (!file_out.is_open()) {
         cout << "failed to open " << filename << '\n';
     } else {
         contenido += texto_grafica;
-        contenido +="}\n";
+        contenido +="\n}";
         file_out <<contenido<< endl;
         cout << "Done Writing!" << endl;
     }

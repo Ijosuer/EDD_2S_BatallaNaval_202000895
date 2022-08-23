@@ -7,7 +7,11 @@
     "articulos":[
         {"id":"1", "categoria":"raro", "precio":"500", "nombre":"barco1", "src":""},
         {"id":"2", "categoria":"comun", "precio":"240", "nombre":"barco2", "src":""},
-        {"id":"3", "categoria":"leyenda", "precio":"1000", "nombre":"barco3", "src":""}
+        {"id":"3", "categoria":"leyenda", "precio":"1000", "nombre":"barco3", "src":""},
+        {"id":"5", "categoria":"comun", "precio":"1523", "nombre":"barco5", "src":""},
+        {"id":"6", "categoria":"leyenda", "precio":"1000", "nombre":"barco6", "src":""},
+        {"id":"4", "categoria":"raro", "precio":"1000", "nombre":"barco4", "src":""},
+        {"id":"7", "categoria":"raro", "precio":"1000", "nombre":"E", "src":""}
     ],
     "tutorial":{
         "ancho":"20",
