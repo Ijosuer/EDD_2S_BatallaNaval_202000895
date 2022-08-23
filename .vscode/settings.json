@@ -1,15 +1,7 @@
 {
     "files.associations": {
-        "ostream": "cpp",
         "iostream": "cpp",
-        "iosfwd": "cpp",
-        "array": "cpp",
-        "string_view": "cpp",
-        "initializer_list": "cpp",
-        "utility": "cpp",
-        "typeinfo": "cpp",
-        "string": "cpp",
-        "new": "cpp",
-        "fstream": "cpp"
+        "ostream": "cpp",
+        "string": "cpp"
     }
 }

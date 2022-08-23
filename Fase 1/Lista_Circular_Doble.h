@@ -29,6 +29,8 @@ string BGblack = "\u001b[40;1m", BGr = "\u001b[0m";
     
     //Metodo insertar
     void insertarInicio(string _name,string _pwd,string _coins,string _edad);
+    //Agregar compras
+    void agregarBarco(string _name);
     //Metodo unir NODOS
     void unirNodos();
     //Metodo eliminar ultimo nodo
@@ -52,5 +54,7 @@ string BGblack = "\u001b[40;1m", BGr = "\u001b[0m";
     void eliminarPrimero();
     //Eliminar Usuario;
     void eliminarUsuario(string _name);
+    //IInfo monedas
+    string cuantasFichas(string _name);
     private:
 };

@@ -40,7 +40,7 @@ void Lista_listas::report(){
     string text = "";
     int i = 0;
     text+="rankdir=LR; \n node[shape=house,style=filled,color=peru,fontname=\"Century Gothic\"]; graph [fontname = \"Century Gothic\"];\n";
-    text+="labelloc = \"t;\"label = \"Articulos\";\n";
+    text+="labelloc = \"t;\"label = \"Tienda BATTLESHIP\";\n";
     while(aux != NULL){
         text+="\nx"+aux->categoria+"[dir=both label = \"Categoria = "+(aux->categoria)+ "\",fontcolor=white]";
         text+="x"+(aux->categoria)+"-> x"+(aux->siguiente->categoria)+"\n";
@@ -48,12 +48,11 @@ void Lista_listas::report(){
             while(tmp != NULL){
                 text+="\nx"+tmp->id+"[dir=both label = \"Barco = "+(tmp->nombre)+ "\",  color=cyan4, shape=hexagon]";
                 text+="x"+(tmp->id)+"-> x"+(tmp->abajo->id)+"\n";
+        cout<<text<<endl;
                 if(i == 0){
                     text+="x"+(aux->categoria)+"-> x"+(tmp->id)+"\n";
-                    cout<<"\n\n\n"+text<<endl;
+                    // cout<<"\n\n\n"+text<<endl;
                     i++;
-                }else{
-                    i=0;
                 }
                     tmp = tmp->abajo;
 
@@ -61,26 +60,30 @@ void Lista_listas::report(){
                     text+="\nx"+tmp->id+"[dir=both label = \"Barco = "+(tmp->nombre)+ "\",  color=cyan4, shape=hexagon]";
                     aux = aux->siguiente;
                     tmp = aux->abajo;
-                cout<<"\n\n\n"+text<<endl;
+                    i=0;
+                // cout<<"\n\n\n"+text<<endl;
                     break;
                 }
         }
 
         if(aux->siguiente == NULL){
             text+="\nx"+aux->categoria+"[dir=both label = \"Categoria = "+(aux->categoria)+ "\",fontcolor=white]";
+                // cout<<"\n\n\n"+text<<endl;
             
                 while(tmp != NULL){
                     // tmp = aux->abajo;
                 if(tmp->abajo == NULL){
                     text+="\nx"+tmp->id+"[dir=both label = \"Barco = "+(tmp->nombre)+ "\",  color=cyan4, shape=hexagon]";
-                    text+="x"+(aux->categoria)+"-> x"+(tmp->id)+"\n";
-                    cout<<"\n\n\n"+text<<endl;
+                    // cout<<"\n\n\n"+text<<endl;
                     break;
                 }else{
                     text+="x"+tmp->id+"[dir=both label = \"Barco = "+(tmp->nombre)+ "\",  color=cyan4, shape=hexagon]";
                     text+="x"+(tmp->id)+"-> x"+(tmp->abajo->id)+"\n";
-
+                 if(i == 0){
                     text+="x"+(aux->categoria)+"-> x"+(tmp->id)+"\n";
+                    // cout<<"\n\n\n"+text<<endl;
+                    i++;
+                }
                     tmp = tmp->abajo;
 
                 }
@@ -154,15 +157,37 @@ void Lista_listas::showArticulos(string _nameCategoria){
     }
 }
 
-void Lista_listas::show(){
+void Lista_listas::show(string _tokens){
     Categoria* tmp = cabecera;
+    cout<<"\t\t\t\t|\u001b[35mTOTAL TOKENS: \u001b[32m"+_tokens+"| \u001b[0m"<<endl;//7 tabs
+    cout<<"\u001b[40;1m\u001b[33mTienda\u001b[37m"<<endl;
+    cout<<"-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*--*-*-*-*-*-*-*-*-*-*-*-*-"<<endl;
+    cout<<"| \u001b[36mId \t    \u001b[36mNombre \t\t\u001b[36mCategoria \t\u001b[36mPrecio\u001b[37m |"<<endl;
+    cout<<"-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*--*-*-*-*-*-*-*-*-*-*-*-*-"<<endl;
+    int i = 1;
     while (tmp != NULL){
-        cout<<"**********CATEGORIAS "+tmp->categoria+"**********"<<endl;
+        // cout<<"**********CATEGORIAS "+tmp->categoria+"**********"<<endl;
         Articulo* tmp2 = tmp->abajo;
         while(tmp2 != NULL){
-        cout<<"----Articulo"+tmp2->nombre<<endl;
+        // cout<<"----Articulo"+tmp2->nombre<<endl;
+        // cout<<"| "<<i+1<<"\t"<<tmp2->nombre<<"\t\t\t "<<tmp->categoria<<"\t\t"<<tmp2->precio<<"\t|"<<endl;
+        // cout<<"| "<<i+1<<"\t"<<tmp2->nombre;
+        cout<<"\u001b[40;1m|\u001b[33m  "<<tmp2->id<<" ";
+        cout<<"\u001b[37m       "+tmp2->nombre;
+        cout<<"\t\t\u001b[37m"+tmp->categoria;
+        cout<<"\t\t \u001b[37m"+tmp2->precio<<"    |"<<"\u001b[0m"<<endl;
         tmp2 = tmp2->abajo;
+        i++;
         }
         tmp = tmp->siguiente;
+    }
+    string op;
+    cout<<"\tIngrese un id para comprar: ";
+    cin >> op;
+    if(op=="1"){
+    cout<<"OK toma compra!:) "<<endl;
+    return;
+    }else{
+    cout<<"ERRRROOOOOR! "<<endl;
     }
 }

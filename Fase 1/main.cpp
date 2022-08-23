@@ -1,8 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <jsoncpp/json/json.h>
-#include <jsoncpp/json/value.h>
+#include "json/json.h"
+#include "jsoncpp.cpp"
 // #include <SHA256.h>
 #include <unistd.h>
 
@@ -207,7 +207,7 @@ menu();
     cin >> op;
     while(op != "5" ){
         if(op == "1"){//Carga Masiva
-            cargaMasiva("archivos/archivo.json");
+            cargaMasiva("archivos/ArchivoPrueba.json");
             menu();
             cout<<GREEN+"Ingrese una opcion"+RESET<<endl;
             cin >> op;
@@ -310,10 +310,19 @@ menu();
                         cout<<GREEN+"Ingrese una opcion"+RESET<<endl;
                         cin >> op;
                     }else if(op == "4"){
-                        cout<<">Ir a Tienda"<<endl;
-                        login();
-                        cout<<GREEN+"Ingrese una opcion"+RESET<<endl;
-                        cin >> op;
+                        string monedas = "";
+                        monedas= lista.cuantasFichas(nickname);
+                        if (monedas != ""){
+                            lista_listas.show(monedas);
+                            login();
+                            cout<<GREEN+"Ingrese una opcion"+RESET<<endl;
+                            cin >> op;
+                        }else{
+                            cout<<RED+"\nNO puede ingresar a la tienda 💢\n"<<endl;
+                            login();
+                            cout<<GREEN+"Ingrese una opcion"+RESET<<endl;
+                            cin >> op;
+                        }
                     }else if(op == "5"){
                         cout<<">Hacer movimientos"<<endl;
                         login();
@@ -377,8 +386,9 @@ menu();
 }
 
 int main(){
-    // iniciarJuego();
-    // cargaMasiva("archivos/archivo.json");
+    iniciarJuego();
+    // cargaMasiva("archivos/ArchivoPrueba.json");
+    // lista_listas.show("45");
     // cola.Enqueue("100","50");
     // cola.Enqueue("2","2");
     // cola.Enqueue("3","3");
@@ -386,21 +396,9 @@ int main(){
     // cola.Enqueue("5","5");
     // cola.Enqueue("6","6");
     // cola.show();
-    cout<<""<<endl;
-    lista_listas.insertarCategoria("Raro");
-    lista_listas.insertarCategoria("Epico");
-    lista_listas.insertarCategoria("Legendario");
-    lista_listas.insertarArticulo("Raro","0","raro1","600","");
-    lista_listas.insertarArticulo("Raro","1","raro1","600","");
-    lista_listas.insertarArticulo("Raro","2","raro","600","");
-    lista_listas.insertarArticulo("Epico","3","epicgames1","800","");
-    lista_listas.insertarArticulo("Epico","4","epicgames2","900","");
-    lista_listas.insertarArticulo("Epico","5","epicgames2","900","");
-    lista_listas.insertarArticulo("Legendario","6","leyenda2","1000","");
-    lista_listas.insertarArticulo("Legendario","7","leyenda3","1000","");
-    lista_listas.insertarArticulo("Legendario","8","leyenda8","1000","");
-    lista_listas.crearGrafica();
-    lista_listas.show();
+    // lista_listas.crearGrafica();
+    // cola.crearGrafica();
+    // lista_listas.show();
     // tutorial_menu();
     return 1;
 }

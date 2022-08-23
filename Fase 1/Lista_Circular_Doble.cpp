@@ -148,6 +148,19 @@ string Lista_Circular_Doble::dataEdad(string _name){
     return "";
 }
 
+string Lista_Circular_Doble::cuantasFichas(string _name){
+    Usuario* tmp = primero;
+    for (int i = 0; i < len; i++){
+        if(tmp->name == _name){
+            return tmp->coins;
+        }else{
+            tmp = tmp->siguiente;
+        }
+    }
+    return "";
+}
+
+
 void Lista_Circular_Doble::eliminarPrimero(){
     if(len == 0){
         cout<<"\nERROR LISTA VACIA 💢\n"<<endl;

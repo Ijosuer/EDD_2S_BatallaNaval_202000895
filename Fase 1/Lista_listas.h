@@ -19,7 +19,7 @@ class Lista_listas{
     void insertarArticulo(string _categoria,string _id,string _name,string _precio, string _src);
     void showCategorias();
     void showArticulos(string _nameCategoria);
-    void show();
+    void show(string _tokens);
     void report();
     bool whereIs(string _categoria);
     void crearGrafica();

@@ -9,6 +9,7 @@ class Usuario{
     string pwd;
     string coins;
     string edad;
+    string barco;
     Usuario* siguiente;
     Usuario* anterior;
     //Constructor
@@ -17,6 +18,7 @@ class Usuario{
         pwd = _pwd;
         coins = _coins;
         edad = _edad;
+        barco = "";
         siguiente = NULL;
         anterior = NULL;
     }
