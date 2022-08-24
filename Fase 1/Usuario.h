@@ -7,13 +7,13 @@ class Usuario{
     public:
     string name;
     string pwd;
-    string coins;
-    string edad;
+    int coins;
+    int edad;
     string barco;
     Usuario* siguiente;
     Usuario* anterior;
     //Constructor
-    Usuario(string _name,string _pwd,string _coins,string _edad){
+    Usuario(string _name,string _pwd,int _coins,int _edad){
         name = _name;
         pwd = _pwd;
         coins = _coins;

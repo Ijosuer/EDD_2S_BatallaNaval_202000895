@@ -6,13 +6,13 @@ using namespace std;
 class Articulo{
     //Atributos y metodos
     public:
-    string id;
+    int id;
     string nombre;
-    string precio;
+    int precio;
     string src;
     Articulo* abajo;
     //Constructor
-    Articulo(string _id,string _name,string _precio, string _src){
+    Articulo(int _id,string _name,int _precio, string _src){
         id = _id;
         nombre = _name;
         precio = _precio;

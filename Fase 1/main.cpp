@@ -88,7 +88,6 @@ void cargaMasiva(string _ruta){
     Json::Value::Members mem = root.getMemberNames();
     for (int j = 0; j < root.size(); j++){
     Json::Value child = root[mem[j]];
-    cout<<mem[j]<<endl;
         for(auto& element : child){
             if (mem[j]=="articulos"){
                 string id, categoria,precio,nombre,src = "";
@@ -108,60 +107,52 @@ void cargaMasiva(string _ruta){
                         nombre= child2.asString();
                     }else if (mem2[i] == "src"){
                         src = child2.asString();
-                        lista_listas.insertarArticulo(categoria,id,nombre,precio,src);
+                        int id_ok = stoi(id);
+                        int precio_ok = stoi(precio);
+                        lista_listas.insertarArticulo(categoria,id_ok,nombre,precio_ok,src);
                     };
                 }   
             }else if(mem[j] == "usuarios"){
-                cout<<"\nENTRAMOS EN USUARIOS"<<endl;
                 string edad,monedas,nick,password;
 
                 for (int i = 0; i < element.size(); i++){
                 Json::Value::Members mem2 = element.getMemberNames();
                 Json::Value child2 = element[mem2[i]];
                     if(mem2[i] == "edad"){
-                    cout<<child2.asString();
                     edad = child2.asString();
                     }else if (mem2[i] == "monedas"){
-                        cout<<" "+child2.asString();
                     monedas = child2.asString();
                     }else if (mem2[i] == "nick"){
-                        cout<<" "+child2.asString();
                     nick = child2.asString();
                     }else if (mem2[i] == "password"){
-                        cout<<" "+child2.asString()<<endl;
                     password = child2.asString();
 
                         //Creando primer usuario
-                        lista_aux->insertarInicio(nick,password,monedas,edad);
+                        int edad_ok = std::stoi(edad);
+                        int monedas_ok =  std::stoi(monedas);
+                        lista_aux->insertarInicio(nick,password,monedas_ok,edad_ok);
                         
                     };
                 }
             }else if(mem[j] == "tutorial"){
                 string ancho,alto,x,y = "";
 
-                cout<<"-> Entramos en tutorial"<<child.size()<<endl;
                     Json::Value::Members mem2 = child.getMemberNames();
                 for (int i = 0; i < child.size(); i++){
                     Json::Value child2 = child[mem2[i]];
                         if(mem2[i] == "ancho"){
-                            cout<<" "+child2.asString()<<endl;
                             ancho = child2.asString(); //ancho
                         }else if(mem2[i] == "alto"){
-                            cout<<" "+child2.asString()<<endl;
                             alto = child2.asString(); //alto
                         }else if(mem2[i] == "movimientos"){
                             cola.Enqueue(ancho,alto);
-                            cout<<"Entramos en moves"<<endl;
-                            cout<<child2.size()<<endl;
                             for(auto& element : child2){
                                 for (int i = 0; i < element.size(); i++){
                                     Json::Value::Members mem2 = element.getMemberNames();
                                     Json::Value child3 = element[mem2[i]];
                                     if(mem2[i] == "x"){
-                                    cout<<"X: "+child3.asString();
                                     x = child3.asString(); //coordenada X
                                     }else if(mem2[i] == "y"){
-                                    cout<<"Y: "+child3.asString()<<endl;;
                                     y = child3.asString(); //coordenada Y
                                     cola.Enqueue(x,y);
                                     }
@@ -183,11 +174,10 @@ cargaMasiva("archivos/archivo.json");
     //Creamos mas nodos apuntando a la lista circular global
     Lista_Circular_Doble * lista2 = NULL;
     lista2 = &lista; 
-    lista.insertarInicio("aux","123","1","20");
-    lista2->insertarInicio("mike","ipc","3","0");
+    // lista.insertarInicio("aux","123","1","20");
+    // lista2->insertarInicio("mike","ipc","3","0");
     lista.crearGrafica();
     cola.crearGrafica();
-    cout<<"SHJOOOOOOOOO"<<endl;
     pila.push("10","10");
     pila.push("20","2");
     pila.push("30","30");
@@ -199,15 +189,15 @@ cargaMasiva("archivos/archivo.json");
 void iniciarJuego(){
 menu();
     string op;//maneja menu
-    string nickname, edad,pwd ="";//new usuario
-    string newNickname,newPwd,newEdad = "";//editar info
-
+    string nickname, pwd ="";//new usuario
+    string newNickname,newPwd = "";//editar info
+    int edad,newEdad;
     bool flag = false;
     cout<<"Ingrese una opcion"<<endl;
     cin >> op;
     while(op != "5" ){
         if(op == "1"){//Carga Masiva
-            cargaMasiva("archivos/ArchivoPrueba.json");
+            cargaMasiva("archivos/ArchivoPrueba2.json");
             menu();
             cout<<GREEN+"Ingrese una opcion"+RESET<<endl;
             cin >> op;
@@ -223,7 +213,7 @@ menu();
             cin >> edad;
 
             //Llamar al metodo agrega usuarios
-            lista.insertarInicio(nickname,pwd,"0",edad);
+            lista.insertarInicio(nickname,pwd,0,edad);
             cout<<BGblack<<BLUE+"\n✅ Usuario "+GREEN+nickname+BLUE+" agregado con exito!"<<BGr<<"\n"<<endl;
             menu();
             cout<<GREEN+"Ingrese una opcion"+RESET<<endl;
@@ -310,13 +300,26 @@ menu();
                         cout<<GREEN+"Ingrese una opcion"+RESET<<endl;
                         cin >> op;
                     }else if(op == "4"){
-                        string monedas = "";
+                        int  monedas = 0;
+                        bool flag;
                         monedas= lista.cuantasFichas(nickname);
-                        if (monedas != ""){
+                        if (monedas >= 0){
                             lista_listas.show(monedas);
-                            login();
-                            cout<<GREEN+"Ingrese una opcion"+RESET<<endl;
+                            cout<<GREEN+"Ingrese el Id del articulo"+RESET;
                             cin >> op;
+                            int id = stoi(op);
+                            flag = lista_listas.comprar(id,monedas);
+                                if (flag != false){
+                                    cout<<BGblack<<BLUE+"✅ Compra exitosa "+GREEN+nickname<<BGr+"\n"<<endl;
+                                    login();
+                                    cout<<GREEN+"Ingrese una opcion"+RESET<<endl;
+                                    cin >> op;
+                                }else{
+                                    cout<<RED+"\n💢ERROR en su compra.\n"<<endl;
+                                    login();
+                                    cout<<GREEN+"Ingrese una opcion"+RESET<<endl;
+                                    cin >> op;
+                                }
                         }else{
                             cout<<RED+"\nNO puede ingresar a la tienda 💢\n"<<endl;
                             login();
@@ -386,8 +389,8 @@ menu();
 }
 
 int main(){
-    iniciarJuego();
-    // cargaMasiva("archivos/ArchivoPrueba.json");
+    // iniciarJuego();
+    cargaMasiva("archivos/ArchivoPrueba2.json");
     // lista_listas.show("45");
     // cola.Enqueue("100","50");
     // cola.Enqueue("2","2");
@@ -396,9 +399,10 @@ int main(){
     // cola.Enqueue("5","5");
     // cola.Enqueue("6","6");
     // cola.show();
-    // lista_listas.crearGrafica();
+    lista_listas.crearGrafica();
+    // lista.crearGrafica();
     // cola.crearGrafica();
-    // lista_listas.show();
-    // tutorial_menu();
+    // lista_listas.show(1500)
+ 
     return 1;
 }

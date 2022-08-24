@@ -1,11 +1,12 @@
 #include "Lista_Circular_Doble.h"
 #include <iostream>
 #include <fstream>
-using namespace std;
-
+// #include "sha256.h"
+// using namespace std;
+// SHA256 contra;
 //Programar los metodos
 
-void Lista_Circular_Doble::insertarInicio(string _name,string _pwd,string _coins,string _edad){
+void Lista_Circular_Doble::insertarInicio(string _name,string _pwd,int _coins,int _edad){
     Usuario* tmp = new Usuario(_name,_pwd,_coins,_edad);
     //Si la lista esta vacia
     if(primero == NULL){
@@ -42,26 +43,29 @@ void Lista_Circular_Doble::unirNodos(){
 void Lista_Circular_Doble::report(){
     Usuario* aux = primero;
     string text = "";
+    string pass = "";
     text+="rankdir=LR; \n node[shape=egg,style=filled,color=khaki,fontname=\"Century Gothic\"]; graph [fontname = \"Century Gothic\"];\n";
     text+="labelloc = \"t;\"label = \"Usuarios\";\n";
 
     try
     {
         while(aux != NULL){
-        text+="x"+aux->coins+"[dir=both label = \"Monedas = "+(aux->coins)+"\\nNombre = "+(aux->name)+"\\nEdad = "+(aux->edad)+"\\n Pwd = "+(aux->pwd)+ "\"]";
+            pass =(aux->pwd);
+        text+="x"+to_string(aux->coins)+"[dir=both label = \"Monedas = "+to_string(aux->coins)+"\\nNombre = "+(aux->name)+"\\nEdad = "+to_string(aux->edad)+"\\n Pwd = "+(pass)+ "\"]";
             // cout<<text<<endl;
-            text+="x"+(aux->coins)+"-> x"+(aux->siguiente->coins)+"\n";
+            text+="x"+to_string(aux->coins)+"-> x"+to_string(aux->siguiente->coins)+"\n";
             // cout<<text<<endl;
-            text+="x"+(aux->coins)+"-> x"+(aux->anterior->coins)+"\n";
+            text+="x"+to_string(aux->coins)+"-> x"+to_string(aux->anterior->coins)+"\n";
             // cout<<text<<endl;
             aux=aux->siguiente;
         if (aux!=primero){
-                text+="x"+(aux->coins)+"[dir=both label = \"Monedas = "+(aux->coins)+"\\nNombre = "+(aux->name)+"\\nEdad = "+(aux->edad)+"\\n Pwd = "+(aux->pwd)+ "\"]";
+                pass =(aux->pwd);
+                text+="x"+to_string(aux->coins)+"[dir=both label = \"Monedas = "+to_string(aux->coins)+"\\nNombre = "+(aux->name)+"\\nEdad = "+to_string(aux->edad)+"\\n Pwd = "+(pass)+ "\"]";
                 // cout<<text<<endl;
         }    
         if (aux==ultimo){
-            text+="x"+(aux->coins)+"-> x"+(aux->siguiente->coins)+"\n";
-            text+="x"+(aux->coins)+"-> x"+(aux->anterior->coins)+"\n";
+            text+="x"+to_string(aux->coins)+"-> x"+to_string(aux->siguiente->coins)+"\n";
+            text+="x"+to_string(aux->coins)+"-> x"+to_string(aux->anterior->coins)+"\n";
             // cout<<text<<endl;
             texto_grafica = text;
             break;
@@ -121,7 +125,7 @@ bool Lista_Circular_Doble::whereis(string _name, string _pwd){
     return false;
 }
 
-bool Lista_Circular_Doble::editar(string _anterior,string _name,string _pwd,string _edad){
+bool Lista_Circular_Doble::editar(string _anterior,string _name,string _pwd,int _edad){
     Usuario* tmp = primero;
     for (int i = 0; i < len; i++){
         if(tmp->name == _anterior){
@@ -136,7 +140,7 @@ bool Lista_Circular_Doble::editar(string _anterior,string _name,string _pwd,stri
     return false;
 }
 
-string Lista_Circular_Doble::dataEdad(string _name){
+int Lista_Circular_Doble::dataEdad(string _name){
     Usuario* tmp = primero;
     for (int i = 0; i < len; i++){
         if(tmp->name == _name){
@@ -145,10 +149,10 @@ string Lista_Circular_Doble::dataEdad(string _name){
             tmp = tmp->siguiente;
         }
     }
-    return "";
+    return 0;
 }
 
-string Lista_Circular_Doble::cuantasFichas(string _name){
+int Lista_Circular_Doble::cuantasFichas(string _name){
     Usuario* tmp = primero;
     for (int i = 0; i < len; i++){
         if(tmp->name == _name){
@@ -157,7 +161,7 @@ string Lista_Circular_Doble::cuantasFichas(string _name){
             tmp = tmp->siguiente;
         }
     }
-    return "";
+    return 0;
 }
 
 

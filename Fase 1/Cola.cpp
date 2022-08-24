@@ -8,12 +8,10 @@ void Cola::Enqueue(string _x, string _y){
     if(primero == NULL){
         ultimo = tmp;
         primero = ultimo;
-        cout<<"LLEGO EL PAVO"<<endl;
         len+=1;
     }else{
         ultimo->siguiente = tmp;
         ultimo = ultimo->siguiente;
-        cout<<"LA TORTUGA LLEGA TARDE OTRA VEZ"<<ultimo->x<<endl;
         len+=1;
     }
 }
