@@ -78,7 +78,6 @@ void Cola::report(){
        tmp = tmp->siguiente;
        if(tmp != primero){
         text += "x"+to_string(tmp->id)+"[dir=both label = \"X = "+tmp->x+"\\nY = "+tmp->y+"\"]";
-        cout<<text<<endl;
        }
        if(tmp == ultimo){
            text +="x"+ to_string(tmp->id)+"\n";

@@ -1,0 +1,63 @@
+digraph G {
+
+rankdir=LR; 
+ node[shape=egg,style=filled,color=khaki,fontname="Century Gothic"]; graph [fontname = "Century Gothic"];
+labelloc = "t;"label = "Tutoriales";
+x1[dir=both label = "X = 47\nY = 47"]x2-> x1
+x2[dir=both label = "X = 35\nY = 33"]x2[dir=both label = "X = 35\nY = 33"]x3-> x2
+x3[dir=both label = "X = 38\nY = 20"]x3[dir=both label = "X = 38\nY = 20"]x4-> x3
+x4[dir=both label = "X = 29\nY = 36"]x4[dir=both label = "X = 29\nY = 36"]x5-> x4
+x5[dir=both label = "X = 34\nY = 32"]x5[dir=both label = "X = 34\nY = 32"]x6-> x5
+x6[dir=both label = "X = 21\nY = 25"]x6[dir=both label = "X = 21\nY = 25"]x7-> x6
+x7[dir=both label = "X = 21\nY = 28"]x7[dir=both label = "X = 21\nY = 28"]x8-> x7
+x8[dir=both label = "X = 30\nY = 39"]x8[dir=both label = "X = 30\nY = 39"]x9-> x8
+x9[dir=both label = "X = 36\nY = 22"]x9[dir=both label = "X = 36\nY = 22"]x10-> x9
+x10[dir=both label = "X = 37\nY = 40"]x10[dir=both label = "X = 37\nY = 40"]x11-> x10
+x11[dir=both label = "X = 35\nY = 36"]x11[dir=both label = "X = 35\nY = 36"]x12-> x11
+x12[dir=both label = "X = 29\nY = 29"]x12[dir=both label = "X = 29\nY = 29"]x13-> x12
+x13[dir=both label = "X = 33\nY = 23"]x13[dir=both label = "X = 33\nY = 23"]x14-> x13
+x14[dir=both label = "X = 30\nY = 35"]x14[dir=both label = "X = 30\nY = 35"]x15-> x14
+x15[dir=both label = "X = 29\nY = 36"]x15[dir=both label = "X = 29\nY = 36"]x16-> x15
+x16[dir=both label = "X = 39\nY = 28"]x16[dir=both label = "X = 39\nY = 28"]x17-> x16
+x17[dir=both label = "X = 37\nY = 20"]x17[dir=both label = "X = 37\nY = 20"]x18-> x17
+x18[dir=both label = "X = 40\nY = 22"]x18[dir=both label = "X = 40\nY = 22"]x19-> x18
+x19[dir=both label = "X = 34\nY = 28"]x19[dir=both label = "X = 34\nY = 28"]x20-> x19
+x20[dir=both label = "X = 39\nY = 28"]x20[dir=both label = "X = 39\nY = 28"]x21-> x20
+x21[dir=both label = "X = 26\nY = 29"]x21[dir=both label = "X = 26\nY = 29"]x22-> x21
+x22[dir=both label = "X = 25\nY = 23"]x22[dir=both label = "X = 25\nY = 23"]x23-> x22
+x23[dir=both label = "X = 40\nY = 29"]x23[dir=both label = "X = 40\nY = 29"]x24-> x23
+x24[dir=both label = "X = 31\nY = 31"]x24[dir=both label = "X = 31\nY = 31"]x25-> x24
+x25[dir=both label = "X = 24\nY = 26"]x25[dir=both label = "X = 24\nY = 26"]x26-> x25
+x26[dir=both label = "X = 37\nY = 37"]x26[dir=both label = "X = 37\nY = 37"]x27-> x26
+x27[dir=both label = "X = 26\nY = 23"]x27[dir=both label = "X = 26\nY = 23"]x28-> x27
+x28[dir=both label = "X = 29\nY = 30"]x28[dir=both label = "X = 29\nY = 30"]x29-> x28
+x29[dir=both label = "X = 20\nY = 34"]x29[dir=both label = "X = 20\nY = 34"]x30-> x29
+x30[dir=both label = "X = 27\nY = 34"]x30[dir=both label = "X = 27\nY = 34"]x31-> x30
+x31[dir=both label = "X = 34\nY = 20"]x31[dir=both label = "X = 34\nY = 20"]x32-> x31
+x32[dir=both label = "X = 38\nY = 31"]x32[dir=both label = "X = 38\nY = 31"]x33-> x32
+x33[dir=both label = "X = 22\nY = 39"]x33[dir=both label = "X = 22\nY = 39"]x34-> x33
+x34[dir=both label = "X = 20\nY = 24"]x34[dir=both label = "X = 20\nY = 24"]x35-> x34
+x35[dir=both label = "X = 34\nY = 40"]x35[dir=both label = "X = 34\nY = 40"]x36-> x35
+x36[dir=both label = "X = 39\nY = 38"]x36[dir=both label = "X = 39\nY = 38"]x37-> x36
+x37[dir=both label = "X = 23\nY = 36"]x37[dir=both label = "X = 23\nY = 36"]x38-> x37
+x38[dir=both label = "X = 32\nY = 31"]x38[dir=both label = "X = 32\nY = 31"]x39-> x38
+x39[dir=both label = "X = 28\nY = 27"]x39[dir=both label = "X = 28\nY = 27"]x40-> x39
+x40[dir=both label = "X = 22\nY = 35"]x40[dir=both label = "X = 22\nY = 35"]x41-> x40
+x41[dir=both label = "X = 22\nY = 23"]x41[dir=both label = "X = 22\nY = 23"]x42-> x41
+x42[dir=both label = "X = 36\nY = 34"]x42[dir=both label = "X = 36\nY = 34"]x43-> x42
+x43[dir=both label = "X = 30\nY = 32"]x43[dir=both label = "X = 30\nY = 32"]x44-> x43
+x44[dir=both label = "X = 33\nY = 38"]x44[dir=both label = "X = 33\nY = 38"]x45-> x44
+x45[dir=both label = "X = 22\nY = 23"]x45[dir=both label = "X = 22\nY = 23"]x46-> x45
+x46[dir=both label = "X = 32\nY = 39"]x46[dir=both label = "X = 32\nY = 39"]x47-> x46
+x47[dir=both label = "X = 27\nY = 31"]x47[dir=both label = "X = 27\nY = 31"]x48-> x47
+x48[dir=both label = "X = 32\nY = 40"]x48[dir=both label = "X = 32\nY = 40"]x49-> x48
+x49[dir=both label = "X = 31\nY = 21"]x49[dir=both label = "X = 31\nY = 21"]x50-> x49
+x50[dir=both label = "X = 38\nY = 20"]x50[dir=both label = "X = 38\nY = 20"]x51-> x50
+x51[dir=both label = "X = 31\nY = 21"]x51[dir=both label = "X = 31\nY = 21"]x52-> x51
+x52[dir=both label = "X = 23\nY = 21"]x52[dir=both label = "X = 23\nY = 21"]x53-> x52
+x53[dir=both label = "X = 35\nY = 22"]x53[dir=both label = "X = 35\nY = 22"]x54-> x53
+x54[dir=both label = "X = 34\nY = 24"]x54[dir=both label = "X = 34\nY = 24"]x55-> x54
+x55[dir=both label = "X = 33\nY = 29"]x55[dir=both label = "X = 33\nY = 29"]x56-> x55
+x56[dir=both label = "X = 39\nY = 34"]x56
+}
+

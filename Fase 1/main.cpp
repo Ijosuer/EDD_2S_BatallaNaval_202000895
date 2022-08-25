@@ -355,7 +355,7 @@ menu();
                         monedas= lista.cuantasFichas(nickname);
                         if (monedas >= 0){
                             lista_listas.show(monedas);
-                            cout<<GREEN+"Ingrese el Id del articulo"+RESET;
+                            cout<<GREEN+"Ingrese el Id del articulo "+RESET;
                             cin >> op;
                             int id = stoi(op);
                             flag = lista_listas.comprar(id,monedas);
@@ -456,7 +456,6 @@ menu();
 }
 
 int main(){
-    // movimientos();
     iniciarJuego();
     return 1;
 }

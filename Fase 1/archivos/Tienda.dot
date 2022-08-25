@@ -1,0 +1,57 @@
+digraph G {
+
+node[shape=house,style=filled,color=peru,fontname="Century Gothic"]; graph [fontname = "Century Gothic"];
+labelloc = "t;"label = "Tienda BATTLESHIP";
+
+xLeve2[dir=both label = "Categoria = Leve2",fontcolor=white]xLeve2-> xLevel4
+
+x450093[dir=both label = "Barco = Waters",  color=cyan4, shape=hexagon]x450093-> x424677
+xLeve2-> x450093
+
+x424677[dir=both label = "Barco = Flores",  color=cyan4, shape=hexagon]
+xLevel4[dir=both label = "Categoria = Level4",fontcolor=white]xLevel4-> xLevel3
+
+x187765[dir=both label = "Barco = Sosa",  color=cyan4, shape=hexagon]x187765-> x801663
+xLevel4-> x187765
+
+x801663[dir=both label = "Barco = Wolf",  color=cyan4, shape=hexagon]x801663-> x507715
+
+x507715[dir=both label = "Barco = Camacho",  color=cyan4, shape=hexagon]x507715-> x74913
+
+x74913[dir=both label = "Barco = Albert",  color=cyan4, shape=hexagon]x74913-> x99647
+
+x99647[dir=both label = "Barco = Henson",  color=cyan4, shape=hexagon]x99647-> x868070
+
+x868070[dir=both label = "Barco = Snow",  color=cyan4, shape=hexagon]
+xLevel3[dir=both label = "Categoria = Level3",fontcolor=white]xLevel3-> xLevel1
+
+x613161[dir=both label = "Barco = Kirk",  color=cyan4, shape=hexagon]x613161-> x110138
+xLevel3-> x613161
+
+x110138[dir=both label = "Barco = Delacruz",  color=cyan4, shape=hexagon]x110138-> x770027
+
+x770027[dir=both label = "Barco = Petty",  color=cyan4, shape=hexagon]x770027-> x990648
+
+x990648[dir=both label = "Barco = Washington",  color=cyan4, shape=hexagon]x990648-> x200459
+
+x200459[dir=both label = "Barco = Justice",  color=cyan4, shape=hexagon]x200459-> x577947
+
+x577947[dir=both label = "Barco = Noel",  color=cyan4, shape=hexagon]x577947-> x372284
+
+x372284[dir=both label = "Barco = Blair",  color=cyan4, shape=hexagon]x372284-> x666202
+
+x666202[dir=both label = "Barco = Farrell",  color=cyan4, shape=hexagon]x666202-> x633321
+
+x633321[dir=both label = "Barco = Sykes",  color=cyan4, shape=hexagon]
+xLevel1[dir=both label = "Categoria = Level1",fontcolor=white]x566031[dir=both label = "Barco = Osborn",  color=cyan4, shape=hexagon]x566031-> x495406
+xLevel1-> x566031
+x495406[dir=both label = "Barco = Guerra",  color=cyan4, shape=hexagon]x495406-> x447311
+x447311[dir=both label = "Barco = Branch",  color=cyan4, shape=hexagon]x447311-> x705737
+x705737[dir=both label = "Barco = Giles",  color=cyan4, shape=hexagon]x705737-> x20104
+x20104[dir=both label = "Barco = Montoya",  color=cyan4, shape=hexagon]x20104-> x758133
+x758133[dir=both label = "Barco = Garner",  color=cyan4, shape=hexagon]x758133-> x637785
+x637785[dir=both label = "Barco = Holden",  color=cyan4, shape=hexagon]x637785-> x861972
+
+x861972[dir=both label = "Barco = Trevino",  color=cyan4, shape=hexagon];
+{rank=same;xLeve2;xLevel4;xLevel3;xLevel1;};
+}
