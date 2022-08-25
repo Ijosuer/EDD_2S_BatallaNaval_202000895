@@ -29,6 +29,8 @@ string BGblack = "\u001b[40;1m", BGr = "\u001b[0m";
     
     //Metodo insertar
     void insertarInicio(string _name,string _pwd,int _coins,int _edad);
+    //Metodo registrar
+    bool registrar(string _name,string _pwd,int _coins,int _edad);
     //Agregar compras
     void agregarBarco(string _name);
     //Metodo unir NODOS
@@ -44,6 +46,8 @@ string BGblack = "\u001b[40;1m", BGr = "\u001b[0m";
     void isPrimero();
     //Metodo ultimo Usuario   
     void isUltimo();
+    //Metodo buscar Nick
+    bool isNick(string _name);
     //Metodo buscar Usuario
     bool whereis(string _name, string _pwd);
     //Retornar edad
@@ -53,8 +57,9 @@ string BGblack = "\u001b[40;1m", BGr = "\u001b[0m";
     //Eliminar primer nodo;
     void eliminarPrimero();
     //Eliminar Usuario;
-    void eliminarUsuario(string _name);
+    void eliminarUsuario(string _name,string _pwd);
     //IInfo monedas
     int cuantasFichas(string _name);
+    //Ordenar
     private:
 };

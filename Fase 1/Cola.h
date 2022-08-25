@@ -16,7 +16,7 @@ class Cola{
         len = 0;
     }
     //Metodo insertar
-    void Enqueue(string _x, string _y);
+    void Enqueue(int _id, string _x, string _y);
     void Dequeue();
     void show();
     void report();

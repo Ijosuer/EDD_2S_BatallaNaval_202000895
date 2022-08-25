@@ -165,9 +165,9 @@ void Lista_listas::show(int _tokens){
     Categoria* tmp = cabecera;
     cout<<"\t\t\t\t|\u001b[35mTOTAL TOKENS: \u001b[32m"<<_tokens<<"| \u001b[0m"<<endl;//7 tabs
     cout<<"\u001b[40;1m\u001b[33mTienda\u001b[37m"<<endl;
-    cout<<"-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*--*-*-*-*-*-*-*-*-*-*-*-*-"<<endl;
+    cout<<"-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*--*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-"<<endl;
     cout<<"| \u001b[36mId \t    \u001b[36m     Nombre \t\t\u001b[36mCategoria \t\u001b[36mPrecio\u001b[37m |"<<endl;
-    cout<<"-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*--*-*-*-*-*-*-*-*-*-*-*-*-"<<endl;
+    cout<<"-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*--*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-"<<endl;
     int i = 1;
     while (tmp != NULL){
         // cout<<"**********CATEGORIAS "+tmp->categoria+"**********"<<endl;

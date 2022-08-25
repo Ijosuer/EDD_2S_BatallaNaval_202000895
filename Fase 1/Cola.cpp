@@ -3,8 +3,8 @@
 #include <fstream>
 using namespace std;
 
-void Cola::Enqueue(string _x, string _y){
-    Nodo* tmp = new Nodo(_x,_y);
+void Cola::Enqueue(int _id, string _x, string _y){
+    Nodo* tmp = new Nodo(_id,_x,_y);
     if(primero == NULL){
         ultimo = tmp;
         primero = ultimo;
@@ -23,11 +23,9 @@ void Cola::Dequeue(){
         if(len == 1){
             len -= 1;
             ultimo == ultimo->siguiente;
-            cout<<"El 'X' es este: "+ultimo->x<<endl;
         }else if(len >= 2){
         Nodo* tmp = primero;
         primero = primero->siguiente;
-        cout<<"El 'X' es este: "+tmp->x<<endl;
         len -=1;
         }
     }
@@ -71,19 +69,19 @@ void Cola::report(){
         return;
     }
     while(tmp != NULL){
-       text += "x"+(tmp->x)+"[dir=both label = \"X = "+tmp->x+"\\nY = "+tmp->y+"\"]";
+       text += "x"+to_string(tmp->id)+"[dir=both label = \"X = "+tmp->x+"\\nY = "+tmp->y+"\"]";
         if (primero == ultimo){
             texto_grafica = text;
             break;
         }
-       text += "x"+(tmp->siguiente->x)+"-> x"+(tmp->x)+"\n";
+       text += "x"+to_string(tmp->siguiente->id)+"-> x"+to_string(tmp->id)+"\n";
        tmp = tmp->siguiente;
        if(tmp != primero){
-        text += "x"+(tmp->x)+"[dir=both label = \"X = "+tmp->x+"\\nY = "+tmp->y+"\"]";
+        text += "x"+to_string(tmp->id)+"[dir=both label = \"X = "+tmp->x+"\\nY = "+tmp->y+"\"]";
         cout<<text<<endl;
        }
        if(tmp == ultimo){
-           text +="x"+ (tmp->x)+"\n";
+           text +="x"+ to_string(tmp->id)+"\n";
            texto_grafica = text;
            break;
        }
@@ -93,7 +91,7 @@ void Cola::report(){
 void Cola::crearGrafica(){
     report();
     string contenido = "digraph G {\n\n";
-    string filename("texto_cola.txt");
+    string filename("archivos/Tutorial.dot");
     fstream file_out;
     file_out.open(filename, std::ios_base::out);
     if (!file_out.is_open()) {
@@ -102,6 +100,7 @@ void Cola::crearGrafica(){
         contenido += texto_grafica;
         contenido +="}\n";
         file_out <<contenido<< endl;
-        cout << "Done Writing ur Queue!" << endl;
+        system("dot -Tpng archivos/Tutorial.dot -o archivos/Tutorial.png");
+
     }
 }

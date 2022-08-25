@@ -6,11 +6,13 @@ class Nodo{
     public:
     string x;
     string y;
-    Nodo* siguiente= NULL;
-    Nodo* anterior= NULL;
+    int id;
+    Nodo* siguiente;
+    Nodo* anterior;
 
     // Constructor
-    Nodo(string _x , string _y){
+    Nodo(int _id, string _x , string _y){
+        id = _id;
         x = _x;
         y = _y;
         siguiente = NULL;
