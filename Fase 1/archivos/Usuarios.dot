@@ -71,7 +71,11 @@ x6771[dir=both label = "Monedas = 6771\nNombre = Hopkins9664\nEdad = 34\n Pwd = 
 x6771-> x9123
 x4339[dir=both label = "Monedas = 4339\nNombre = Kate3080\nEdad = 38\n Pwd = 8f31ac1faf0b81f502bf00bda6d0b65a2f1ef18a3e37e47757c2cd0f5d0d0250"]x4339[dir=both label = "Monedas = 4339\nNombre = Kate3080\nEdad = 38\n Pwd = 8f31ac1faf0b81f502bf00bda6d0b65a2f1ef18a3e37e47757c2cd0f5d0d0250"]x4339-> x0
 x4339-> x6771
-x0[dir=both label = "Monedas = 0\nNombre = jos\nEdad = 24\n Pwd = f854b2aeb789d616b26acff4df9ff7741d09d5f7a63add238201880e5b10bf2b"]x0-> x8254
+x0[dir=both label = "Monedas = 0\nNombre = josue\nEdad = 21\n Pwd = aac09534114879f13117bfd3e5a85bd0443ec7f776e737258de48f449788c4f1"]x0[dir=both label = "Monedas = 0\nNombre = josue\nEdad = 21\n Pwd = aac09534114879f13117bfd3e5a85bd0443ec7f776e737258de48f449788c4f1"]x0-> x0
 x0-> x4339
+x0[dir=both label = "Monedas = 0\nNombre = dan\nEdad = 23\n Pwd = ec4f2dbb3b140095550c9afbbb69b5d6fd9e814b9da82fad0b34e9fcbe56f1cb"]x0[dir=both label = "Monedas = 0\nNombre = dan\nEdad = 23\n Pwd = ec4f2dbb3b140095550c9afbbb69b5d6fd9e814b9da82fad0b34e9fcbe56f1cb"]x0-> x0
+x0-> x0
+x0[dir=both label = "Monedas = 0\nNombre = mike\nEdad = 43\n Pwd = 64b4d0f47c93ce23d157e68a58767356283dc9b63c459d45d0e0e39b3a64b9b9"]x0-> x8254
+x0-> x0
 }
 

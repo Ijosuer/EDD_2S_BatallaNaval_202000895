@@ -406,7 +406,7 @@ menu();
                     if(flag_carga == true){
                        cout<<"\n";
                     //    sleep(1);
-                    cout<<BGblack<<BLUE+"Estamos generando reportes🤓"+GREEN+nickname<<BGr+"\n"<<endl;
+                    cout<<BGblack<<BLUE+"Estamos generando reportes🤓"+BGr+"\n"<<endl;
                     //    sleep(1);
                     cout<<BGblack<<BLUE+"\t ..."+GREEN<<BGr+"\n"<<endl;
                     cout<<BGblack<<BLUE+"\t ..."+GREEN<<BGr+"\n"<<endl;
