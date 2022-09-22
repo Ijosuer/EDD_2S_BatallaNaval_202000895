@@ -30,6 +30,7 @@ class inicio(QMainWindow):
 
         #acceder a las paginas
         self.ui.bt_inicio.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page))			
+        self.ui.bt_inicio.clicked.connect(lambda: print('ola ola ola'))			
         self.ui.bt_uno.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page_uno))
         self.ui.bt_dos.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page_dos))	
         self.ui.bt_tres.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page_tres))
@@ -39,8 +40,8 @@ class inicio(QMainWindow):
         #control barra de titulos
         self.ui.bt_minimizar.clicked.connect(self.control_bt_minimizar)		
         self.ui.bt_restaurar.clicked.connect(self.control_bt_normal)
-        self.ui.bt_maximizar.clicked.connect(self.control_bt_maximizar)
-        # self.ui.bt_cerrar.clicked.connect(lambda: self.close())
+        self.ui.bt_maximizar.clicked.connect(lambda: self.control_bt_maximizar() )
+        self.ui.bt_cerrar.clicked.connect(lambda: self.close())
 
         self.ui.bt_restaurar.hide()
 
@@ -51,12 +52,14 @@ class inicio(QMainWindow):
         self.showMinimized()		
 
     def  control_bt_normal(self): 
+        print('ESTE ES IUN BNOTON DE LA BARRA MAJE')
         self.showNormal()		
         self.ui.bt_restaurar.hide()
         self.ui.bt_maximizar.show()
 
     def  control_bt_maximizar(self): 
         self.showMaximized()
+        print('entra')
         self.ui.bt_maximizar.hide()
         self.ui.bt_restaurar.show()
 
@@ -103,12 +106,12 @@ class inicio(QMainWindow):
         mi_app2.show()
         sys.exit(app2.exec_())	
 
-# if __name__ == "__main__":
-#     # inicio() 
-#     app = QApplication(sys.argv)
-#     mi_app = inicio()
-#     mi_app.show()
-#     sys.exit(app.exec_())	
+if __name__ == "__main__":
+    # inicio() 
+    app = QApplication(sys.argv)
+    mi_app = inicio()
+    mi_app.show()
+    sys.exit(app.exec_())	
   
-#   loga.startLogin()
+#   login.startLogin()
 
