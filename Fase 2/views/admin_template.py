@@ -7,6 +7,8 @@
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
+import sys
+import os
 
 from PySide2.QtCore import *
 from PySide2.QtGui import *

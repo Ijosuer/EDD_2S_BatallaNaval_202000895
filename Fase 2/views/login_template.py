@@ -11,7 +11,10 @@
 from PySide2.QtCore import *
 from PySide2.QtGui import *
 from PySide2.QtWidgets import *
-
+import sys
+import os
+myDir = os.getcwd()
+sys.path.append(myDir)
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):

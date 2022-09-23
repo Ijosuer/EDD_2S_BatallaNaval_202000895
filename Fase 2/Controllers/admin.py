@@ -1,13 +1,16 @@
 import sys
+import os
+
+
 from PyQt5 import QtWidgets, uic
-# from menu import *
-from game_template import *
+
+from views.admin_template import *
 # from callme import login
 from PySide2 import QtCore
 from PySide2.QtCore import QPropertyAnimation
 from PySide2 import QtCore, QtGui, QtWidgets
 
-CPATH='C:/Users/josue/Desktop/EDD/[EDD_2S]_BatallaNaval__Fase1_202000895/Fase 2'
+CPATH='C:/Users/josue/Desktop/EDD/[EDD_2S]_BatallaNaval__Fase1_202000895/Fase 2/images'
 # loga = login
 
 class inicio(QMainWindow):
@@ -30,12 +33,8 @@ class inicio(QMainWindow):
 
         #acceder a las paginas
         self.ui.bt_inicio.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page))			
-        self.ui.bt_inicio.clicked.connect(lambda: print('ola ola ola'))			
+        self.ui.bt_inicio.clicked.connect(lambda: self.tableData())			
         self.ui.bt_uno.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page_uno))
-        self.ui.bt_dos.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page_dos))	
-        self.ui.bt_tres.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page_tres))
-        self.ui.bt_cuatro.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page_cuatro))			
-        self.ui.bt_cinco.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page_cinco))	
 
         #control barra de titulos
         self.ui.bt_minimizar.clicked.connect(self.control_bt_minimizar)		
@@ -52,7 +51,6 @@ class inicio(QMainWindow):
         self.showMinimized()		
 
     def  control_bt_normal(self): 
-        print('ESTE ES IUN BNOTON DE LA BARRA MAJE')
         self.showNormal()		
         self.ui.bt_restaurar.hide()
         self.ui.bt_maximizar.show()
@@ -64,6 +62,7 @@ class inicio(QMainWindow):
         self.ui.bt_restaurar.show()
 
     def mover_menu(self):
+        self.ui.tableWidget.clear()
         if True:			
             width = self.ui.frame_lateral.width()
             normal = 0
@@ -99,13 +98,26 @@ class inicio(QMainWindow):
         else:
             self.showNormal()
         # sys.exit()
-
-    def startMenu():
-        app2 = QApplication(sys.argv)
-        mi_app2 = inicio()
-        mi_app2.show()
-        sys.exit(app2.exec_())	
-
+    def getImage(self):
+        imagelabel = QtWidgets.QLabel(self.ui.centralwidget)
+        imagelabel.setText("")
+        imagelabel.setScaledContents(True)
+        pixmap = QtGui.QPixmap()
+        pixmap.loadFromData("3","png")
+    def tableData(self):
+        users = [{"ID":'1',"name":"josue","coins":'20',"age":"20"},{"ID":'2',"name":"mike","coins":'0',"age":"15"},{"ID":'3',"name":"dan","coins":'60',"age":CPATH+"/chip.png"}]
+        row = 0
+        icon = QIcon()
+        icon.addFile(u"[EDD_2S]_BatallaNaval__Fase1_202000895/Fase 2/images/menu.png", QSize(), QIcon.Normal, QIcon.Off)
+        imagen= QTableWidgetItem()
+        imagen.setIcon(icon)
+        self.ui.tableWidget.setRowCount(len(users))
+        for i in users:
+            self.ui.tableWidget.setItem(row,0,QtWidgets.QTableWidgetItem(i["ID"]))
+            self.ui.tableWidget.setItem(row,1,QtWidgets.QTableWidgetItem(i["name"]))
+            self.ui.tableWidget.setItem(row,2,QtWidgets.QTableWidgetItem(imagen))
+            row+=1
+        
 if __name__ == "__main__":
     # inicio() 
     app = QApplication(sys.argv)
