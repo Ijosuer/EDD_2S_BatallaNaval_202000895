@@ -1,5 +1,6 @@
 import sys
 import time
+import requests
 import sys
 from PySide2 import QtCore
 from PySide2.QtCore import QPropertyAnimation
@@ -9,7 +10,7 @@ sys.path.append('/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2/C
 from  login_template import *
 from game import inicio
 menu = inicio
-
+base_url = "http://localhost:5000"
 class login(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -36,7 +37,11 @@ class login(QMainWindow):
     def getPWD(self):
         text = self.ui.users.text()
         text2 = self.ui.password.text()
-        if (text == '' and text2 == ''): 
+        # login
+        login = {'nick': text,'password':text2}
+        x = requests.get(f'{base_url}/login', json = login)
+        print(x.text)
+        if (x.status_code == 200): 
             for i in range(0,99):
                 time.sleep(0.01)
                 self.ui.progressBar.setValue(i)

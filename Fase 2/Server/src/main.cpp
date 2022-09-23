@@ -72,16 +72,25 @@ int main()
 			send.code=404;
 			return send;
 		}
-
+		cout<<"pass: "<<pass<<endl;
 		if(usuario->password==pass){
+			cout<<"---------"<<endl;
+			cout<<"nick: "<<usuario->nick<<endl;
+			cout<<"nick: "<<usuario->password<<endl;
 			crow::json::wvalue cuerpo(&usuario);
 			crow::response send(std::move(cuerpo));
+			send.code =200;
         	return send;
 		}
 
+		cout<<"pass: "<<"error alv"<<endl;
         crow::json::wvalue response({{"error", "Contraseña incorrecta"}});
-        return crow::response(std::move(response)); });
-
+        crow::response variable(std::move(response)); 
+		variable.code = 404;
+		return variable;
+		});
+		
+		
 	CROW_ROUTE(app, "/guardar_usuario")
 		.methods("POST"_method)([&ls](const crow::request &req)
 								{

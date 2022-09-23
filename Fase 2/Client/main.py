@@ -13,8 +13,8 @@ if __name__ == '__main__':
     
     # # login
     login = {'nick': 'josue','password':'jos'}
-    # x = requests.get(f'{base_url}/login', json = login)
-    # print(x.text)
+    x = requests.get(f'{base_url}/login', json = login)
+    print(x.text)
 
     # registrar
     usuario = {'nick': 'NUEVO ','password':'new','monedas':'45','edad':'56'}
