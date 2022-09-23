@@ -1,0 +1,52 @@
+{
+    "usuarios": [
+        {
+            "nick": "josue",
+            "password": "jos",
+            "monedas": "2311",
+            "edad": "7"
+        },
+        {
+            "nick": "shattersley1",
+            "password": "WWS4Z7pD4g4v",
+            "monedas": "273",
+            "edad": "9"
+        },
+        {
+            "nick": "dgatheridge2",
+            "password": "Q8H0gy4Q",
+            "monedas": "3",
+            "edad": "3"
+        },
+        {
+            "nick": "braggatt3",
+            "password": "khgOuAZ",
+            "monedas": "41",
+            "edad": "30"
+        },
+        {
+            "nick": "ramdohr4",
+            "password": "lVJ9JKcWnK",
+            "monedas": "9595",
+            "edad": "80"
+        },
+        {
+            "nick": "yhealks5",
+            "password": "Lwt7PcZ5D6o",
+            "monedas": "330",
+            "edad": "7"
+        },
+        {
+            "nick": "mparvin6",
+            "password": "UOj7xyHhm",
+            "monedas": "9",
+            "edad": "60"
+        },
+        {
+            "nick": "dsuckling7",
+            "password": "ipvLuwHvRA",
+            "monedas": "65",
+            "edad": "1"
+        }
+    ]
+}

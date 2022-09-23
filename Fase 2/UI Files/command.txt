@@ -1,1 +1,0 @@
-# pyside2-uic file.ui > file.py
