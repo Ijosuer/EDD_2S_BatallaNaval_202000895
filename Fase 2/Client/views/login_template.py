@@ -149,6 +149,14 @@ class Ui_MainWindow(object):
 "font: 75 9pt \"MS Shell Dlg 2\";\n"
 "border:0px;\n"
 "")
+#         self.mainLabel = QLabel(self.frame)
+#         self.mainLabel.setObjectName(u"mainLabel")
+#         self.mainLabel.setGeometry(QRect(150, 50, 131, 20))
+#         self.mainLabel.setStyleSheet(u"background-color: rgba(0,0,0,0%);\n"
+# "color: rgb(  148, 49, 38);\n"
+# "font: 75 14pt \"MS Shell Dlg 2\";\n"
+# "border:0px;\n"
+# "")
         self.usuario_incorrecto = QLabel(self.frame)
         self.usuario_incorrecto.setObjectName(u"usuario_incorrecto")
         self.usuario_incorrecto.setGeometry(QRect(180, 210, 91, 18))
@@ -188,7 +196,7 @@ class Ui_MainWindow(object):
     # setupUi
 
     def retranslateUi(self, MainWindow):
-        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
+        MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"Login", None))
         self.bt_ingresar.setText(QCoreApplication.translate("MainWindow", u"Iniciar sesi\u00f3n", None))
         self.password.setText("")
         self.password.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Ingrese su contrase\u00f1a", None))
@@ -200,6 +208,7 @@ class Ui_MainWindow(object):
         self.label_4.setText("")
         self.contrasena_incorrecta.setText("")
         self.usuario_incorrecto.setText("")
+        # self.mainLabel.setText("SUP")
         self.pushButton.setText(QCoreApplication.translate("MainWindow", u"Salir", None))
     # retranslateUi
 

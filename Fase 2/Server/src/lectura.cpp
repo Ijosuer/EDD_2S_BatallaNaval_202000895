@@ -114,7 +114,7 @@ NodoAVL* AVL::add(Compra compra, NodoAVL* nodo){
                 }
             }
         }else{
-            cout << "No se puede agregar";
+            std::cout << "No se puede agregar";
         }
     }
     nodo->altura = MAXIMO(altura(nodo->izquierda),altura(nodo->derecha))+1;
@@ -158,7 +158,7 @@ void AVL::graficar(){
     //cout << codigodot;
     //------->escribir archivo
     ofstream file;
-    file.open("AVL.dot");
+    file.open("../archivos/AVL.dot");
     file << codigodot;
     file.close();
     //------->generar png
@@ -198,9 +198,10 @@ void cargaMasiva(string _ruta){
     if (not parsedSuccess) {
         // Report failures and their locations
         // in the document.
-        cout << "Failed to parse JSON" << endl;
+        std::cout << "Failed to parse JSON" << endl;
     }
     Json::Value::Members mem = root.getMemberNames();
+    int contador = 0;
     for (int j = 0; j < root.size(); j++){
     Json::Value child = root[mem[j]];
         for(auto& element : child){
@@ -221,6 +222,8 @@ void cargaMasiva(string _ruta){
                     }else if (mem2[i] == "nombre"){
                         nombre= child2.asString();
                     }else if (mem2[i] == "src"){
+                        contador+=1;
+                        std::cout<<contador<<endl;
                         src = child2.asString();
                         int id_ok = stoi(id);
                         int precio_ok = stoi(precio);
@@ -272,10 +275,10 @@ void cargaMasiva(string _ruta){
                                     Json::Value child3 = element[mem2[i]];
                                     if(mem2[i] == "x"){
                                     x = child3.asString(); //coordenada X
-                                    cout<<x<<endl;
+                                    std::cout<<x<<endl;
                                     }else if(mem2[i] == "y"){
                                     y = child3.asString(); //coordenada Y
-                                    cout<<y<<endl;
+                                    std::cout<<y<<endl;
                                     // cola.Enqueue(iterator,x,y);
                                     iterator++;
                                     }
@@ -292,8 +295,8 @@ void cargaMasiva(string _ruta){
 }
 
 
-// int main(){
-//     // cargaMasiva("/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 1/archivos/ArchivoPrueba.json");
+int main(){
+    cargaMasiva("/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 1/archivos/ArchivoPrueba.json");
 //     compra = Compra("1","hola",2);
 //     pruebas.insertar(compra);
 //     compra = Compra("2","adios",58);
@@ -322,5 +325,5 @@ void cargaMasiva(string _ruta){
 //     pruebas.insertar(compra);
 //     pruebas.graficar();
     
-//     return 1;
-// }
+    return 1;
+}

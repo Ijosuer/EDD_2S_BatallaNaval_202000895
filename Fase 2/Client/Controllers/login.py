@@ -15,9 +15,9 @@ class login(QMainWindow):
     def __init__(self):
         super().__init__()
         self.other = inicio()
-        self.ui = Ui_MainWindow() 
+        self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
-        self.setWindowFlag(Qt.FramelessWindowHint)
+        # self.setWindowFlag(Qt.FramelessWindowHint)
         self.setMaximumSize(800,700)
         # 
         self.setAttribute(Qt.WA_TranslucentBackground)

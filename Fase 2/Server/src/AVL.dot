@@ -1,0 +1,103 @@
+digraph G{label = "Arbol AVL" fontname="Arial Black" fontsize="25pt";
+node [shape = circle, style=filled, fillcolor=seashell2];
+nodo5[ label = "666202
+Farrell
+40"];
+nodo6[ label = "372284
+Blair
+20"];
+nodo10[ label = "200459
+Justice
+40"];
+nodo13[ label = "110138
+Delacruz
+24"];
+nodo21[ label = "187765
+Sosa
+38"];
+nodo13:C1->nodo21
+nodo10:C0->nodo13
+nodo16[ label = "20104
+Montoya
+33"];
+nodo10:C1->nodo16
+nodo6:C0->nodo10
+nodo17[ label = "507715
+Camacho
+32"];
+nodo22[ label = "447311
+Branch
+28"];
+nodo14[ label = "424677
+Flores
+34"];
+nodo22:C0->nodo14
+nodo20[ label = "450093
+Waters
+24"];
+nodo23[ label = "495406
+Guerra
+34"];
+nodo20:C1->nodo23
+nodo22:C1->nodo20
+nodo17:C0->nodo22
+nodo2[ label = "633321
+Sykes
+27"];
+nodo9[ label = "577947
+Noel
+25"];
+nodo25[ label = "566031
+Osborn
+31"];
+nodo9:C0->nodo25
+nodo24[ label = "613161
+Kirk
+29"];
+nodo9:C1->nodo24
+nodo2:C0->nodo9
+nodo7[ label = "637785
+Holden
+21"];
+nodo2:C1->nodo7
+nodo17:C1->nodo2
+nodo6:C1->nodo17
+nodo5:C0->nodo6
+nodo1[ label = "861972
+Trevino
+34"];
+nodo15[ label = "758133
+Garner
+39"];
+nodo8[ label = "74913
+Albert
+20"];
+nodo18[ label = "705737
+Giles
+38"];
+nodo8:C0->nodo18
+nodo15:C0->nodo8
+nodo12[ label = "770027
+Petty
+23"];
+nodo19[ label = "801663
+Wolf
+27"];
+nodo12:C1->nodo19
+nodo15:C1->nodo12
+nodo1:C0->nodo15
+nodo11[ label = "990648
+Washington
+23"];
+nodo3[ label = "868070
+Snow
+34"];
+nodo11:C0->nodo3
+nodo4[ label = "99647
+Henson
+36"];
+nodo11:C1->nodo4
+nodo1:C1->nodo11
+nodo5:C1->nodo1
+
+}
