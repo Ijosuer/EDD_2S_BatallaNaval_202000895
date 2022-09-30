@@ -8,7 +8,6 @@ from Nodo_interno import Nodos_internos
 class Matriz():
     def __init__(self, capa):
         self.capa = capa
-        self.mision=''
         self.filas = Lista_Cabecera('fila')
         self.columnas = Lista_Cabecera('columna')
 
@@ -159,7 +158,10 @@ class Matriz():
                         posy_celda, posx, pivote_celda.coordenadaX, pivote_celda.coordenadaY
                     ) 
                 else:
-                    pass
+                    contenido += '\n\tnode[label=" " fontcolor="black" fillcolor="black" pos="{},-{}!" shape=box]i{}_{};'.format( # pos="{},-{}!"
+                        posy_celda, posx, pivote_celda.coordenadaX, pivote_celda.coordenadaY
+                    ) 
+                    # pass
                 pivote_celda = pivote_celda.derecha
             
             pivote_celda = pivote.acceso
@@ -189,14 +191,14 @@ class Matriz():
             contenido += '\n\ty{}->i{}_{};'.format(pivote.id, pivote.acceso.coordenadaX, pivote.acceso.coordenadaY)
             contenido += '\n\ty{}->i{}_{}[dir=back];'.format(pivote.id, pivote.acceso.coordenadaX, pivote.acceso.coordenadaY)
             pivote = pivote.siguiente
-                
+            
         contenido += '\n}'
         #--- se genera DOT y se procede a ecjetuar el comando
-        dot = "{}_dot.txt".format(nombre)
+        dot = "/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/archivos/{}_dot.txt".format(nombre)
         with open(dot, 'w') as grafo:
             grafo.write(contenido)
-        result = "{}.pdf".format(nombre)
-        os.system("neato -Tpdf " + dot + " -o " + result)
+        result = "/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/archivos/{}.png".format(nombre)
+        os.system("neato -Tpng " + dot + " -o " + result)
         webbrowser.open(result)
 
     def recorridoPorFila(self, fila):
@@ -253,7 +255,9 @@ class Matriz():
 
 if __name__ == "__main__":
     obj = Matriz(0)
-    x=int(input('Ingrese num: '))
+    puerta = False
+    # x=int(input('Ingrese num: '))
+    x=10
     # # procedimiento
     # # num de barcos
     # barcos = int(((x-1)/10) + 1)
@@ -266,26 +270,195 @@ if __name__ == "__main__":
     # barcos+=iterator
     # print(str(barcos)+" Buqes")
     i = 0     
-    for j in range(2):
+    flag = False
+    while flag==False:
+        _x = (random.randint(1,x))
+        _y = (random.randint(1,x))
+        if(_x == x):
+            pass
+        elif(_y == x or _y == x-1 or _y == x-2 or _y == x-3):
+            _y -=4
+        else:
+            pass
+        if (obj.ubicarCoordenada(_x,_y)==None):
+            for i in range(1):
+                puerta = False
+                while puerta == False:
+                    if(obj.ubicarCoordenada(_x,_y)==None):
+                        if(obj.ubicarCoordenada(_x,_y+1)==None):
+                            if(obj.ubicarCoordenada(_x,_y+2)==None):
+                                if(obj.ubicarCoordenada(_x,_y+3)==None):
+                                    print('si')
+                                    obj.insert(_x,_y,"P")
+                                    obj.insert(_x,_y+1,"P")
+                                    obj.insert(_x,_y+2,"P")
+                                    obj.insert(_x,_y+3,"P")
+                                    puerta = True
+                                    # _y +=1
+                                    i+=1
+                                    if(i == 1):
+                                        flag = True
+                                        break
+                                else:
+                                    flag = False;    
+                                    _x = (random.randint(1,x))
+                                    _y = (random.randint(1,x))
+                                    if(_x == x):
+                                        pass
+                                    elif(_y == x or _y == x-1 or _y == x-2 or _y == x-3):
+                                        _y -=4
+                                    else:
+                                        pass
+                            else:
+                                flag = False;    
+                                _x = (random.randint(1,x))
+                                _y = (random.randint(1,x))
+                                if(_x == x):
+                                    pass
+                                elif(_y == x or _y == x-1 or _y == x-2 or _y == x-3):
+                                    _y -=4
+                                else:
+                                    pass
+                        else:
+                            flag = False;    
+                            _x = (random.randint(1,x))
+                            _y = (random.randint(1,x))
+                            if(_x == x):
+                                pass
+                            elif(_y == x or _y == x-1 or _y == x-2 or _y == x-3):
+                                _y -=4
+                            else:
+                                pass
+                    else:
+                        flag = False;    
+                        _x = (random.randint(1,x))
+                        _y = (random.randint(1,x))
+                        if(_x == x):
+                            pass
+                        elif(_y == x or _y == x-1 or _y == x-2 or _y == x-3):
+                            _y -=4
+                        else:
+                            pass
+        else:
+            flag = False
+            _x = (random.randint(1,x))
+            _y = (random.randint(1,x))
+            if(_x == x):
+                pass
+            elif(_y == x or _y == x-1 or _y == x-2 or _y == x-3):
+                _y -=4
+            else:
+                pass
+    #B
+    for j in range(4):
         flag = False
         while flag==False:
             _x = (random.randint(1,x))
             _y = (random.randint(1,x))
             if (obj.ubicarCoordenada(_x,_y)==None):
-                for i in range(4):
-                    if(obj.ubicarCoordenada(_x,_y)==None):
-                        print('si')
-                        obj.insert(_x,_y,"P")
-                        _y +=1
-                        i+=1
-                        if(i == 4):
-                            flag = True
-                            break
-                    else:
-                        continue;    
-                flag = True
+                if(obj.ubicarCoordenada(_x,_y)==None):
+                    obj.insert(_x,_y,"B")
+                    _x +=1
+                    break
+                else:
+                    flag = False;    
             else:
-                continue
+                flag = False
+    #S
+    flag = False
+    while flag==False:
+        _x = (random.randint(1,x))
+        _y = (random.randint(1,x))
+        if(_y == x):
+            pass
+        elif(_x == x or _x == x-1 or _x == x-2 or _x == x-3):
+            print(str(x),"ENTRA")
+            _x -=3
+        else:
+            pass
+            for i in range(2):
+                puerta = False
+                while puerta == False:
+                    if (obj.ubicarCoordenada(_x,_y)==None):
+                        if(obj.ubicarCoordenada(_x+1,_y)==None):
+                            if(obj.ubicarCoordenada(_x+2,_y)==None):
+                                    print('si')
+                                    obj.insert(_x,_y,"S")
+                                    obj.insert(_x+1,_y,"S")
+                                    obj.insert(_x+2,_y,"S")
+                                    # _x +=1
+                                    puerta = True
+                                    i+=1
+                                    if(i == 2):
+                                        flag = True
+                                        break
+                            else:
+                                flag = False;  
+                                _x = (random.randint(1,x))
+                                _y = (random.randint(1,x))
+                                if(_y == x):
+                                    pass
+                                elif(_x == x or _x == x-1 or _x == x-2 or _x == x-3):
+                                    print(str(x),"ENTRA")
+                                    _x -=3
+                                else:
+                                    pass  
+                        else:
+                            flag = False;    
+                            _x = (random.randint(1,x))
+                            _y = (random.randint(1,x))
+                            if(_y == x):
+                                pass
+                            elif(_x == x or _x == x-1 or _x == x-2 or _x == x-3):
+                                print(str(x),"ENTRA")
+                                _x -=3
+                            else:
+                                pass  
+                    else:
+                        flag = False;    
+                        _x = (random.randint(1,x))
+                        _y = (random.randint(1,x))
+                        if(_y == x):
+                            pass
+                        elif(_x == x or _x == x-1 or _x == x-2 or _x == x-3):
+                            print(str(x),"ENTRA")
+                            _x -=3
+                        else:
+                            pass  
+
+    #D
+    flag = False
+    while flag==False:
+        _x = (random.randint(1,x-2))
+        _y = (random.randint(1,x-2))
+        if (obj.ubicarCoordenada(_x,_y)==None):
+            for i in range(2):
+                puerta = False
+                while puerta == False:
+                    if(obj.ubicarCoordenada(_x,_y)==None):
+                        if(obj.ubicarCoordenada(_x,_y+1)==None):
+                            print('si')
+                            obj.insert(_x,_y,"D")
+                            obj.insert(_x,_y+1,"D")
+                            # _y +=1
+                            i+=1
+                            if(i == 2):
+                                flag = True
+                                puerta = True
+                                break
+                        else:
+                            flag = False;    
+                            _x = (random.randint(1,x-2))
+                            _y = (random.randint(1,x-2))
+                    else:
+                        flag = False;    
+                        _x = (random.randint(1,x-2))
+                        _y = (random.randint(1,x-2))
+        else:
+            flag = False
+            _x = (random.randint(1,x-2))
+            _y = (random.randint(1,x-2))
+    obj.graficarDibujo("dispersa","BATTLE SHIP")
         
     # obj.insert(1,1,"P")
     # obj.insert(2,1,"P")
@@ -298,13 +471,26 @@ if __name__ == "__main__":
     # obj.insert(3,3,"B")
     # obj.insert(5,5,"D")
     # obj.insert(6,6,"D")
-    # ans = obj.ubicarCoordenada(3,3)
-    # if(ans == None):
-    #     obj.insert(6,9,"P")
-    # else:
-    #     ans.caracter = "F"
+    muerte = 0
+    while True:
+        xx = int(input('Ingrese en exis: '))
+        yy = int(input('Ingrese en ye: '))
+        # xx = (random.randint(1,x))
+        # yy = (random.randint(1,x))
+        ans = obj.ubicarCoordenada(xx,yy)
+        if(ans == None):
+            obj.insert(xx,yy," ")
+        else:
+            ans.caracter = "F"
+            muerte +=1
+        if(muerte == 4):
+            obj.graficarDibujo("dispersa","BATTLE SHIP")
+            print(muerte)
+            break;
+        obj.graficarDibujo("dispersa","BATTLE SHIP")
+
+        
     # obj.insert(9,9,"B")
-    obj.graficarDibujo("dispersa","BATTLE SHIP")
     # obj.insert(9,20,"B")
     # obj.recorridoPorColumna(2)
    

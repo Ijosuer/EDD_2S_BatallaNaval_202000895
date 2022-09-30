@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include "../include/simple.hpp"
 
 Nodo::Nodo(Usuario elemento)
@@ -138,10 +139,19 @@ vector<crow::json::wvalue> ListaSimple::to_vector()
         Nodo *aux = primero;
 
         while (aux != NULL)
-        {
+        {   
+            // std::cout<<aux->getElemento().id<<aux->getElemento().password<<std::endl;
+            // int id_int = stoi(id);
+            // int id += 1;
+            int id = stoi(aux->getElemento().id);
+            int moneda = stoi(aux->getElemento().monedas);
+            int edad = stoi(aux->getElemento().edad);
+            
             crow::json::wvalue x;
+            x["id"] = id;
             x["nick"] = aux->getElemento().nick;
-            x["monedas"] = aux->getElemento().monedas;
+            x["monedas"] = moneda;
+            x["edad"] = edad;
             datos.push_back(x);
             aux = aux->sig;
         }
@@ -158,7 +168,7 @@ Usuario *ListaSimple::buscar(string nick)
         {
             if (aux->getElemento().nick == nick)
             {
-                Usuario *us = new Usuario(aux->getElemento().nick, aux->getElemento().password, aux->getElemento().monedas, aux->getElemento().edad);
+                Usuario *us = new Usuario(aux->getElemento().id,aux->getElemento().nick, aux->getElemento().password, aux->getElemento().monedas, aux->getElemento().edad);
                 return us;
             }
             aux = aux->sig;

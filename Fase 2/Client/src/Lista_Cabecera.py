@@ -1,4 +1,3 @@
-from tkinter import N
 from Nodo_cabecera import Nodo_Cabecera
 
 class Lista_Cabecera():

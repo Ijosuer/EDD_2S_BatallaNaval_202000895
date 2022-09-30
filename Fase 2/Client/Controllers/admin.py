@@ -108,6 +108,10 @@ class inicio(QMainWindow):
         pixmap = QtGui.QPixmap()
         pixmap.loadFromData("3","png")
     def tableData(self):
+        dlg = QtWidgets.QMessageBox(self)
+        dlg.setWindowTitle(" ")
+        dlg.setText("F no le diste xd")
+        dlg.exec_()
         users = [{"ID":'1',"name":"josue","coins":'20',"age":"20"},{"ID":'2',"name":"mike","coins":'0',"age":"15"},{"ID":'3',"name":"dan","coins":'60',"age":CPATH+"/chip.png"}]
         row = 0
         icon = QIcon()

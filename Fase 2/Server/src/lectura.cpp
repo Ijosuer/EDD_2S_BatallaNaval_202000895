@@ -20,6 +20,7 @@ Compra::Compra(string _idCompra, string _nombre, int _cantidad){
     idCompra = _idCompra;
     nombre = _nombre;
     cantidad = _cantidad; 
+    
 }
 
 Compra::~Compra(){
@@ -64,7 +65,7 @@ public:
     NodoAVL* rotacionderecha(NodoAVL* nodo);
     NodoAVL* rotaciondoblederecha(NodoAVL* nodo);
     NodoAVL* rotaciondobleizquierda(NodoAVL* nodo);
-    void mostrarOrdenDescendente();
+    void mostrarOrdenDescendente(NodoAVL* asd);
     NodoAVL* in_orden(NodoAVL* nodo);
     void graficar();
     string getCodigoInterno(NodoAVL* nodo);
@@ -150,7 +151,14 @@ NodoAVL* AVL::rotaciondobleizquierda(NodoAVL* nodo){
     nodo->izquierda = rotacionderecha(nodo->izquierda);
     return rotacionizquierda(nodo);
 }
+void AVL::mostrarOrdenDescendente(NodoAVL* pivote){
+    if(pivote!=nullptr){
+        mostrarOrdenDescendente(pivote->izquierda);
+        cout<<pivote->id <<endl;
+        mostrarOrdenDescendente(pivote->derecha);
+    }
 
+}
 void AVL::graficar(){
     string codigodot = "";
     codigodot += "digraph G{label = \"Arbol AVL\" fontname=\"Arial Black\" fontsize=\"25pt\";\nnode [shape = circle, style=filled, fillcolor=seashell2];\n"+ getCodigoInterno(raiz)+"\n}"; 
@@ -158,14 +166,15 @@ void AVL::graficar(){
     //cout << codigodot;
     //------->escribir archivo
     ofstream file;
-    file.open("../archivos/AVL.dot");
+    file.open("/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/archivos/AVL.dot");
     file << codigodot;
     file.close();
     //------->generar png
-    system(("dot -Tpng AVL.dot -o  ../archivos/AVL.png"));
+    system(("dot -Tpng /home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/archivos/AVL.dot -o  /home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/archivos/AVL.png"));
 
     //------>abrir archivo
-    system(("../archivos/AVL.png"));
+    system(("/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/archivos/AVL.png"));
+    mostrarOrdenDescendente(raiz);
 }
 
 string AVL::getCodigoInterno(NodoAVL* nodo){
@@ -210,7 +219,7 @@ void cargaMasiva(string _ruta){
                 for (int i = 0; i < element.size(); i++){
                 Json::Value::Members mem2 = element.getMemberNames();
                 Json::Value child2 = element[mem2[i]];
-                // cout << "name: " << mem2[i] << ", child: " << child2 << endl;
+                cout << "name: " << mem2[i] << ", child: " << child2 << endl;
                 // cout  << mem2[i] <<endl;
                     if(mem2[i] == "id"){
                         id = child2.asString();
@@ -275,10 +284,10 @@ void cargaMasiva(string _ruta){
                                     Json::Value child3 = element[mem2[i]];
                                     if(mem2[i] == "x"){
                                     x = child3.asString(); //coordenada X
-                                    std::cout<<x<<endl;
+                                    // std::cout<<x<<endl;
                                     }else if(mem2[i] == "y"){
                                     y = child3.asString(); //coordenada Y
-                                    std::cout<<y<<endl;
+                                    // std::cout<<y<<endl;
                                     // cola.Enqueue(iterator,x,y);
                                     iterator++;
                                     }
@@ -287,7 +296,6 @@ void cargaMasiva(string _ruta){
                         }
                 }
                 break;
-
             }
         }
     }
@@ -295,35 +303,35 @@ void cargaMasiva(string _ruta){
 }
 
 
-int main(){
-    cargaMasiva("/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 1/archivos/ArchivoPrueba.json");
-//     compra = Compra("1","hola",2);
-//     pruebas.insertar(compra);
-//     compra = Compra("2","adios",58);
-//     pruebas.insertar(compra);
-//     compra = Compra("3","kk",96);
-//     pruebas.insertar(compra);
-//     compra = Compra("4","a",0);
-//     pruebas.insertar(compra);
-//     compra = Compra("5","fas",88);
-//     pruebas.insertar(compra);
-//     compra = Compra("6","kru",7777);
-//     pruebas.insertar(compra);
-//     compra = Compra("7","r7777",222);
-//     pruebas.insertar(compra);
-//     compra = Compra("8","y",50);
-//     pruebas.insertar(compra);
-//     compra = Compra("9","arriba",50);
-//     pruebas.insertar(compra);
-//     compra = Compra("10","derecha",50);
-//     pruebas.insertar(compra);
-//     compra = Compra("11","idk",50);
-//     pruebas.insertar(compra);
-//     compra = Compra("12","a",50);
-//     pruebas.insertar(compra);
-//     compra = Compra("13","af",50);
-//     pruebas.insertar(compra);
-//     pruebas.graficar();
-    
-    return 1;
-}
+// int main(){
+    // cargaMasiva("/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 1/archivos/ArchivoPrueba.json");
+    // cargaMasiva("/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2/Server/usuarios.json");
+    // compra = Compra("1","hola",2);
+    // pruebas.insertar(compra);
+    // compra = Compra("2","adios",58);
+    // pruebas.insertar(compra);
+    // compra = Compra("3","kk",96);
+    // pruebas.insertar(compra);
+    // compra = Compra("4","a",0);
+    // pruebas.insertar(compra);
+    // compra = Compra("5","fas",88);
+    // pruebas.insertar(compra);
+    // compra = Compra("6","kru",7777);
+    // pruebas.insertar(compra);
+    // compra = Compra("7","r7777",222);
+    // pruebas.insertar(compra);
+    // compra = Compra("8","y",50);
+    // pruebas.insertar(compra);
+    // compra = Compra("9","arriba",50);
+    // pruebas.insertar(compra);
+    // compra = Compra("10","derecha",50);
+    // pruebas.insertar(compra);
+    // compra = Compra("11","idk",50);
+    // pruebas.insertar(compra);
+    // compra = Compra("12","a",50);
+    // pruebas.insertar(compra);
+    // compra = Compra("13","af",50);
+    // pruebas.insertar(compra);
+    // pruebas.graficar();
+//     return 0;
+// }

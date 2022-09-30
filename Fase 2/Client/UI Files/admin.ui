@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>888</width>
-    <height>554</height>
+    <width>893</width>
+    <height>558</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -552,28 +552,67 @@ font: 16pt &quot;Pristina&quot;;</string>
              <number>0</number>
             </property>
             <property name="currentIndex">
-             <number>1</number>
+             <number>0</number>
             </property>
             <widget class="QWidget" name="page">
-             <layout class="QVBoxLayout" name="verticalLayout_9">
-              <item>
+             <layout class="QGridLayout" name="gridLayout">
+              <item row="1" column="0">
+               <widget class="QPushButton" name="pushButton_2">
+                <property name="text">
+                 <string>PushButton</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="0">
+               <widget class="QPushButton" name="pushButton">
+                <property name="text">
+                 <string>PushButton</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="0">
+               <widget class="QLineEdit" name="lineEdit"/>
+              </item>
+              <item row="1" column="1">
+               <widget class="QPushButton" name="pushButton_3">
+                <property name="text">
+                 <string>PushButton</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QLineEdit" name="lineEdit_2"/>
+              </item>
+              <item row="2" column="0" colspan="2">
                <widget class="QLabel" name="label">
+                <property name="minimumSize">
+                 <size>
+                  <width>585</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>1080</width>
+                  <height>920</height>
+                 </size>
+                </property>
                 <property name="text">
                  <string/>
                 </property>
+                <property name="textFormat">
+                 <enum>Qt::PlainText</enum>
+                </property>
                 <property name="pixmap">
-                 <pixmap>images/imagen_dos.png</pixmap>
+                 <pixmap>../../../archivos/AVL.png</pixmap>
                 </property>
                 <property name="scaledContents">
-                 <bool>false</bool>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-                <property name="indent">
-                 <number>0</number>
+                 <bool>true</bool>
                 </property>
                </widget>
+              </item>
+              <item row="3" column="1">
+               <layout class="QVBoxLayout" name="verticalLayout_5"/>
               </item>
              </layout>
             </widget>

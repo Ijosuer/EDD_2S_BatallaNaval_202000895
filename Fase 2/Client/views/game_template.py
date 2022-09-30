@@ -1,28 +1,24 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'menu.ui'
+## Form generated from reading UI file 'game.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
-import sys
-import os
-myDir = os.getcwd()
-sys.path.append(myDir)
 
 from PySide2.QtCore import *
 from PySide2.QtGui import *
 from PySide2.QtWidgets import *
-CPATH='/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2/Client/images/'
+
+CPATH='/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2/Client/'
 
 class Ui_MainWindow(object):
-
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(888, 554)
+        MainWindow.resize(850, 554)
         MainWindow.setMinimumSize(QSize(400, 0))
         MainWindow.setStyleSheet(u"")
         self.centralwidget = QWidget(MainWindow)
@@ -67,7 +63,7 @@ class Ui_MainWindow(object):
 "}\n"
 "")
         icon = QIcon()
-        icon.addFile(CPATH+"menu.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(CPATH+"images/menu.png", QSize(), QIcon.Normal, QIcon.Off)
         self.bt_menu.setIcon(icon)
         self.bt_menu.setIconSize(QSize(32, 32))
         self.bt_menu.setAutoDefault(False)
@@ -93,7 +89,7 @@ class Ui_MainWindow(object):
 "}\n"
 "")
         icon1 = QIcon()
-        icon1.addFile(CPATH+"minimizar.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon1.addFile(CPATH+"images/minimizar.png", QSize(), QIcon.Normal, QIcon.Off)
         self.bt_minimizar.setIcon(icon1)
         self.bt_minimizar.setIconSize(QSize(32, 32))
         self.bt_minimizar.setFlat(False)
@@ -115,7 +111,7 @@ class Ui_MainWindow(object):
 "}\n"
 "")
         icon2 = QIcon()
-        icon2.addFile(CPATH+"restaurar.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon2.addFile(CPATH+"images/restaurar.png", QSize(), QIcon.Normal, QIcon.Off)
         self.bt_restaurar.setIcon(icon2)
         self.bt_restaurar.setIconSize(QSize(30, 30))
 
@@ -136,7 +132,7 @@ class Ui_MainWindow(object):
 "}\n"
 "")
         icon3 = QIcon()
-        icon3.addFile(CPATH+"maximizar.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon3.addFile(CPATH+"images/maximizar.png", QSize(), QIcon.Normal, QIcon.Off)
         self.bt_maximizar.setIcon(icon3)
         self.bt_maximizar.setIconSize(QSize(32, 32))
 
@@ -157,7 +153,7 @@ class Ui_MainWindow(object):
 "}\n"
 "")
         icon4 = QIcon()
-        icon4.addFile(CPATH+"cerrar.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon4.addFile(CPATH+"images/cerrar.png", QSize(), QIcon.Normal, QIcon.Off)
         self.bt_cerrar.setIcon(icon4)
         self.bt_cerrar.setIconSize(QSize(32, 32))
 
@@ -218,7 +214,7 @@ class Ui_MainWindow(object):
         self.bt_inicio.setLayoutDirection(Qt.LeftToRight)
         self.bt_inicio.setStyleSheet(u"color: rgb(255, 255, 255);")
         icon5 = QIcon()
-        icon5.addFile(CPATH+"inteligencia-artificial.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon5.addFile(CPATH+"images/inteligencia-artificial.png", QSize(), QIcon.Normal, QIcon.Off)
         self.bt_inicio.setIcon(icon5)
         self.bt_inicio.setIconSize(QSize(32, 32))
 
@@ -230,7 +226,7 @@ class Ui_MainWindow(object):
         self.bt_uno.setToolTipDuration(0)
         self.bt_uno.setStyleSheet(u"color: rgb(255, 255, 255);")
         icon6 = QIcon()
-        icon6.addFile(CPATH+"base-de-datos.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon6.addFile(CPATH+"images/base-de-datos.png", QSize(), QIcon.Normal, QIcon.Off)
         self.bt_uno.setIcon(icon6)
         self.bt_uno.setIconSize(QSize(32, 32))
 
@@ -241,7 +237,7 @@ class Ui_MainWindow(object):
         self.bt_dos.setMinimumSize(QSize(0, 40))
         self.bt_dos.setStyleSheet(u"color: rgb(255, 255, 255);")
         icon7 = QIcon()
-        icon7.addFile(CPATH+"chip.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon7.addFile(CPATH+"images/chip.png", QSize(), QIcon.Normal, QIcon.Off)
         self.bt_dos.setIcon(icon7)
         self.bt_dos.setIconSize(QSize(32, 32))
 
@@ -252,7 +248,7 @@ class Ui_MainWindow(object):
         self.bt_tres.setMinimumSize(QSize(0, 40))
         self.bt_tres.setStyleSheet(u"color: rgb(255, 255, 255);")
         icon8 = QIcon()
-        icon8.addFile(CPATH+"moto.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon8.addFile(CPATH+"images/moto.png", QSize(), QIcon.Normal, QIcon.Off)
         self.bt_tres.setIcon(icon8)
         self.bt_tres.setIconSize(QSize(32, 32))
 
@@ -263,7 +259,7 @@ class Ui_MainWindow(object):
         self.bt_cuatro.setMinimumSize(QSize(0, 40))
         self.bt_cuatro.setStyleSheet(u"color: rgb(255, 255, 255);")
         icon9 = QIcon()
-        icon9.addFile(CPATH+"encriptado.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon9.addFile(CPATH+"images/encriptado.png", QSize(), QIcon.Normal, QIcon.Off)
         self.bt_cuatro.setIcon(icon9)
         self.bt_cuatro.setIconSize(QSize(32, 32))
 
@@ -274,7 +270,7 @@ class Ui_MainWindow(object):
         self.bt_cinco.setMinimumSize(QSize(0, 40))
         self.bt_cinco.setStyleSheet(u"color: rgb(255, 255, 255);")
         icon10 = QIcon()
-        icon10.addFile(CPATH+"videojuego.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon10.addFile(CPATH+"images/videojuego.png", QSize(), QIcon.Normal, QIcon.Off)
         self.bt_cinco.setIcon(icon10)
         self.bt_cinco.setIconSize(QSize(32, 32))
 
@@ -318,7 +314,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_9.setObjectName(u"verticalLayout_9")
         self.label = QLabel(self.page)
         self.label.setObjectName(u"label")
-        self.label.setPixmap(QPixmap(CPATH+"imagen_dos.png"))
+        self.label.setPixmap(QPixmap(u"images/imagen_dos.png"))
         self.label.setScaledContents(False)
         self.label.setAlignment(Qt.AlignCenter)
         self.label.setIndent(0)
@@ -380,14 +376,79 @@ class Ui_MainWindow(object):
         self.page_cinco = QWidget()
         self.page_cinco.setObjectName(u"page_cinco")
         self.page_cinco.setStyleSheet(u"background-color: rgb(255, 255, 255);")
-        self.verticalLayout_8 = QVBoxLayout(self.page_cinco)
-        self.verticalLayout_8.setObjectName(u"verticalLayout_8")
-        self.pushButton = QPushButton(self.page_cinco)
-        self.pushButton.setObjectName(u"pushButton")
-        self.pushButton.setStyleSheet(u"background-color: rgb(0, 170, 255);\n"
-"font: 87 36pt \"Arial Black\";")
+        self.gridLayout = QGridLayout(self.page_cinco)
+        self.gridLayout.setObjectName(u"gridLayout")
+        self.tab_Size = QPushButton(self.page_cinco)
+        self.tab_Size.setObjectName(u"tab_Size")
+        self.tab_Size.setStyleSheet(u"background-color: rgb(194, 194, 194);\n"
+"font: 63 9pt \"Noto Serif CJK KR SemiBold\";")
 
-        self.verticalLayout_8.addWidget(self.pushButton)
+        self.gridLayout.addWidget(self.tab_Size, 0, 0, 1, 1)
+
+        self.tab_Size_2 = QLineEdit(self.page_cinco)
+        self.tab_Size_2.setObjectName(u"tab_Size_2")
+
+        self.gridLayout.addWidget(self.tab_Size_2, 0, 1, 1, 1)
+
+        self.label_4 = QLabel(self.page_cinco)
+        self.label_4.setObjectName(u"label_4")
+
+        self.gridLayout.addWidget(self.label_4, 0, 2, 1, 2)
+
+        self.label_3 = QLabel(self.page_cinco)
+        self.label_3.setObjectName(u"label_3")
+
+        self.gridLayout.addWidget(self.label_3, 0, 4, 1, 2)
+
+        self.scrollArea = QScrollArea(self.page_cinco)
+        self.scrollArea.setObjectName(u"scrollArea")
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollAreaWidgetContents = QWidget()
+        self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 971, 863))
+        self.gridLayout_2 = QGridLayout(self.scrollAreaWidgetContents)
+        self.gridLayout_2.setObjectName(u"gridLayout_2")
+        self.label_5 = QLabel(self.scrollAreaWidgetContents)
+        self.label_5.setObjectName(u"label_5")
+        self.label_5.setPixmap(QPixmap("/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/archivos/dispersa.png"))
+        self.label_5.setScaledContents(True)
+
+        self.gridLayout_2.addWidget(self.label_5, 0, 0, 1, 1)
+
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+
+        self.gridLayout.addWidget(self.scrollArea, 1, 0, 1, 6)
+
+        self.pushButton_8 = QPushButton(self.page_cinco)
+        self.pushButton_8.setObjectName(u"pushButton_8")
+        self.pushButton_8.setStyleSheet(u"background-color: rgb(170, 170, 127);")
+
+        self.gridLayout.addWidget(self.pushButton_8, 2, 0, 1, 1)
+
+        self.lineEdit_3 = QLineEdit(self.page_cinco)
+        self.lineEdit_3.setObjectName(u"lineEdit_3")
+
+        self.gridLayout.addWidget(self.lineEdit_3, 2, 1, 1, 2)
+
+        self.pushButton_9 = QPushButton(self.page_cinco)
+        self.pushButton_9.setObjectName(u"pushButton_9")
+        self.pushButton_9.setStyleSheet(u"background-color: rgb(170, 170, 127);")
+
+        self.gridLayout.addWidget(self.pushButton_9, 2, 3, 1, 2)
+
+        self.lineEdit_4 = QLineEdit(self.page_cinco)
+        self.lineEdit_4.setObjectName(u"lineEdit_4")
+
+        self.gridLayout.addWidget(self.lineEdit_4, 2, 5, 1, 1)
+
+        self.bt_Disparo = QPushButton(self.page_cinco)
+        self.bt_Disparo.setObjectName(u"bt_Disparo")
+        self.bt_Disparo.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(228, 73, 73, 255), stop:0.55 rgba(235, 148, 61, 255), stop:0.98 rgba(0, 0, 0, 255), stop:1 rgba(0, 0, 0, 0));")
+        icon11 = QIcon()
+        icon11.addFile(CPATH+"../images/shoot.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.bt_Disparo.setIcon(icon11)
+
+        self.gridLayout.addWidget(self.bt_Disparo, 3, 0, 1, 6)
 
         self.stackedWidget.addWidget(self.page_cinco)
 
@@ -404,7 +465,7 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
         self.bt_menu.setDefault(False)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(5)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -429,6 +490,13 @@ class Ui_MainWindow(object):
         self.bt_pagina2.setText(QCoreApplication.translate("MainWindow", u"2", None))
         self.bt_pagina3.setText(QCoreApplication.translate("MainWindow", u"3", None))
         self.bt_pagina4.setText(QCoreApplication.translate("MainWindow", u"4", None))
-        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"5", None))
+        self.tab_Size.setText(QCoreApplication.translate("MainWindow", u"Tama\u00f1o", None))
+        self.label_4.setText(QCoreApplication.translate("MainWindow", u"3 VIDAS", None))
+        self.label_3.setText(QCoreApplication.translate("MainWindow", u"TOKENS ->", None))
+        self.label_5.setText("")
+        self.pushButton_8.setText(QCoreApplication.translate("MainWindow", u"X", None))
+        self.lineEdit_3.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Ingrese posicion en X", None))
+        self.pushButton_9.setText(QCoreApplication.translate("MainWindow", u"Y", None))
+        self.bt_Disparo.setText(QCoreApplication.translate("MainWindow", u"DISPARAR", None))
     # retranslateUi
 
