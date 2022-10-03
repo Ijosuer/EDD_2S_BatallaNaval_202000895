@@ -31,6 +31,8 @@ public:
     void eliminarAlFrente();
     void eliminarAlFinal();
     void mostrarLista();
+    void ordenarBurbujaDes();
+    void ordenarBurbujaAs();
     vector<crow::json::wvalue> to_vector();
     Usuario *buscar(string);
 };

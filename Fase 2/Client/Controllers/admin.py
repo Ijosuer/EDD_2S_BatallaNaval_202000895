@@ -7,7 +7,7 @@ import sys
 sys.path.append('/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2/Client/views/')
 #Importo la Clase
 
-from admin_template import *
+from new_admin import *
 # from callme import login
 from PySide2 import QtCore
 from PySide2.QtCore import QPropertyAnimation
@@ -16,7 +16,7 @@ from PySide2 import QtCore, QtGui, QtWidgets
 CPATH='/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2/Client/images'
 # loga = login
 
-class inicio(QMainWindow):
+class admin(QMainWindow):
     def __init__(self):
         super().__init__()
         self.ui = Ui_MainWindow() 
@@ -38,7 +38,13 @@ class inicio(QMainWindow):
         self.ui.bt_inicio.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page))			
         self.ui.bt_inicio.clicked.connect(lambda: self.tableData())			
         self.ui.bt_uno.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page_uno))
+        # self.ui.bt_shop.clicked.connect(lambda:print('yooo'))
+        # self.ui.tableWidget.itemDoubleClicked.connect(lambda:print('MANITO'))
+        self.ui.tableWidget.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
+        self.ui.tableWidget.cellDoubleClicked.connect(self.onSelection)
+        # self.ui.tableWidget.selectionModel().selectionChanged.connect(self.onSelection)
 
+        # self.ui.tableWidget.itemClicked.connect(lambda:print('MANITO'))
         #control barra de titulos
         self.ui.bt_minimizar.clicked.connect(self.control_bt_minimizar)		
         self.ui.bt_restaurar.clicked.connect(self.control_bt_normal)
@@ -49,6 +55,24 @@ class inicio(QMainWindow):
 
         #menu lateral
         self.ui.bt_menu.clicked.connect(self.mover_menu)
+
+    def onSelection(self,row,column):
+        dlg = QtWidgets.QMessageBox(self)
+        dlg.setWindowTitle(" ")
+        dlg.buttonText(0)
+        dlg.setButtonText(0,'YO')
+        dlg.buttonText(1)
+        # dlg.setStandardButtons(QtWidgets.QMessageBox.Ok )
+        dlg.setButtonText(1,'NAA')
+        dlg.setText("F no le diste xd")
+        # btn = QtWidgets.QPushButton(dlg)
+        dlg.exec_()
+
+        print("Row %d and Column %d was clicked" % (row, column))
+        item = self.ui.tableWidget.item(row, column)
+        print(item.data(0))
+        # for i in selected.indexes():
+            # print('Selected Cell at row: {0}'.format(i.data()))
 
     def control_bt_minimizar(self):
         self.showMinimized()		
@@ -108,28 +132,36 @@ class inicio(QMainWindow):
         pixmap = QtGui.QPixmap()
         pixmap.loadFromData("3","png")
     def tableData(self):
+
         dlg = QtWidgets.QMessageBox(self)
         dlg.setWindowTitle(" ")
         dlg.setText("F no le diste xd")
-        dlg.exec_()
+        # dlg.exec_()
         users = [{"ID":'1',"name":"josue","coins":'20',"age":"20"},{"ID":'2',"name":"mike","coins":'0',"age":"15"},{"ID":'3',"name":"dan","coins":'60',"age":CPATH+"/chip.png"}]
         row = 0
         icon = QIcon()
         icon.addFile(CPATH+"/menu.png", QSize(), QIcon.Normal, QIcon.Off)
         imagen= QTableWidgetItem()
         imagen.setIcon(icon)
+
+
+
         self.ui.tableWidget.setRowCount(len(users))
         for i in users:
+            btn = QtWidgets.QPushButton()
+            btn.setText('COMPRAR')
             self.ui.tableWidget.setItem(row,0,QtWidgets.QTableWidgetItem(i["ID"]))
             self.ui.tableWidget.setItem(row,1,QtWidgets.QTableWidgetItem(i["name"]))
             self.ui.tableWidget.setItem(row,2,QtWidgets.QTableWidgetItem(imagen))
+            # self.ui.tableWidget.setItem(row,3,QtWidgets.QTableWidgetItem(self.ui.bt_shop))
+            # self.ui.tableWidget.setCellWidget(row, 3, btn)
             row+=1
-        
+
 if __name__ == "__main__":
     # inicio() 
     
     app = QApplication(sys.argv)
-    mi_app = inicio()
+    mi_app = admin()
     mi_app.show()
     sys.exit(app.exec_())	
   

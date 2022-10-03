@@ -99,6 +99,9 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_8.addWidget(self.bt_minimizar, 0, Qt.AlignRight)
 
+        # BOTON COMPRAR
+        self.bt_shop = QPushButton()
+
         self.bt_restaurar = QPushButton(self.frame_superior)
         self.bt_restaurar.setObjectName(u"bt_restaurar")
         self.bt_restaurar.setMaximumSize(QSize(35, 35))
@@ -345,6 +348,7 @@ class Ui_MainWindow(object):
         self.bt_restaurar.setText("")
         self.bt_maximizar.setText("")
         self.bt_cerrar.setText("")
+        self.bt_shop.setText("COMPRA")
         self.bt_inicio.setText(QCoreApplication.translate("MainWindow", u"       INICIO             ", None))
         self.bt_uno.setText(QCoreApplication.translate("MainWindow", u"   BASE DE DATOS", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"By: iJosuer", None))

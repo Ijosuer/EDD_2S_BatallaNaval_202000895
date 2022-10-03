@@ -1,129 +1,196 @@
+#include <fstream>
 #include <iostream>
 #include <string>
+#include <unistd.h>
+
 
 using namespace std;
 
-class nodo{
+class Compra{
+    
     public:
-        nodo *izq, *der;
-        int dato;
-        int altura;
-
-        nodo(int dat){
-            this->dato = dat;
-            izq = der  = nullptr;
-            altura = 0;
-        }
-
-};
-
-class AVL{
+        string idCompra,nombre;
+        int cantidad;
+        Compra(string,string,int);
+        Compra() = default;
+        ~Compra();
     private:
-        int MAX(int val1, int val2){
-            if(val1 > val2)
-                return val1;
-            return val2;
-        }
-        nodo * RotacionIzquierda(nodo *pivote){
-            nodo *aux = pivote->izq;
-            pivote->izq = aux->der;
-            aux->der = pivote;
-            pivote->altura = MAX(getAltura(pivote->izq), getAltura(pivote->der))+1;
-            aux->altura = MAX(getAltura(aux->izq),pivote->altura)+1;
-            return aux;
-        }
-        nodo * RotacionDerecha(nodo *pivote){
-            nodo *aux = pivote->der;
-            pivote->der = aux->izq;
-            aux->izq = pivote;
-            pivote->altura = MAX(getAltura(pivote->der), getAltura(pivote->izq))+1;
-            aux->altura = MAX(getAltura(aux->der),pivote->altura)+1;
-            return aux;
-        }
-
-        nodo * RotacionDobleIzquierda(nodo *pivote){
-            pivote->izq = RotacionDerecha(pivote->izq);
-            return RotacionIzquierda(pivote);
-        }
-        nodo *RotacionDobleDerecha(nodo *pivote){
-            pivote->der = RotacionIzquierda(pivote->der);
-            return RotacionDerecha(pivote);
-        }
-
-        int getAltura(nodo *temp){
-            if(temp!=nullptr){
-                return temp->altura;
-            }
-            return -1;
-        }
-
-        nodo * insert(nodo *root, int dato){
-            if(root==nullptr){
-                root = new nodo(dato);
-            }else if(dato<root->dato){
-                root->izq = insert(root->izq,dato);
-                if(getAltura(root->der)-getAltura(root->izq)==-2){
-                    if(dato<root->izq->dato){
-                        root = RotacionIzquierda(root);
-                    }else{
-                        root = RotacionDobleIzquierda(root);
-                    }
-                }
-            }else if(dato> root->dato){
-                
-                root->der = insert(root->der,dato);
-                if(getAltura(root->der)-getAltura(root->izq)==2){
-                    if(dato>root->der->dato){
-                        root = RotacionDerecha(root);
-                    }else{       
-                        root = RotacionDobleDerecha(root);
-                    }
-                }
-            }
-            root->altura = MAX(getAltura(root->izq),getAltura(root->der))+1;
-            return root;
-
-        }
-        void recorridoInOrden(nodo *pivote){
-            if(pivote!=nullptr){
-                recorridoInOrden(pivote->izq);
-                cout<< pivote->dato<< " ";
-                recorridoInOrden(pivote->der);
-            }
-            return;
-        }
-
-    public: 
-        nodo *root;
-        AVL(){
-            root = nullptr;
-        }
-        void insertar(int dato){
-           root = insert(root, dato);
-        }
-        void print(){
-            recorridoInOrden(root);
-        }
-
 };
 
-// int main(){
-//     AVL *avl = new AVL();
-//     avl->insertar(1);
-//     avl->insertar(2);
-//     avl->insertar(3);
-//     avl->insertar(4);
-//     avl->insertar(5);
-//     avl->insertar(6);
-//     avl->insertar(7);
-//     avl->insertar(8);
-//     avl->insertar(9);
-//     avl->insertar(10);
-//     cout<<"altura: "<<avl->root->altura<<endl;
-//     cout<<avl->root->der->dato<<endl;
-//     cout<<avl->root->der->der->dato<<endl;
-//     cout<<avl->root->der->der->der->dato<<endl;
-//     // cout<<avl->root->der->dato<<endl;
-//     // avl->print();
-//     return 0;
-// }
+Compra::Compra(string _idCompra, string _nombre, int _cantidad){
+    idCompra = _idCompra;
+    nombre = _nombre;
+    cantidad = _cantidad; 
+    
+}
+
+Compra::~Compra(){
+
+}
+
+int correlativo = 1;
+class NodoAVL{
+public:
+   
+    Compra compra;
+    int id;
+    int altura;
+    
+    NodoAVL* izquierda;
+    NodoAVL* derecha;
+    
+
+    NodoAVL(Compra _compra) {
+        compra = _compra;
+        izquierda = NULL;
+        derecha = NULL;
+        altura = 0;
+        id = correlativo++;
+    }
+private:
+};
+
+class AVL {
+public:
+    NodoAVL* raiz;
+
+    AVL() {
+        raiz = NULL;
+    }
+    
+    int MAXIMO(int valor1, int valor2);
+    int altura(NodoAVL* nodo);
+    void insertar(Compra compra);
+    NodoAVL* add(Compra compra, NodoAVL* nodo);
+    NodoAVL* rotacionizquierda(NodoAVL* nodo);
+    NodoAVL* rotacionderecha(NodoAVL* nodo);
+    NodoAVL* rotaciondoblederecha(NodoAVL* nodo);
+    NodoAVL* rotaciondobleizquierda(NodoAVL* nodo);
+    void mostrarOrdenDescendente(NodoAVL* asd);
+    NodoAVL* in_orden(NodoAVL* nodo);
+    void graficar();
+    string getCodigoInterno(NodoAVL* nodo);
+private:
+};
+  
+int AVL::MAXIMO(int valor1, int valor2){
+    if(valor1>valor2){
+        return valor1;
+    }else{
+        return valor2;
+    }
+}
+
+int AVL::altura(NodoAVL* nodo){
+    if(nodo == NULL){
+        return -1;
+    }else{
+        return nodo->altura;
+    }
+}
+
+void AVL::insertar(Compra compra){
+    raiz = add(compra, raiz); 
+}
+
+NodoAVL* AVL::add(Compra compra, NodoAVL* nodo){
+    if(nodo == NULL){
+        return new NodoAVL(compra);
+    }else{
+        if(compra.idCompra < nodo->compra.idCompra){
+            nodo->izquierda = add(compra, nodo->izquierda);
+            if(altura(nodo->derecha)-altura(nodo->izquierda)== -2){
+                if(compra.idCompra < nodo->izquierda->compra.idCompra){
+                    nodo = rotacionizquierda(nodo);
+                }else{
+                    nodo = rotaciondobleizquierda(nodo);
+                }
+            }
+        }else if(compra.idCompra > nodo->compra.idCompra){
+            nodo->derecha = add(compra, nodo->derecha);
+            if(altura(nodo->derecha)-altura(nodo->izquierda)== 2){
+                if(compra.idCompra > nodo->derecha->compra.idCompra){
+                    nodo = rotacionderecha(nodo);
+                }else{
+                    nodo = rotaciondoblederecha(nodo);
+                }
+            }
+        }else{
+            std::cout << "No se puede agregar";
+        }
+    }
+    nodo->altura = MAXIMO(altura(nodo->izquierda),altura(nodo->derecha))+1;
+    return nodo;
+}
+
+NodoAVL* AVL::rotacionizquierda(NodoAVL *nodo){
+    NodoAVL* aux = nodo->izquierda;
+    nodo->izquierda = aux->derecha;
+    aux->derecha = nodo;
+
+    nodo->altura = MAXIMO(altura(nodo->derecha),altura(nodo->izquierda))+1;
+    aux->altura = MAXIMO(altura(nodo->izquierda), nodo->altura)+1;
+    return aux;
+}
+
+NodoAVL* AVL::rotacionderecha(NodoAVL* nodo){
+    NodoAVL* aux = nodo->derecha;
+    nodo->derecha = aux->izquierda;
+    aux->izquierda = nodo;
+
+    nodo->altura = MAXIMO(altura(nodo->derecha),altura(nodo->izquierda))+1;
+    aux->altura = MAXIMO(altura(nodo->derecha), nodo->altura)+1;
+    return aux;
+}
+
+NodoAVL* AVL::rotaciondoblederecha(NodoAVL* nodo){
+    nodo->derecha = rotacionizquierda(nodo->derecha);
+    return rotacionderecha(nodo);
+}
+
+NodoAVL* AVL::rotaciondobleizquierda(NodoAVL* nodo){
+    nodo->izquierda = rotacionderecha(nodo->izquierda);
+    return rotacionizquierda(nodo);
+}
+void AVL::mostrarOrdenDescendente(NodoAVL* pivote){
+    if(pivote!=nullptr){
+        mostrarOrdenDescendente(pivote->izquierda);
+        cout<<pivote->id <<endl;
+        mostrarOrdenDescendente(pivote->derecha);
+    }
+
+}
+void AVL::graficar(){
+    string codigodot = "";
+    codigodot += "digraph G{label = \"Arbol AVL\" fontname=\"Arial Black\" fontsize=\"25pt\";\nnode [shape = circle, style=filled, fillcolor=seashell2];\n"+ getCodigoInterno(raiz)+"\n}"; 
+        
+    //cout << codigodot;
+    //------->escribir archivo
+    ofstream file;
+    file.open("/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/archivos/AVL.dot");
+    file << codigodot;
+    file.close();
+    //------->generar png
+    system(("dot -Tpng /home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/archivos/AVL.dot -o  /home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/archivos/AVL.png"));
+
+    //------>abrir archivo
+    // system(("/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/archivos/AVL.png"));
+    // mostrarOrdenDescendente(raiz);
+}
+
+string AVL::getCodigoInterno(NodoAVL* nodo){
+    string codigodot = "";
+        
+    if((nodo->izquierda== NULL) && (nodo->derecha == NULL)){
+        codigodot += "nodo" + std::to_string(nodo->id)+ "[ label = \""+ nodo->compra.idCompra +"\n"+ nodo->compra.nombre +"\n"+ to_string(nodo->compra.cantidad)+"\""+ "];\n";
+    }else{
+        codigodot += "nodo" +std::to_string(nodo->id)+"[ label = \""+  nodo->compra.idCompra +"\n"+ nodo->compra.nombre +"\n"+ to_string(nodo->compra.cantidad)+"\""+"];\n";
+    }
+    if(nodo->izquierda!=NULL){
+        codigodot+= getCodigoInterno(nodo->izquierda) +"nodo"+std::to_string(nodo->id) + ":C0->nodo" + std::to_string(nodo->izquierda->id)+"\n";
+    }
+    if(nodo->derecha!=NULL){
+        codigodot+= getCodigoInterno(nodo->derecha)+"nodo"+std::to_string(nodo->id)+":C1->nodo"+std::to_string(nodo->derecha->id)+"\n";                    
+    }
+    return codigodot;
+}

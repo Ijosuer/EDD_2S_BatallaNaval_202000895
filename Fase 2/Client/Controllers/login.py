@@ -9,12 +9,14 @@ from PySide2 import QtCore, QtGui, QtWidgets
 sys.path.append('/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2/Client/views/')
 from  login_template import *
 from game import inicio
+from admin import admin
 menu = inicio
 base_url = "http://localhost:5000"
 class login(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.other = inicio()
+        self.mainWindow = inicio()
+        self.adminWindow = admin()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         # self.setWindowFlag(Qt.FramelessWindowHint)
@@ -27,30 +29,38 @@ class login(QMainWindow):
         self.grip.resize(self.gripSize, self.gripSize)
 
         self.ui.bt_ingresar.clicked.connect(lambda: self.getPWD())			
-        self.other.ui.bt_cerrar.clicked.connect(lambda: self.callm())
+        self.mainWindow.ui.bt_cerrar.clicked.connect(lambda: self.callm())
+        self.adminWindow.ui.bt_cerrar.clicked.connect(lambda: self.callm())
 
     def callm(self):
          if self.isHidden():
                 self.show()
-                self.other.destroy()
+                self.mainWindow.destroy()
+                self.adminWindow.destroy()
 
     def getPWD(self):
         text = self.ui.users.text()
         text2 = self.ui.password.text()
         # login
         login = {'nick': text,'password':text2}
-        x = requests.get(f'{base_url}/login', json = login)
-        print(x.text)
-        if (x.status_code == 200): 
+        # x = requests.get(f'{base_url}/login', json = login)
+        # print(x.text)
+        if (text == "" and text2 == ""): 
             for i in range(0,99):
                 time.sleep(0.01)
                 self.ui.progressBar.setValue(i)
                 self.ui.cargando.setText('Cargando...')
             if self.isVisible():        
                 self.hide()
-                self.other.show()
-                if(self.other.ui.bt_inicio):
-                    print('BR INICIO')
+                self.mainWindow.show()
+        elif text == "admin" and text2 == "admin":
+            for i in range(0,99):
+                time.sleep(0.01)
+                self.ui.progressBar.setValue(i)
+                self.ui.cargando.setText('Cargando...')
+            if self.isVisible():        
+                self.hide()
+                self.adminWindow.show()
         else:
             self.ui.usuario_incorrecto.setText('ERROR EN USUARIO')
             self.ui.contrasena_incorrecta.setText('ERROR EN PWD')

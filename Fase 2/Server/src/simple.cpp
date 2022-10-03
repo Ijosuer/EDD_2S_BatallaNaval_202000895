@@ -120,7 +120,7 @@ void ListaSimple::mostrarLista()
 
         while (aux != NULL)
         {
-            cout << "El elemento " << i << " de la lista es: " << aux->getElemento().nick << endl;
+            cout << "El elemento " << i << " de la lista es: " << aux->getElemento().edad << endl;
             aux = aux->sig;
             i++;
         }
@@ -175,4 +175,61 @@ Usuario *ListaSimple::buscar(string nick)
         }
     }
     return nullptr;
+}
+
+void ListaSimple::ordenarBurbujaDes()
+{
+    Nodo* actual;
+    Nodo*  siguiente; 
+    string t;
+     
+    actual = primero;
+     while(actual->sig != NULL)
+     {
+          siguiente = actual->sig;
+          
+          while(siguiente!=NULL)
+          {
+               if(actual->getElemento().edad < siguiente->getElemento().edad)
+               {
+                    t = siguiente->getElemento().edad;
+                    cout<<t<<endl;
+                    siguiente->getElemento().edad = actual->getElemento().edad;
+                    actual->getElemento().edad = t;          
+               }
+               siguiente = siguiente->sig;                    
+          }    
+          actual = actual->sig;
+          siguiente = actual->sig;
+     }
+    mostrarLista();
+}
+void ListaSimple::ordenarBurbujaAs()
+{
+    mostrarLista();
+    Nodo* actual;
+    Nodo*  siguiente; 
+    string t;
+     
+    actual = primero;
+     while(actual->sig != NULL)
+     {
+          siguiente = actual->sig;
+          
+          while(siguiente!=NULL)
+          {
+               if(stoi(actual->getElemento().edad) < stoi(siguiente->getElemento().edad))
+               {
+                    t = siguiente->getElemento().edad;
+                    siguiente->getElemento().edad =actual->getElemento().edad;
+                    actual->getElemento().edad = t;          
+               }
+               siguiente = siguiente->sig;                    
+          }    
+          actual = actual->sig;
+          siguiente = actual->sig;
+           
+     }
+    mostrarLista();
+
 }
