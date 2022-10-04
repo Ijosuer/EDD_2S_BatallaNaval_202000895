@@ -1,5 +1,7 @@
+from asyncio import sleep
 import sys
 import os
+import time
 
 import requests
 
@@ -28,7 +30,8 @@ class inicio(QMainWindow):
         self.coins = 0
         self.vidas = 3
         self.matriz = None
-        self.len = 0
+        self.len = 10
+        self.tutlen = 0
 
         
         self.ui.label_vidas.setText(str(self.vidas)+" VIDAS")
@@ -77,6 +80,57 @@ class inicio(QMainWindow):
         # EDITAR USUARIO
         self.ui.addButton.clicked.connect(self.editarUser)
 
+        #tutorial
+        self.ui.pushButton_2.clicked.connect(self.tutorialR)
+
+    def tutorialR(self):
+        x = requests.get(f'{base_url}/tutorial')
+        for i in x.json():
+            num = int(i['x'])
+            break;
+        # from Matriz_Dispersa import Matriz
+        # self.matriz = Matriz(0)
+        # self.matriz.generarMatrizRandom(num)
+        # for j in x.json():
+        #     if(self.vidas ==0):
+        #         dlg = QtWidgets.QMessageBox(self)
+        #         dlg.setWindowTitle(" ")
+        #         dlg.setText(":( HAS PERDIDO !")
+        #         dlg.exec_()
+        #         break
+        #     x = j['x']
+        #     y = j['y']
+        #     if (int(x)>num or int(y)>num ):
+        #         dlg = QtWidgets.QMessageBox(self)
+        #         dlg.setWindowTitle(" ")
+        #         dlg.setText("INGRESE VALORES CORRECTOS!")
+        #         dlg.exec_()
+        #         sleep(1)
+        #     elif (int(x)<1 or int(y)<1):
+        #         dlg = QtWidgets.QMessageBox(self)
+        #         dlg.setWindowTitle(" ")
+        #         dlg.setText("INGRESE VALORES CORRECTOS!")
+        #         dlg.exec_()
+        #         sleep(1)
+        #     else:
+        #         ans = self.matriz.ubicarCoordenada(int(x),int(y))
+        #         if(ans == None): 
+        #             self.vidas -=1
+        #             self.matriz.insert(int(x),int(y)," ")
+        #             self.matriz.graficarDibujo("dispersa","BATTLE SHIP")
+        #             self.ui.label_4.setPixmap(QtGui.QPixmap(GPATH+"/dispersa.png")) 
+        #             sleep(1)
+        #         else:
+        #             dlg = QtWidgets.QMessageBox(self)
+        #             dlg.setWindowTitle(" ")
+        #             dlg.setText("DISPARO!")
+        #             ans.caracter = "F"
+        #             dlg.exec_()
+        #             self.matriz.graficarDibujo("dispersa","BATTLE SHIP")
+        #             self.ui.label_4.setPixmap(QtGui.QPixmap(GPATH+"/dispersa.png")) 
+        #             sleep(1)
+
+
     def editarUser(self):
         oldn = self.ui.oldnickLineEdit.text()
         newn = self.ui.newnickLineEdit.text()
@@ -97,8 +151,15 @@ class inicio(QMainWindow):
             dlg.exec_()
 
     def getDisparo(self):
+        if(self.coins <= 0 or self.vidas ==0):
+            dlg = QtWidgets.QMessageBox(self)
+            dlg.setWindowTitle(" ")
+            dlg.setText(":( HAS PERDIDO !")
+            dlg.exec_()
+            self.close()
         x = self.ui.lineEdit_x.text()
         y = self.ui.lineEdit_y.text()
+        print(self.len)
         if (int(x)>self.len or int(y)>self.len ):
             dlg = QtWidgets.QMessageBox(self)
             dlg.setWindowTitle(" ")

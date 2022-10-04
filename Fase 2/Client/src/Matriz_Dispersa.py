@@ -238,7 +238,7 @@ class Matriz():
                 tmp = tmp.derecha
             return None
         except:
-            print('Coordenada no encontrada')
+            # print('Coordenada no encontrada')
             return None
 
     def ubicarCoordenada(self, fila, columna):
@@ -250,7 +250,7 @@ class Matriz():
                 tmp = tmp.derecha
             return None
         except:
-            print('Coordenada no encontrada')
+            # print('Coordenada no encontrada')
             return None
     def generarMatrizRandom(self, x):
         puerta = False

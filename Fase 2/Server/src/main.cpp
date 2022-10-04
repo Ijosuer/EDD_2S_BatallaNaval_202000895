@@ -3,6 +3,7 @@
 #include <map>
 #include "./listaS.cpp"
 #include "./AVL.hpp"
+#include "./Cola.hpp"
 
 #include "/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2/Server/include/ArbolB.h"
 #include "/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2/Server/include/simple.hpp"
@@ -18,6 +19,7 @@ ListaSimple lista;
 ListaS list_ordenar;
 ListaSimple listaArtic;
 ArbolB arbolB;
+Cola cola;
 
 void cargaMasiva(string _ruta){
     // Let's parse it
@@ -106,7 +108,7 @@ void cargaMasiva(string _ruta){
                         }else if(mem2[i] == "alto"){
                             alto = child2.asString(); //alto
                         }else if(mem2[i] == "movimientos"){
-                            // cola.Enqueue(iterator,ancho,alto);
+                            cola.Enqueue(iterator,ancho,alto);
                             iterator++;
                             for(auto& element : child2){
                                 for (int i = 0; i < element.size(); i++){
@@ -118,7 +120,7 @@ void cargaMasiva(string _ruta){
                                     }else if(mem2[i] == "y"){
                                     y = child3.asString(); //coordenada Y
                                     // std::cout<<y<<endl;
-                                    // cola.Enqueue(iterator,x,y);
+                                    cola.Enqueue(iterator,x,y);
                                     iterator++;
                                     }
                                 }
@@ -165,7 +167,8 @@ int main()
 	arbolito = &arbolB;
     // ------------------------
     AVL avl;
-    
+    Cola *colita = NULL;
+    colita = &cola;
 	
 	crow::SimpleApp app;
 	CROW_ROUTE(app, "/")
@@ -185,6 +188,15 @@ int main()
 	([&lsArt]()
 	 { 
 		std::vector<crow::json::wvalue> temp = lsArt->to_vectorArt();
+		crow::json::wvalue final = std::move(temp);
+		return crow::response(std::move(final)); });
+
+// TUTORIAL
+
+	CROW_ROUTE(app, "/tutorial")
+	([colita]()
+	 { 
+		std::vector<crow::json::wvalue> temp = colita->to_vector();
 		crow::json::wvalue final = std::move(temp);
 		return crow::response(std::move(final)); });
 
@@ -251,7 +263,7 @@ int main()
 
 // METODO REGISTRAR USUARIO
 	CROW_ROUTE(app, "/guardar_usuario")
-			.methods("POST"_method)([listar](const crow::request &req)
+			.methods("POST"_method)([listar,arbolito](const crow::request &req)
 								{
 		auto x = crow::json::load(req.body);
 			if (!x)
@@ -263,8 +275,8 @@ int main()
 			string monedas=x["monedas"].s();
 			// int moneda = stoi(monedas);
 			string edad=x["edad"].s();
-			// int eda = stoi(edad);
-		
+			int eda = stoi(edad);
+            arbolito->insertar(eda+12,nick,pass,monedas,edad);
 			listar->insertarAlFrente(Usuario("10",nick,pass,monedas,edad));
             crow::json::wvalue response({{"yo", "biach"}});
             crow::response variable(std::move(response));
