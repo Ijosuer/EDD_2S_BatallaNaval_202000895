@@ -2,15 +2,7 @@
 #include <string>
 #include "../include/simple.hpp"
 
-Nodo::Nodo(Usuario elemento)
-{
-    this->elemento = elemento;
-    sig = NULL;
-}
-Usuario Nodo::getElemento()
-{
-    return elemento;
-}
+
 
 ListaSimple::ListaSimple()
 {
@@ -23,7 +15,7 @@ bool ListaSimple::vacio()
 
 void ListaSimple::insertarAlFrente(Usuario elemento)
 {
-    Nodo *temp = new Nodo(elemento);
+    Usuario *temp = new Usuario(elemento);
     if (vacio())
     {
         primero = ultimo = temp;
@@ -37,7 +29,7 @@ void ListaSimple::insertarAlFrente(Usuario elemento)
 
 void ListaSimple::insertarAlFinal(Usuario elemento)
 {
-    Nodo *temp = new Nodo(elemento);
+    Usuario *temp = new Usuario(elemento);
     if (vacio())
     {
         primero = ultimo = temp;
@@ -63,7 +55,7 @@ void ListaSimple::eliminarAlFrente()
         }
         else
         {
-            Nodo *temp = primero;
+            Usuario *temp = primero;
 
             primero = primero->sig;
             delete temp;
@@ -87,17 +79,17 @@ void ListaSimple::eliminarAlFinal()
         }
         else
         {
-            Nodo *aux = primero;
+            Usuario *aux = primero;
 
             while (aux != NULL)
             {
                 if (aux->sig == ultimo)
                 {
-                    Nodo *temp = ultimo;
+                    Usuario *temp = ultimo;
                     ultimo = aux;
                     aux->sig = NULL;
 
-                    cout << "Elemento eliminado." << temp->getElemento().nick << endl;
+                    cout << "Elemento eliminado." << temp->nick << endl;
                     delete temp;
                 }
                 aux = aux->sig;
@@ -114,13 +106,13 @@ void ListaSimple::mostrarLista()
     }
     else
     {
-        Nodo *aux = primero;
+        Usuario *aux = primero;
         int i = 1;
         cout << "Los datos en la lista son los siguientes" << endl;
 
         while (aux != NULL)
         {
-            cout << "El elemento " << i << " de la lista es: " << aux->getElemento().edad << endl;
+            cout << "El elemento " << i << " de la lista es: " << aux->nick << endl;
             aux = aux->sig;
             i++;
         }
@@ -136,22 +128,53 @@ vector<crow::json::wvalue> ListaSimple::to_vector()
     }
     else
     {
-        Nodo *aux = primero;
+        Usuario *aux = primero;
 
         while (aux != NULL)
         {   
-            // std::cout<<aux->getElemento().id<<aux->getElemento().password<<std::endl;
+            // std::cout<<aux->id<<aux->password<<std::endl;
             // int id_int = stoi(id);
             // int id += 1;
-            int id = stoi(aux->getElemento().id);
-            int moneda = stoi(aux->getElemento().monedas);
-            int edad = stoi(aux->getElemento().edad);
+            int id = stoi(aux->id);
+            int moneda = stoi(aux->monedas);
+            int edad = stoi(aux->edad);
             
             crow::json::wvalue x;
             x["id"] = id;
-            x["nick"] = aux->getElemento().nick;
+            x["nick"] = aux->nick;
             x["monedas"] = moneda;
             x["edad"] = edad;
+            datos.push_back(x);
+            aux = aux->sig;
+        }
+    }
+    return datos;
+}
+vector<crow::json::wvalue> ListaSimple::to_vectorArt()
+{
+    std::vector<crow::json::wvalue> datos;
+    if (vacio() == true)
+    {
+        cout << "No hay elementos en la lista." << endl;
+    }
+    else
+    {
+        Usuario *aux = primero;
+
+        while (aux != NULL)
+        {   
+            // std::cout<<aux->id<<aux->password<<std::endl;
+            // int id_int = stoi(id);
+            // int id += 1;
+            int id = stoi(aux->id);
+            int moneda = stoi(aux->monedas);
+            
+            crow::json::wvalue x;
+            x["id"] = id;
+            x["nombre"] = aux->nick;
+            x["categoria"] = aux->password;
+            x["precio"] = moneda;
+            x["src"] = aux->edad;
             datos.push_back(x);
             aux = aux->sig;
         }
@@ -163,12 +186,50 @@ Usuario *ListaSimple::buscar(string nick)
 {
     if (!vacio())
     {
-        Nodo *aux = primero;
+        Usuario *aux = primero;
         while (aux != NULL)
         {
-            if (aux->getElemento().nick == nick)
+            if (aux->nick == nick)
             {
-                Usuario *us = new Usuario(aux->getElemento().id,aux->getElemento().nick, aux->getElemento().password, aux->getElemento().monedas, aux->getElemento().edad);
+                Usuario *us = new Usuario(aux->id,aux->nick, aux->password, aux->monedas, aux->edad);
+                return us;
+            }
+            aux = aux->sig;
+        }
+    }
+    return nullptr;
+}
+Usuario *ListaSimple::editar(string nick)
+{
+    if (!vacio())
+    {
+        Usuario *aux = primero;
+        while (aux != NULL)
+        {
+            if (aux->nick == nick)
+            {
+                aux->nick = "YO CAMBIO XD";
+                Usuario *us = new Usuario(aux->id,aux->nick, aux->password, aux->monedas, aux->edad);
+                us->nick = "Cambiaaaaaaaaaaaaaar";
+                us->edad = "12";
+                return us;
+            }
+            aux = aux->sig;
+        }
+    }
+    return NULL;
+}
+
+Usuario *ListaSimple::buscarArt(string _id)
+{
+    if (!vacio())
+    {
+        Usuario *aux = primero;
+        while (aux != NULL)
+        {
+            if (aux->id == _id)
+            {
+                Usuario *us = new Usuario(aux->id,aux->nick, aux->password, aux->monedas, aux->edad);
                 return us;
             }
             aux = aux->sig;
@@ -179,8 +240,8 @@ Usuario *ListaSimple::buscar(string nick)
 
 void ListaSimple::ordenarBurbujaDes()
 {
-    Nodo* actual;
-    Nodo*  siguiente; 
+    Usuario* actual;
+    Usuario*  siguiente; 
     string t;
      
     actual = primero;
@@ -190,12 +251,12 @@ void ListaSimple::ordenarBurbujaDes()
           
           while(siguiente!=NULL)
           {
-               if(actual->getElemento().edad < siguiente->getElemento().edad)
+               if(actual->edad < siguiente->edad)
                {
-                    t = siguiente->getElemento().edad;
+                    t = siguiente->edad;
                     cout<<t<<endl;
-                    siguiente->getElemento().edad = actual->getElemento().edad;
-                    actual->getElemento().edad = t;          
+                    siguiente->edad = actual->edad;
+                    actual->edad = t;          
                }
                siguiente = siguiente->sig;                    
           }    
@@ -207,8 +268,8 @@ void ListaSimple::ordenarBurbujaDes()
 void ListaSimple::ordenarBurbujaAs()
 {
     mostrarLista();
-    Nodo* actual;
-    Nodo*  siguiente; 
+    Usuario* actual;
+    Usuario*  siguiente; 
     string t;
      
     actual = primero;
@@ -218,11 +279,11 @@ void ListaSimple::ordenarBurbujaAs()
           
           while(siguiente!=NULL)
           {
-               if(stoi(actual->getElemento().edad) < stoi(siguiente->getElemento().edad))
+               if(stoi(actual->edad) < stoi(siguiente->edad))
                {
-                    t = siguiente->getElemento().edad;
-                    siguiente->getElemento().edad =actual->getElemento().edad;
-                    actual->getElemento().edad = t;          
+                    t = siguiente->edad;
+                    siguiente->edad =actual->edad;
+                    actual->edad = t;          
                }
                siguiente = siguiente->sig;                    
           }    
@@ -233,3 +294,18 @@ void ListaSimple::ordenarBurbujaAs()
     mostrarLista();
 
 }
+
+
+// int main(){
+//     ListaSimple ls;
+//     ls.insertarAlFrente(Usuario("1","josue","","","12"));
+//     ls.insertarAlFrente(Usuario("2","mike","","","12"));
+//     ls.insertarAlFrente(Usuario("3","dan","","","12"));
+//     ls.insertarAlFrente(Usuario("4","luca","","","12"));
+//     ls.insertarAlFrente(Usuario("5","sha","","","12"));
+//     ls.mostrarLista();
+//     ls.editar("dan");
+//     ls.mostrarLista();
+
+//     return 0;
+// }

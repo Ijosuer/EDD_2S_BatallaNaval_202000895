@@ -1,5 +1,4 @@
 #include <iostream>
-#include <map>
 using namespace std;
 class Usuario
 {
@@ -9,10 +8,13 @@ public:
     string password;
     string monedas;
     string edad;
-    Usuario() {}
-    Usuario(string id, string nick, string password, string monedas, string edad) : id(id),nick(nick), password(password), monedas(monedas), edad(edad) {}
-    map<string, string> to_map()
-    {
-        return {{"ID:", id},{"nick", nick}, {"monedas", monedas}, {"edad", edad}};
+    Usuario* sig;
+    Usuario(string _id, string _nick, string _password, string _monedas, string _edad){
+        id = _id;
+        nick = _nick;
+        password = _password;
+        monedas = _monedas;
+        edad = _edad;
+        sig = NULL;
     }
 };

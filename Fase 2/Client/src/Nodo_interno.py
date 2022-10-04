@@ -1,3 +1,4 @@
+
 class Nodos_internos():
 
     def __init__(self,coordenadaX,coordenadaY,caracter):

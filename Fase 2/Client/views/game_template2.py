@@ -1,28 +1,24 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'menu.ui'
+## Form generated from reading UI file 'game_template.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
-import sys
-import os
-myDir = os.getcwd()
-sys.path.append(myDir)
 
 from PySide2.QtCore import *
 from PySide2.QtGui import *
 from PySide2.QtWidgets import *
-CPATH='/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2/Client/images/'
+CPATH='/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2/Client/images'
+PATH='/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/archivos'
 
 class Ui_MainWindow(object):
-
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(888, 554)
+        MainWindow.resize(850, 554)
         MainWindow.setMinimumSize(QSize(400, 0))
         MainWindow.setStyleSheet(u"")
         self.centralwidget = QWidget(MainWindow)
@@ -67,7 +63,7 @@ class Ui_MainWindow(object):
 "}\n"
 "")
         icon = QIcon()
-        icon.addFile(CPATH+"menu.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(CPATH+"/menu.png", QSize(), QIcon.Normal, QIcon.Off)
         self.bt_menu.setIcon(icon)
         self.bt_menu.setIconSize(QSize(32, 32))
         self.bt_menu.setAutoDefault(False)
@@ -93,7 +89,7 @@ class Ui_MainWindow(object):
 "}\n"
 "")
         icon1 = QIcon()
-        icon1.addFile(CPATH+"minimizar.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon1.addFile(CPATH+"/minimizar.png", QSize(), QIcon.Normal, QIcon.Off)
         self.bt_minimizar.setIcon(icon1)
         self.bt_minimizar.setIconSize(QSize(32, 32))
         self.bt_minimizar.setFlat(False)
@@ -115,7 +111,7 @@ class Ui_MainWindow(object):
 "}\n"
 "")
         icon2 = QIcon()
-        icon2.addFile(CPATH+"restaurar.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon2.addFile(CPATH+"/restaurar.png", QSize(), QIcon.Normal, QIcon.Off)
         self.bt_restaurar.setIcon(icon2)
         self.bt_restaurar.setIconSize(QSize(30, 30))
 
@@ -136,7 +132,7 @@ class Ui_MainWindow(object):
 "}\n"
 "")
         icon3 = QIcon()
-        icon3.addFile(CPATH+"maximizar.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon3.addFile(CPATH+"/maximizar.png", QSize(), QIcon.Normal, QIcon.Off)
         self.bt_maximizar.setIcon(icon3)
         self.bt_maximizar.setIconSize(QSize(32, 32))
 
@@ -157,7 +153,7 @@ class Ui_MainWindow(object):
 "}\n"
 "")
         icon4 = QIcon()
-        icon4.addFile(CPATH+"cerrar.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon4.addFile(CPATH+"/cerrar.png", QSize(), QIcon.Normal, QIcon.Off)
         self.bt_cerrar.setIcon(icon4)
         self.bt_cerrar.setIconSize(QSize(32, 32))
 
@@ -218,7 +214,7 @@ class Ui_MainWindow(object):
         self.bt_inicio.setLayoutDirection(Qt.LeftToRight)
         self.bt_inicio.setStyleSheet(u"color: rgb(255, 255, 255);")
         icon5 = QIcon()
-        icon5.addFile(CPATH+"inteligencia-artificial.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon5.addFile(CPATH+"/inteligencia-artificial.png", QSize(), QIcon.Normal, QIcon.Off)
         self.bt_inicio.setIcon(icon5)
         self.bt_inicio.setIconSize(QSize(32, 32))
 
@@ -230,7 +226,7 @@ class Ui_MainWindow(object):
         self.bt_uno.setToolTipDuration(0)
         self.bt_uno.setStyleSheet(u"color: rgb(255, 255, 255);")
         icon6 = QIcon()
-        icon6.addFile(CPATH+"base-de-datos.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon6.addFile(CPATH+"/base-de-datos.png", QSize(), QIcon.Normal, QIcon.Off)
         self.bt_uno.setIcon(icon6)
         self.bt_uno.setIconSize(QSize(32, 32))
 
@@ -241,7 +237,7 @@ class Ui_MainWindow(object):
         self.bt_dos.setMinimumSize(QSize(0, 40))
         self.bt_dos.setStyleSheet(u"color: rgb(255, 255, 255);")
         icon7 = QIcon()
-        icon7.addFile(CPATH+"chip.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon7.addFile(CPATH+"/chip.png", QSize(), QIcon.Normal, QIcon.Off)
         self.bt_dos.setIcon(icon7)
         self.bt_dos.setIconSize(QSize(32, 32))
 
@@ -252,7 +248,7 @@ class Ui_MainWindow(object):
         self.bt_tres.setMinimumSize(QSize(0, 40))
         self.bt_tres.setStyleSheet(u"color: rgb(255, 255, 255);")
         icon8 = QIcon()
-        icon8.addFile(CPATH+"moto.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon8.addFile(CPATH+"/moto.png", QSize(), QIcon.Normal, QIcon.Off)
         self.bt_tres.setIcon(icon8)
         self.bt_tres.setIconSize(QSize(32, 32))
 
@@ -263,7 +259,7 @@ class Ui_MainWindow(object):
         self.bt_cuatro.setMinimumSize(QSize(0, 40))
         self.bt_cuatro.setStyleSheet(u"color: rgb(255, 255, 255);")
         icon9 = QIcon()
-        icon9.addFile(CPATH+"encriptado.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon9.addFile(CPATH+"/encriptado.png", QSize(), QIcon.Normal, QIcon.Off)
         self.bt_cuatro.setIcon(icon9)
         self.bt_cuatro.setIconSize(QSize(32, 32))
 
@@ -274,7 +270,7 @@ class Ui_MainWindow(object):
         self.bt_cinco.setMinimumSize(QSize(0, 40))
         self.bt_cinco.setStyleSheet(u"color: rgb(255, 255, 255);")
         icon10 = QIcon()
-        icon10.addFile(CPATH+"videojuego.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon10.addFile(CPATH+"/videojuego.png", QSize(), QIcon.Normal, QIcon.Off)
         self.bt_cinco.setIcon(icon10)
         self.bt_cinco.setIconSize(QSize(32, 32))
 
@@ -318,7 +314,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_9.setObjectName(u"verticalLayout_9")
         self.label = QLabel(self.page)
         self.label.setObjectName(u"label")
-        self.label.setPixmap(QPixmap(CPATH+"imagen_dos.png"))
+        self.label.setPixmap(QPixmap(u"images/imagen_dos.png"))
         self.label.setScaledContents(False)
         self.label.setAlignment(Qt.AlignCenter)
         self.label.setIndent(0)
@@ -329,65 +325,258 @@ class Ui_MainWindow(object):
         self.page_uno = QWidget()
         self.page_uno.setObjectName(u"page_uno")
         self.page_uno.setStyleSheet(u"background-color: rgb(255, 255, 255);")
-        self.verticalLayout_4 = QVBoxLayout(self.page_uno)
-        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
-        self.bt_pagina1 = QPushButton(self.page_uno)
-        self.bt_pagina1.setObjectName(u"bt_pagina1")
-        self.bt_pagina1.setStyleSheet(u"background-color: rgb(85, 170, 255);\n"
-"font: 87 36pt \"Arial Black\";")
-
-        self.verticalLayout_4.addWidget(self.bt_pagina1)
-
+        self.label_6 = QLabel(self.page_uno)
+        self.label_6.setObjectName(u"label_6")
+        self.label_6.setGeometry(QRect(140, 200, 121, 16))
+        self.pwdLineEdit = QLineEdit(self.page_uno)
+        self.pwdLineEdit.setObjectName(u"pwdLineEdit")
+        self.pwdLineEdit.setGeometry(QRect(140, 220, 271, 20))
+        self.cancelButton = QPushButton(self.page_uno)
+        self.cancelButton.setObjectName(u"cancelButton")
+        self.cancelButton.setGeometry(QRect(290, 330, 101, 31))
+        self.cancelButton.setCursor(QCursor(Qt.PointingHandCursor))
+        self.cancelButton.setStyleSheet(u"QPushButton\n"
+"{	\n"
+"	height: 2em;\n"
+" 	border-style: solid;\n"
+"	border-width: 2px;\n"
+" 	border-color: grey;\n"
+"	font-weight: bold;\n"
+"}\n"
+"\n"
+"QPushButton:hover\n"
+"{\n"
+"   	background-color:grey;\n"
+"	color:white;\n"
+"}")
+        self.cancelButton.setIconSize(QSize(30, 30))
+        self.cancelButton.setFlat(True)
+        self.label_7 = QLabel(self.page_uno)
+        self.label_7.setObjectName(u"label_7")
+        self.label_7.setGeometry(QRect(140, 100, 131, 16))
+        self.addButton = QPushButton(self.page_uno)
+        self.addButton.setObjectName(u"addButton")
+        self.addButton.setGeometry(QRect(184, 330, 101, 31))
+        self.addButton.setCursor(QCursor(Qt.PointingHandCursor))
+        self.addButton.setStyleSheet(u"QPushButton\n"
+"{	\n"
+"	height: 2em;\n"
+" 	border-style: solid;\n"
+"	border-width: 2px;\n"
+" 	border-color: #0069c0;\n"
+"	font-weight: bold;\n"
+"}\n"
+"\n"
+"QPushButton:hover\n"
+"{\n"
+"   	background-color:#0069c0;\n"
+"	color:white;\n"
+"}")
+        icon11 = QIcon()
+        icon11.addFile(u"../images/user.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.addButton.setIcon(icon11)
+        self.addButton.setIconSize(QSize(30, 30))
+        self.addButton.setFlat(True)
+        self.label_8 = QLabel(self.page_uno)
+        self.label_8.setObjectName(u"label_8")
+        self.label_8.setGeometry(QRect(120, 60, 381, 20))
+        self.label_8.setFrameShape(QFrame.Box)
+        self.edadLineEdit = QLineEdit(self.page_uno)
+        self.edadLineEdit.setObjectName(u"edadLineEdit")
+        self.edadLineEdit.setGeometry(QRect(140, 280, 191, 20))
+        self.oldnickLineEdit = QLineEdit(self.page_uno)
+        self.oldnickLineEdit.setObjectName(u"oldnickLineEdit")
+        self.oldnickLineEdit.setGeometry(QRect(140, 120, 351, 20))
+        self.label_10 = QLabel(self.page_uno)
+        self.label_10.setObjectName(u"label_10")
+        self.label_10.setGeometry(QRect(140, 260, 121, 16))
+        self.label_9 = QLabel(self.page_uno)
+        self.label_9.setObjectName(u"label_9")
+        self.label_9.setGeometry(QRect(140, 150, 121, 16))
+        self.newnickLineEdit = QLineEdit(self.page_uno)
+        self.newnickLineEdit.setObjectName(u"newnickLineEdit")
+        self.newnickLineEdit.setGeometry(QRect(140, 170, 351, 20))
         self.stackedWidget.addWidget(self.page_uno)
         self.page_dos = QWidget()
         self.page_dos.setObjectName(u"page_dos")
         self.page_dos.setStyleSheet(u"background-color: rgb(255, 255, 255);")
-        self.verticalLayout_5 = QVBoxLayout(self.page_dos)
-        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
-        self.bt_pagina2 = QPushButton(self.page_dos)
-        self.bt_pagina2.setObjectName(u"bt_pagina2")
-        self.bt_pagina2.setStyleSheet(u"background-color: rgb(255, 0, 127);\n"
-"font: 87 36pt \"Arial Black\";")
-
-        self.verticalLayout_5.addWidget(self.bt_pagina2)
-
+        self.tableWidget = QTableWidget(self.page_dos)
+        if (self.tableWidget.columnCount() < 5):
+            self.tableWidget.setColumnCount(5)
+        __qtablewidgetitem = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(0, __qtablewidgetitem)
+        __qtablewidgetitem1 = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(1, __qtablewidgetitem1)
+        __qtablewidgetitem2 = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(2, __qtablewidgetitem2)
+        __qtablewidgetitem3 = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(3, __qtablewidgetitem3)
+        __qtablewidgetitem4 = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(4, __qtablewidgetitem4)
+        self.tableWidget.setObjectName(u"tableWidget")
+        self.tableWidget.setGeometry(QRect(10, 80, 631, 431))
+        self.label_13 = QLabel(self.page_dos)
+        self.label_13.setObjectName(u"label_13")
+        self.label_13.setGeometry(QRect(50, 10, 100, 15))
+        self.comprarlineEdit = QLineEdit(self.page_dos)
+        self.comprarlineEdit.setObjectName(u"comprarlineEdit")
+        self.comprarlineEdit.setGeometry(QRect(40, 30, 113, 23))
+        self.bt_comprar = QPushButton(self.page_dos)
+        self.bt_comprar.setObjectName(u"bt_comprar")
+        self.bt_comprar.setGeometry(QRect(190, 20, 100, 26))
+        self.bt_comprar.setStyleSheet(u"font: 57 italic 9pt \"Fira Sans Medium\";")
+        icon12 = QIcon()
+        icon12.addFile(CPATH+"/add.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.bt_comprar.setIcon(icon12)
+        self.bt_comprar.setIconSize(QSize(20, 20))
+        self.bt_comprar.setFlat(True)
+        self.label_14 = QLabel(self.page_dos)
+        self.label_14.setObjectName(u"label_14")
+        self.label_14.setGeometry(QRect(340, 20, 161, 20))
+        self.label_coins = QLabel(self.page_dos)
+        self.label_coins.setObjectName(u"label_coins")
+        self.label_coins.setGeometry(QRect(410, 40, 57, 15))
+        self.label_coins.setStyleSheet(u"color: rgb(255, 85, 0);")
         self.stackedWidget.addWidget(self.page_dos)
         self.page_tres = QWidget()
         self.page_tres.setObjectName(u"page_tres")
         self.verticalLayout_6 = QVBoxLayout(self.page_tres)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
-        self.bt_pagina3 = QPushButton(self.page_tres)
-        self.bt_pagina3.setObjectName(u"bt_pagina3")
-        self.bt_pagina3.setStyleSheet(u"background-color: rgb(255, 255, 0);\n"
-"font: 87 36pt \"Arial Black\";")
+        self.scrollArea_3 = QScrollArea(self.page_tres)
+        self.scrollArea_3.setObjectName(u"scrollArea_3")
+        self.scrollArea_3.setWidgetResizable(True)
+        self.scrollAreaWidgetContents_3 = QWidget()
+        self.scrollAreaWidgetContents_3.setObjectName(u"scrollAreaWidgetContents_3")
+        self.scrollAreaWidgetContents_3.setGeometry(QRect(0, 0, 2591, 1235))
+        self.gridLayout_3 = QGridLayout(self.scrollAreaWidgetContents_3)
+        self.gridLayout_3.setObjectName(u"gridLayout_3")
+        self.label_3 = QLabel(self.scrollAreaWidgetContents_3)
+        self.label_3.setObjectName(u"label_3")
+        self.label_3.setPixmap(QPixmap(PATH+"/AVL.png"))
+        self.label_3.setScaledContents(True)
 
-        self.verticalLayout_6.addWidget(self.bt_pagina3)
+        self.gridLayout_3.addWidget(self.label_3, 0, 0, 1, 1)
+
+        self.scrollArea_3.setWidget(self.scrollAreaWidgetContents_3)
+
+        self.verticalLayout_6.addWidget(self.scrollArea_3)
+
+        self.pushButton_3 = QPushButton(self.page_tres)
+        self.pushButton_3.setObjectName(u"pushButton_3")
+        self.pushButton_3.setStyleSheet(u"background-color: rgb(255, 255, 0);\n"
+"font: 87 18pt \"Arial Black\";")
+
+        self.verticalLayout_6.addWidget(self.pushButton_3)
 
         self.stackedWidget.addWidget(self.page_tres)
         self.page_cuatro = QWidget()
         self.page_cuatro.setObjectName(u"page_cuatro")
         self.page_cuatro.setStyleSheet(u"background-color: rgb(255, 255, 255);")
-        self.verticalLayout_7 = QVBoxLayout(self.page_cuatro)
-        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
-        self.bt_pagina4 = QPushButton(self.page_cuatro)
-        self.bt_pagina4.setObjectName(u"bt_pagina4")
-        self.bt_pagina4.setStyleSheet(u"background-color: rgb(85, 255, 0);\n"
-"font: 87 36pt \"Arial Black\";")
+        self.gridLayout_4 = QGridLayout(self.page_cuatro)
+        self.gridLayout_4.setObjectName(u"gridLayout_4")
+        self.scrollArea_2 = QScrollArea(self.page_cuatro)
+        self.scrollArea_2.setObjectName(u"scrollArea_2")
+        self.scrollArea_2.setWidgetResizable(True)
+        self.scrollAreaWidgetContents_2 = QWidget()
+        self.scrollAreaWidgetContents_2.setObjectName(u"scrollAreaWidgetContents_2")
+        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 971, 863))
+        self.gridLayout_5 = QGridLayout(self.scrollAreaWidgetContents_2)
+        self.gridLayout_5.setObjectName(u"gridLayout_5")
+        self.label_4 = QLabel(self.scrollAreaWidgetContents_2)
+        self.label_4.setObjectName(u"label_4")
+        self.label_4.setPixmap(QPixmap(PATH+"/dispersa.png"))
+        self.label_4.setScaledContents(True)
 
-        self.verticalLayout_7.addWidget(self.bt_pagina4)
+        self.gridLayout_5.addWidget(self.label_4, 0, 0, 1, 1)
+
+        self.scrollArea_2.setWidget(self.scrollAreaWidgetContents_2)
+
+        self.gridLayout_4.addWidget(self.scrollArea_2, 0, 0, 1, 1)
+
+        self.pushButton_2 = QPushButton(self.page_cuatro)
+        self.pushButton_2.setObjectName(u"pushButton_2")
+        self.pushButton_2.setStyleSheet(u"background-color: rgb(85, 255, 0);\n"
+"font: 87 18pt \"Arial Black\";")
+
+        self.gridLayout_4.addWidget(self.pushButton_2, 1, 0, 1, 1)
 
         self.stackedWidget.addWidget(self.page_cuatro)
         self.page_cinco = QWidget()
         self.page_cinco.setObjectName(u"page_cinco")
         self.page_cinco.setStyleSheet(u"background-color: rgb(255, 255, 255);")
-        self.verticalLayout_8 = QVBoxLayout(self.page_cinco)
-        self.verticalLayout_8.setObjectName(u"verticalLayout_8")
-        self.pushButton = QPushButton(self.page_cinco)
-        self.pushButton.setObjectName(u"pushButton")
-        self.pushButton.setStyleSheet(u"background-color: rgb(0, 170, 255);\n"
-"font: 87 36pt \"Arial Black\";")
+        self.gridLayout = QGridLayout(self.page_cinco)
+        self.gridLayout.setObjectName(u"gridLayout")
+        self.bt_tamanio = QPushButton(self.page_cinco)
+        self.bt_tamanio.setObjectName(u"bt_tamanio")
+        self.bt_tamanio.setStyleSheet(u"background-color: rgb(194, 194, 194);\n"
+"font: 63 9pt \"Noto Serif CJK KR SemiBold\";")
 
-        self.verticalLayout_8.addWidget(self.pushButton)
+        self.gridLayout.addWidget(self.bt_tamanio, 0, 0, 1, 1)
+
+        self.sizeLineEdit = QLineEdit(self.page_cinco)
+        self.sizeLineEdit.setObjectName(u"sizeLineEdit")
+
+        self.gridLayout.addWidget(self.sizeLineEdit, 0, 1, 1, 1)
+
+        self.label_vidas = QLabel(self.page_cinco)
+        self.label_vidas.setObjectName(u"label_vidas")
+
+        self.gridLayout.addWidget(self.label_vidas, 0, 2, 1, 2)
+
+        self.label_tokens = QLabel(self.page_cinco)
+        self.label_tokens.setObjectName(u"label_tokens")
+
+        self.gridLayout.addWidget(self.label_tokens, 0, 4, 1, 2)
+
+        self.scrollArea = QScrollArea(self.page_cinco)
+        self.scrollArea.setObjectName(u"scrollArea")
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollAreaWidgetContents = QWidget()
+        self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 971, 863))
+        self.gridLayout_2 = QGridLayout(self.scrollAreaWidgetContents)
+        self.gridLayout_2.setObjectName(u"gridLayout_2")
+        self.label_5 = QLabel(self.scrollAreaWidgetContents)
+        self.label_5.setObjectName(u"label_5")
+        self.label_5.setPixmap(QPixmap(PATH+"/dispersa.png"))
+        self.label_5.setScaledContents(True)
+
+        self.gridLayout_2.addWidget(self.label_5, 0, 0, 1, 1)
+
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents)
+
+        self.gridLayout.addWidget(self.scrollArea, 1, 0, 1, 6)
+
+        self.bt_x = QPushButton(self.page_cinco)
+        self.bt_x.setObjectName(u"bt_x")
+        self.bt_x.setStyleSheet(u"background-color: rgb(170, 170, 127);")
+
+        self.gridLayout.addWidget(self.bt_x, 2, 0, 1, 1)
+
+        self.lineEdit_x = QLineEdit(self.page_cinco)
+        self.lineEdit_x.setObjectName(u"lineEdit_x")
+
+        self.gridLayout.addWidget(self.lineEdit_x, 2, 1, 1, 2)
+
+        self.bt_y = QPushButton(self.page_cinco)
+        self.bt_y.setObjectName(u"bt_y")
+        self.bt_y.setStyleSheet(u"background-color: rgb(170, 170, 127);")
+
+        self.gridLayout.addWidget(self.bt_y, 2, 3, 1, 2)
+
+        self.lineEdit_y = QLineEdit(self.page_cinco)
+        self.lineEdit_y.setObjectName(u"lineEdit_y")
+
+        self.gridLayout.addWidget(self.lineEdit_y, 2, 5, 1, 1)
+
+        self.bt_Disparo = QPushButton(self.page_cinco)
+        self.bt_Disparo.setObjectName(u"bt_Disparo")
+        self.bt_Disparo.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(228, 73, 73, 255), stop:0.55 rgba(235, 148, 61, 255), stop:0.98 rgba(0, 0, 0, 255), stop:1 rgba(0, 0, 0, 0));")
+        icon13 = QIcon()
+        icon13.addFile(CPATH+"/shoot.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.bt_Disparo.setIcon(icon13)
+
+        self.gridLayout.addWidget(self.bt_Disparo, 3, 0, 1, 6)
 
         self.stackedWidget.addWidget(self.page_cinco)
 
@@ -404,7 +593,7 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
         self.bt_menu.setDefault(False)
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(3)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -418,17 +607,47 @@ class Ui_MainWindow(object):
         self.bt_maximizar.setText("")
         self.bt_cerrar.setText("")
         self.bt_inicio.setText(QCoreApplication.translate("MainWindow", u"       INICIO             ", None))
-        self.bt_uno.setText(QCoreApplication.translate("MainWindow", u"   BASE DE DATOS", None))
-        self.bt_dos.setText(QCoreApplication.translate("MainWindow", u"    ELECTRONICA", None))
-        self.bt_tres.setText(QCoreApplication.translate("MainWindow", u"    TECNOLOGIA", None))
-        self.bt_cuatro.setText(QCoreApplication.translate("MainWindow", u"     SEGURIDAD", None))
-        self.bt_cinco.setText(QCoreApplication.translate("MainWindow", u"  CONECTIVIDAD", None))
+        self.bt_uno.setText(QCoreApplication.translate("MainWindow", u"EDITAR USUARIO", None))
+        self.bt_dos.setText(QCoreApplication.translate("MainWindow", u"TIENDA", None))
+        self.bt_tres.setText(QCoreApplication.translate("MainWindow", u"    VER SKINS", None))
+        self.bt_cuatro.setText(QCoreApplication.translate("MainWindow", u"TUTORIAL", None))
+        self.bt_cinco.setText(QCoreApplication.translate("MainWindow", u"JUGAR", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"By: iJosuer", None))
         self.label.setText("")
-        self.bt_pagina1.setText(QCoreApplication.translate("MainWindow", u"1", None))
-        self.bt_pagina2.setText(QCoreApplication.translate("MainWindow", u"2", None))
-        self.bt_pagina3.setText(QCoreApplication.translate("MainWindow", u"3", None))
-        self.bt_pagina4.setText(QCoreApplication.translate("MainWindow", u"4", None))
-        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"5", None))
+        self.label_6.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-weight:600;\">Nueva Password</span></p></body></html>", None))
+        self.cancelButton.setText(QCoreApplication.translate("MainWindow", u"CANCELAR", None))
+        self.label_7.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-weight:600;\">Antiguo Nickname</span></p><p><br/></p></body></html>", None))
+        self.addButton.setText(QCoreApplication.translate("MainWindow", u"AGREGAR", None))
+        self.label_8.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:11pt; font-weight:600;\">EDITAR USUARIO</span></p><p align=\"center\"><br/></p></body></html>", None))
+        self.label_10.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-weight:600;\">Nueva Edad</span></p></body></html>", None))
+        self.label_9.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-weight:600;\">Nuevo Nickname</span></p><p><br/></p></body></html>", None))
+        ___qtablewidgetitem = self.tableWidget.horizontalHeaderItem(0)
+        ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"ID", None));
+        ___qtablewidgetitem1 = self.tableWidget.horizontalHeaderItem(1)
+        ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindow", u"Categoria", None));
+        ___qtablewidgetitem2 = self.tableWidget.horizontalHeaderItem(2)
+        ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"Name", None));
+        ___qtablewidgetitem3 = self.tableWidget.horizontalHeaderItem(3)
+        ___qtablewidgetitem3.setText(QCoreApplication.translate("MainWindow", u"Precio", None));
+        ___qtablewidgetitem4 = self.tableWidget.horizontalHeaderItem(4)
+        ___qtablewidgetitem4.setText(QCoreApplication.translate("MainWindow", u"Imagen", None));
+        self.label_13.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-weight:600; font-style:italic;\">Ingrese ID</span></p></body></html>", None))
+        self.bt_comprar.setText(QCoreApplication.translate("MainWindow", u" comprar", None))
+        self.label_14.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-weight:600; font-style:italic;\">Monedas disponibles</span></p></body></html>", None))
+        self.label_coins.setText(QCoreApplication.translate("MainWindow", u"0", None))
+        self.label_3.setText("")
+        self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u"Ver barcos", None))
+        self.label_4.setText("")
+        self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"PRESIONA PARA AVANZAR", None))
+        self.bt_tamanio.setText(QCoreApplication.translate("MainWindow", u"Tama\u00f1o", None))
+        self.sizeLineEdit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Ingrese tama\u00f1o del tablero", None))
+        self.label_vidas.setText(QCoreApplication.translate("MainWindow", u"3 VIDAS", None))
+        self.label_tokens.setText(QCoreApplication.translate("MainWindow", u"TOKENS ->", None))
+        self.label_5.setText("")
+        self.bt_x.setText(QCoreApplication.translate("MainWindow", u"X", None))
+        self.lineEdit_x.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Ingrese posicion en X", None))
+        self.bt_y.setText(QCoreApplication.translate("MainWindow", u"Y", None))
+        self.lineEdit_y.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Ingrese posicion en Y", None))
+        self.bt_Disparo.setText(QCoreApplication.translate("MainWindow", u"DISPARAR", None))
     # retranslateUi
 

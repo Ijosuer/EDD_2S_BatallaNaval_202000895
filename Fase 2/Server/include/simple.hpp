@@ -5,25 +5,14 @@
 #include "../lib/crow_all.h"
 using namespace std;
 
-class Nodo
-{
-private:
-    Usuario elemento;
-
-public:
-    Nodo *sig;
-    Nodo(Usuario elemento);
-    Usuario getElemento();
-};
-
 class ListaSimple
 {
 private:
-    int tamanio;
-    Nodo *primero;
-    Nodo *ultimo;
 
 public:
+    int tamanio;
+    Usuario *primero;
+    Usuario *ultimo;
     ListaSimple();
     bool vacio();
     void insertarAlFrente(Usuario elemento);
@@ -34,5 +23,8 @@ public:
     void ordenarBurbujaDes();
     void ordenarBurbujaAs();
     vector<crow::json::wvalue> to_vector();
+    vector<crow::json::wvalue> to_vectorArt();
     Usuario *buscar(string);
+    Usuario *editar(string);
+    Usuario *buscarArt(string);
 };

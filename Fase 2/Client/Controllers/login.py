@@ -33,25 +33,28 @@ class login(QMainWindow):
         self.adminWindow.ui.bt_cerrar.clicked.connect(lambda: self.callm())
 
     def callm(self):
-         if self.isHidden():
-                self.show()
-                self.mainWindow.destroy()
-                self.adminWindow.destroy()
-
+        if self.isHidden():
+            self.show()
+            self.mainWindow.destroy()
+            self.adminWindow.destroy()
+    
     def getPWD(self):
         text = self.ui.users.text()
         text2 = self.ui.password.text()
         # login
         login = {'nick': text,'password':text2}
-        # x = requests.get(f'{base_url}/login', json = login)
+        x = requests.get(f'{base_url}/login', json = login)
         # print(x.text)
-        if (text == "" and text2 == ""): 
+        if (x.status_code == 200): 
+            user = x.json()
             for i in range(0,99):
                 time.sleep(0.01)
                 self.ui.progressBar.setValue(i)
                 self.ui.cargando.setText('Cargando...')
             if self.isVisible():        
                 self.hide()
+                print(user['monedas'])
+                self.mainWindow.coins = int(user['monedas'])
                 self.mainWindow.show()
         elif text == "admin" and text2 == "admin":
             for i in range(0,99):

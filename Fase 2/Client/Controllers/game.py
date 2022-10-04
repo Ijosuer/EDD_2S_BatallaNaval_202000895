@@ -5,23 +5,35 @@ import requests
 
 #Anexo el Directorio en donde se encuentra la clase a llamar
 sys.path.append('/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2/Client/views/')
-from game_template import *
-# from menu import *
-# from callme import login
+sys.path.append('/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2/Client/src/')
+
+from game_template2 import *
+
+
 from PySide2 import QtCore
 from PySide2.QtCore import QPropertyAnimation
 from PySide2 import QtCore, QtGui, QtWidgets
 
 CPATH='/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2/Client'
+PATH = '/home/ijosuer/images'
+GPATH = '/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/archivos'
+
 base_url = "http://localhost:5000"
-# loga = login
 
 class inicio(QMainWindow):
     def __init__(self):
         super().__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        self.coins = 0
+        self.vidas = 3
+        self.matriz = None
+        self.len = 0
 
+        
+        self.ui.label_vidas.setText(str(self.vidas)+" VIDAS")
+        
+        
         #eliminar barra y de titulo - opacidad
         self.setWindowFlag(Qt.FramelessWindowHint)
         self.setWindowOpacity(1)
@@ -36,10 +48,12 @@ class inicio(QMainWindow):
 
         #acceder a las paginas
         self.ui.bt_inicio.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page))			
-        self.ui.bt_inicio.clicked.connect(lambda: print('ola ola ola'))			
         self.ui.bt_uno.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page_uno))
         self.ui.bt_dos.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page_dos))	
+        self.ui.bt_dos.clicked.connect(lambda: self.tableData())	
         self.ui.bt_tres.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page_tres))
+        self.ui.pushButton_3.clicked.connect(lambda: self.verGrafica())
+
         self.ui.bt_cuatro.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page_cuatro))			
         self.ui.bt_cinco.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page_cinco))
 
@@ -53,12 +67,126 @@ class inicio(QMainWindow):
         self.ui.bt_menu.clicked.connect(self.mover_menu)
         
         # --PETICIONES--
-        # Boton pagina 1
-        self.ui.bt_pagina1.clicked.connect(lambda: self.getUsuarios())
-        # Boton pagina 2
-        self.ui.bt_pagina2.clicked.connect(lambda: self.addUsuario())
-        # Boton pagina 3
-        self.ui.bt_pagina3.clicked.connect(lambda: self.deleteUsuario())
+        # Boton comprar ID 
+        self.ui.bt_comprar.clicked.connect(self.comprarBarco)
+
+        # ---->JUGAR<---
+        self.ui.bt_tamanio.clicked.connect(self.generarRandom)
+        self.ui.bt_Disparo.clicked.connect(self.getDisparo)
+
+        # EDITAR USUARIO
+        self.ui.addButton.clicked.connect(self.editarUser)
+
+    def editarUser(self):
+        oldn = self.ui.oldnickLineEdit.text()
+        newn = self.ui.newnickLineEdit.text()
+        pwd = self.ui.pwdLineEdit.text()
+        edad = self.ui.edadLineEdit.text()
+        ans = {"old":oldn,"new":newn,"pwd":pwd,"edad":edad}
+        # ans = {"id":id,"monedas":str(self.coins)}
+        x = requests.post(f'{base_url}/editarUser',json=ans)
+        if (x.status_code == 200):
+            dlg = QtWidgets.QMessageBox(self)
+            dlg.setWindowTitle(" ")
+            dlg.setText("Tus datos se han cambiado "+newn+"! :D")
+            dlg.exec_()
+        else:
+            dlg = QtWidgets.QMessageBox(self)
+            dlg.setWindowTitle(" ")
+            dlg.setText("OCURRIO UN ERROR")
+            dlg.exec_()
+
+    def getDisparo(self):
+        x = self.ui.lineEdit_x.text()
+        y = self.ui.lineEdit_y.text()
+        if (int(x)>self.len or int(y)>self.len ):
+            dlg = QtWidgets.QMessageBox(self)
+            dlg.setWindowTitle(" ")
+            dlg.setText("INGRESE VALORES CORRECTOS!")
+            dlg.exec_()
+        elif (int(x)<1 or int(y)<1):
+            dlg = QtWidgets.QMessageBox(self)
+            dlg.setWindowTitle(" ")
+            dlg.setText("INGRESE VALORES CORRECTOS!")
+            dlg.exec_()
+        else:
+            ans = self.matriz.ubicarCoordenada(int(x),int(y))
+            if(ans == None):
+                self.coins -= 20
+                self.vidas -=1
+                self.matriz.insert(int(x),int(y)," ")
+                self.ui.label_tokens.setText("TOKENS -> "+str(self.coins))
+                self.ui.label_vidas.setText(str(self.vidas)+" VIDAS")
+            else:
+                self.coins += 20
+                dlg = QtWidgets.QMessageBox(self)
+                dlg.setWindowTitle(" ")
+                dlg.setText("DISPARO!")
+                ans.caracter = "F"
+                dlg.exec_()
+                self.ui.label_tokens.setText("TOKENS -> "+str(self.coins))
+
+
+        self.matriz.graficarDibujo("dispersa","BATTLE SHIP")
+        self.ui.label_5.setPixmap(QtGui.QPixmap(GPATH+"/dispersa.png"))
+
+    def generarRandom(self):
+        from Matriz_Dispersa import Matriz
+        self.matriz = Matriz(0)
+        x = self.ui.sizeLineEdit.text()
+        self.len = int(x)
+        self.matriz.generarMatrizRandom(self.len)
+        self.matriz.graficarDibujo("dispersa","BATTLE SHIP")
+        self.ui.label_5.setPixmap(QtGui.QPixmap(GPATH+"/dispersa.png"))
+
+    def verGrafica(self):
+        # print('entraasaaaa')
+        x = requests.get(f'{base_url}/graficaAVL')
+        if(x.status_code == 200):
+            self.ui.label_3.setPixmap(QtGui.QPixmap(GPATH+"/AVL.png"))
+
+    def comprarBarco(self):
+        id = self.ui.comprarlineEdit.text()
+        ans = {"id":id,"monedas":str(self.coins)}
+        x = requests.post(f'{base_url}/comprarBarco',json=ans)
+        
+
+        if(x.status_code == 200):
+            dlg = QtWidgets.QMessageBox(self)
+            dlg.setWindowTitle(" ")
+            dlg.setText("COMPRA REALIZADA!")
+            dlg.exec_()
+            a = x.json()
+            self.coins = a['monedas']
+            self.ui.label_coins.setText(str(self.coins))
+        else:
+            dlg = QtWidgets.QMessageBox(self)
+            dlg.setWindowTitle(" ")
+            dlg.setText("NO se puedo realizar la compra D:")
+            dlg.exec_()
+            
+    def tableData(self):
+        self.ui.label_coins.setText(str(self.coins))
+        self.ui.label_tokens.setText("TOKENS -> "+str(self.coins))
+        row = 0
+        contador:int = 33
+
+        users = requests.get(f'{base_url}/articulos')
+        self.ui.tableWidget.setRowCount(len(users.json()))
+        for i in users.json():
+            # btn = QtWidgets.QPushButton()
+            icon = QIcon()
+            icon.addFile(i['src'], QSize(), QIcon.Normal, QIcon.Off)
+            imagen= QTableWidgetItem()
+            imagen.setIcon(icon)
+            
+            self.ui.tableWidget.setItem(row,0,QtWidgets.QTableWidgetItem(str(i['id'])))
+            self.ui.tableWidget.setItem(row,1,QtWidgets.QTableWidgetItem(i["nombre"]))
+            self.ui.tableWidget.setItem(row,2,QtWidgets.QTableWidgetItem(str(i['categoria'])))
+            self.ui.tableWidget.setItem(row,3,QtWidgets.QTableWidgetItem(str(i['precio'])))
+            self.ui.tableWidget.setItem(row,4,QtWidgets.QTableWidgetItem(imagen))
+            row+=1
+            contador+=1
 
     def getUsuarios(self):
         res = requests.get(f'{base_url}/usuarios') 

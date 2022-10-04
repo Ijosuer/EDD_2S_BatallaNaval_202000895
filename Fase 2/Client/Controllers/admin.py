@@ -1,26 +1,31 @@
 import sys
 import os
+import requests
 
-
-import sys
 #Anexo el Directorio en donde se encuentra la clase a llamar
 sys.path.append('/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2/Client/views/')
 #Importo la Clase
 
 from new_admin import *
+from new_user import NewBookWindow
 # from callme import login
 from PySide2 import QtCore
 from PySide2.QtCore import QPropertyAnimation
 from PySide2 import QtCore, QtGui, QtWidgets
 
 CPATH='/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2/Client/images'
+PATH='/home/ijosuer/images'
 # loga = login
+base_url = "http://localhost:5000"
 
 class admin(QMainWindow):
     def __init__(self):
         super().__init__()
         self.ui = Ui_MainWindow() 
         self.ui.setupUi(self)
+
+        window1 = NewBookWindow(self)
+        
 
         #eliminar barra y de titulo - opacidad
         self.setWindowFlag(Qt.FramelessWindowHint)
@@ -53,8 +58,17 @@ class admin(QMainWindow):
 
         self.ui.bt_restaurar.hide()
 
+        self.ui.bt_addUser.clicked.connect(lambda:self.openAdd(window1))
+
         #menu lateral
         self.ui.bt_menu.clicked.connect(self.mover_menu)
+
+    def openAdd(self,window):
+        if window.isVisible():
+            window.hide()
+        else:
+            window.show()
+        
 
     def onSelection(self,row,column):
         dlg = QtWidgets.QMessageBox(self)
@@ -125,37 +139,33 @@ class admin(QMainWindow):
         else:
             self.showNormal()
         # sys.exit()
-    def getImage(self):
-        imagelabel = QtWidgets.QLabel(self.ui.centralwidget)
-        imagelabel.setText("")
-        imagelabel.setScaledContents(True)
-        pixmap = QtGui.QPixmap()
-        pixmap.loadFromData("3","png")
+    
     def tableData(self):
 
-        dlg = QtWidgets.QMessageBox(self)
-        dlg.setWindowTitle(" ")
-        dlg.setText("F no le diste xd")
+        # dlg = QtWidgets.QMessageBox(self)
+        # dlg.setWindowTitle(" ")
+        # dlg.setText("F no le diste xd")
         # dlg.exec_()
-        users = [{"ID":'1',"name":"josue","coins":'20',"age":"20"},{"ID":'2',"name":"mike","coins":'0',"age":"15"},{"ID":'3',"name":"dan","coins":'60',"age":CPATH+"/chip.png"}]
+        
         row = 0
-        icon = QIcon()
-        icon.addFile(CPATH+"/menu.png", QSize(), QIcon.Normal, QIcon.Off)
-        imagen= QTableWidgetItem()
-        imagen.setIcon(icon)
+        contador:int = 33
 
+        users = requests.get(f'{base_url}/usuarios')
+        self.ui.tableWidget.setRowCount(len(users.json()))
+        for i in users.json():
+            # btn = QtWidgets.QPushButton()
+            icon = QIcon()
+            icon.addFile(PATH+"/"+str(contador)+".png", QSize(), QIcon.Normal, QIcon.Off)
+            imagen= QTableWidgetItem()
+            imagen.setIcon(icon)
 
-
-        self.ui.tableWidget.setRowCount(len(users))
-        for i in users:
-            btn = QtWidgets.QPushButton()
-            btn.setText('COMPRAR')
-            self.ui.tableWidget.setItem(row,0,QtWidgets.QTableWidgetItem(i["ID"]))
-            self.ui.tableWidget.setItem(row,1,QtWidgets.QTableWidgetItem(i["name"]))
-            self.ui.tableWidget.setItem(row,2,QtWidgets.QTableWidgetItem(imagen))
-            # self.ui.tableWidget.setItem(row,3,QtWidgets.QTableWidgetItem(self.ui.bt_shop))
-            # self.ui.tableWidget.setCellWidget(row, 3, btn)
+            self.ui.tableWidget.setItem(row,0,QtWidgets.QTableWidgetItem(str(i['id'])))
+            self.ui.tableWidget.setItem(row,1,QtWidgets.QTableWidgetItem(i["nick"]))
+            self.ui.tableWidget.setItem(row,2,QtWidgets.QTableWidgetItem(str(i['monedas'])))
+            self.ui.tableWidget.setItem(row,3,QtWidgets.QTableWidgetItem(str(i['edad'])))
+            # self.ui.tableWidget.setItem(row,3,QtWidgets.QTableWidgetItem(imagen))
             row+=1
+            contador+=1
 
 if __name__ == "__main__":
     # inicio() 

@@ -1,159 +1,27 @@
 digraph G{label = "Arbol AVL" fontname="Arial Black" fontsize="25pt";
 node [shape = circle, style=filled, fillcolor=seashell2];
-nodo3[ label = "570
-Goodwin
-33"];
-nodo19[ label = "265
-Scott
-39"];
-nodo13[ label = "213
-Conrad
+nodo1219[ label = "1219
+Sharp
 34"];
-nodo22[ label = "172
-Conway
-36"];
-nodo12[ label = "123
-Bean
-21"];
-nodo36[ label = "113
-Fitzpatrick
-27"];
-nodo12:C0->nodo36
-nodo22:C0->nodo12
-nodo1[ label = "211
-Tanner
-30"];
-nodo22:C1->nodo1
-nodo13:C0->nodo22
-nodo20[ label = "243
-Dickson
-31"];
-nodo24[ label = "215
-Knowles
-31"];
-nodo20:C0->nodo24
-nodo26[ label = "248
-Nicholson
-37"];
-nodo27[ label = "250
-Poole
-21"];
-nodo26:C1->nodo27
-nodo20:C1->nodo26
-nodo13:C1->nodo20
-nodo19:C0->nodo13
-nodo4[ label = "392
-Fox
-35"];
-nodo17[ label = "346
-Mccormick
-31"];
-nodo23[ label = "316
-Clay
-29"];
-nodo17:C0->nodo23
-nodo37[ label = "350
-Mccarthy
-36"];
-nodo17:C1->nodo37
-nodo4:C0->nodo17
-nodo11[ label = "449
-Mcdowell
-38"];
-nodo29[ label = "398
-Hunt
-40"];
-nodo11:C0->nodo29
-nodo9[ label = "464
-Mclaughlin
-40"];
-nodo11:C1->nodo9
-nodo4:C1->nodo11
-nodo19:C1->nodo4
-nodo3:C0->nodo19
-nodo28[ label = "763
-Nash
-25"];
-nodo15[ label = "713
-Travis
-37"];
-nodo14[ label = "600
-Vazquez
-34"];
-nodo21[ label = "577
-Rowland
-29"];
-nodo14:C0->nodo21
-nodo18[ label = "656
-Leblanc
-24"];
-nodo25[ label = "630
-Savage
+nodo886[ label = "886
+Pierce
 22"];
-nodo18:C0->nodo25
-nodo34[ label = "708
-Oneil
-36"];
-nodo18:C1->nodo34
-nodo14:C1->nodo18
-nodo15:C0->nodo14
-nodo2[ label = "745
-Clemons
-26"];
-nodo6[ label = "716
-Dorsey
-21"];
-nodo2:C0->nodo6
-nodo7[ label = "746
-Jacobson
-36"];
-nodo38[ label = "759
-Orr
-32"];
-nodo7:C1->nodo38
-nodo2:C1->nodo7
-nodo15:C1->nodo2
-nodo28:C0->nodo15
-nodo8[ label = "872
-Glover
-35"];
-nodo32[ label = "808
-Henson
+nodo806[ label = "806
+Rodgers
+23"];
+nodo495[ label = "495
+Adkins
 38"];
-nodo33[ label = "766
-Johnson
-35"];
-nodo32:C0->nodo33
-nodo30[ label = "853
-Hess
-38"];
-nodo39[ label = "830
-Walls
-33"];
-nodo30:C0->nodo39
-nodo32:C1->nodo30
-nodo8:C0->nodo32
-nodo10[ label = "932
-Bird
-31"];
-nodo5[ label = "902
-Montoya
-24"];
-nodo31[ label = "900
-Case
-28"];
-nodo5:C0->nodo31
-nodo35[ label = "924
-Reed
-21"];
-nodo5:C1->nodo35
-nodo10:C0->nodo5
-nodo16[ label = "955
-Oconnor
-36"];
-nodo10:C1->nodo16
-nodo8:C1->nodo10
-nodo28:C1->nodo8
-nodo3:C1->nodo28
+nodo806:C0->nodo495
+nodo886:C0->nodo806
+nodo1219:C0->nodo886
+nodo1370[ label = "1370
+Hamilton
+37"];
+nodo1330[ label = "1330
+Wall
+22"];
+nodo1370:C0->nodo1330
+nodo1219:C1->nodo1370
 
 }

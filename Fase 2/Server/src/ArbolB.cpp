@@ -118,7 +118,7 @@ string ArbolB::editar3(NodoB* rama, string nick, string password, string nicknew
 
 void ArbolB::insertar(int id, string nick, string password, string monedas, string edad) {
     NodoB* nodo = new NodoB(id, nick, password, monedas, edad);
-    std::cout<<"ID: "<<nodo->id<<" NICk: "<<nodo->nick<<std::endl;
+    // std::cout<<"ID: "<<nodo->id<<" NICk: "<<nodo->nick<<std::endl;
     if (raiz == NULL) {
         raiz = nodo;
     } else {
@@ -420,12 +420,16 @@ vector<crow::json::wvalue> ArbolB::to_vector()
     else
     {
         NodoB *aux = raiz;
-
+        
         while (aux != NULL)
         {   
             crow::json::wvalue x;
+            cout<<"entra"<<aux->nick<<endl;
+            x["id"] = aux->id;
             x["nick"] = aux->edad;
             x["edad"] = aux->nick;
+            x["monedas"] = aux->monedas;
+            x["pwd"] = aux->password;
             datos.push_back(x);
             aux = aux->sig;
         }

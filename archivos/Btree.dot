@@ -1,12 +1,12 @@
 digraph G {
 node[shape=record]
 		//Agregar Nodos Rama
-R0x559e31666790[label="<C1>|29 usr: Alberta2565|<C2>|36 usr: Latasha4052|<C3>"];
-R0x559e3167d6f0[label="9 usr: Doyle1863|19 usr: Garner8579|28 usr: Maricela1491"];
-R0x559e31667db0[label="30 usr: Mindy9491|32 usr: Randolph3074|34 usr: Sanchez987"];
-R0x559e3167d640[label="44 usr: Petra178|45 usr: Potts4095|51 usr: Becky9663"];
+R0x5652751c2590[label="<C1>|29 usr: josue|<C2>|36 usr: josue|<C3>"];
+R0x5652751c3900[label="9 usr: Doyle1863|19 usr: Garner8579|28 usr: Maricela1491"];
+R0x5652751da1e0[label="30 usr: Mindy9491|32 usr: Randolph3074|34 usr: josue"];
+R0x5652751c37a0[label="44 usr: Petra178|45 usr: Potts4095|51 usr: Becky9663"];
 		//Agregar conexiones
-R0x559e31666790:C1->R0x559e3167d6f0;
-R0x559e31666790:C2->R0x559e31667db0;
-R0x559e31666790:C3->R0x559e3167d640;
+R0x5652751c2590:C1->R0x5652751c3900;
+R0x5652751c2590:C2->R0x5652751da1e0;
+R0x5652751c2590:C3->R0x5652751c37a0;
 }
