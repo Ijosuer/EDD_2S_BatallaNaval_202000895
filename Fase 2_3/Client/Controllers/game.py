@@ -6,8 +6,8 @@ import time
 import requests
 
 #Anexo el Directorio en donde se encuentra la clase a llamar
-sys.path.append('/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2/Client/views/')
-sys.path.append('/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2/Client/src/')
+sys.path.append('/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2_3/Client/views/')
+sys.path.append('/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2_3/Client/src/')
 
 from game_template2 import *
 
@@ -16,7 +16,7 @@ from PySide2 import QtCore
 from PySide2.QtCore import QPropertyAnimation
 from PySide2 import QtCore, QtGui, QtWidgets
 
-CPATH='/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2/Client'
+CPATH='/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2_3/Client'
 PATH = '/home/ijosuer/images'
 GPATH = '/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/archivos'
 
@@ -151,7 +151,7 @@ class inicio(QMainWindow):
             dlg.exec_()
 
     def getDisparo(self):
-        if(self.coins <= 0 or self.vidas ==0):
+        if(self.vidas ==0):
             dlg = QtWidgets.QMessageBox(self)
             dlg.setWindowTitle(" ")
             dlg.setText(":( HAS PERDIDO !")

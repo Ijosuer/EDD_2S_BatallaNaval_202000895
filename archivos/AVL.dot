@@ -1,27 +1,23 @@
 digraph G{label = "Arbol AVL" fontname="Arial Black" fontsize="25pt";
 node [shape = circle, style=filled, fillcolor=seashell2];
-nodo1219[ label = "1219
-Sharp
-34"];
-nodo886[ label = "886
-Pierce
-22"];
-nodo806[ label = "806
-Rodgers
-23"];
-nodo495[ label = "495
-Adkins
-38"];
-nodo806:C0->nodo495
-nodo886:C0->nodo806
-nodo1219:C0->nodo886
-nodo1370[ label = "1370
-Hamilton
+nodo1092[ label = "1092
+Whitfield
+26"];
+nodo649[ label = "649
+Howard
+21"];
+nodo754[ label = "754
+Rice
+39"];
+nodo680[ label = "680
+Hensley
 37"];
-nodo1330[ label = "1330
-Wall
-22"];
-nodo1370:C0->nodo1330
-nodo1219:C1->nodo1370
+nodo754:C0->nodo680
+nodo649:C1->nodo754
+nodo1092:C0->nodo649
+nodo1821[ label = "1821
+Summers
+34"];
+nodo1092:C1->nodo1821
 
 }

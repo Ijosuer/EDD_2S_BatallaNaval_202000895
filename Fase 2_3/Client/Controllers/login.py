@@ -6,7 +6,7 @@ from PySide2 import QtCore
 from PySide2.QtCore import QPropertyAnimation
 from PySide2 import QtCore, QtGui, QtWidgets
 #Anexo el Directorio en donde se encuentra la clase a llamar
-sys.path.append('/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2/Client/views/')
+sys.path.append('/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2_3/Client/views/')
 from  login_template import *
 from game import inicio
 from admin import admin

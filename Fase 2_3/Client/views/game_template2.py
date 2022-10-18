@@ -11,7 +11,7 @@
 from PySide2.QtCore import *
 from PySide2.QtGui import *
 from PySide2.QtWidgets import *
-CPATH='/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2/Client/images'
+CPATH='/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2_3/Client/images'
 PATH='/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/archivos'
 
 class Ui_MainWindow(object):

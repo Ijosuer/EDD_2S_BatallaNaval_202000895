@@ -5,11 +5,11 @@
 #include "./AVL.hpp"
 #include "./Cola.hpp"
 
-#include "/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2/Server/include/ArbolB.h"
-#include "/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2/Server/include/simple.hpp"
+#include "/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2_3/Server/include/ArbolB.h"
+#include "/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2_3/Server/include/simple.hpp"
 
-#include "/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2/Server/lib/crow_all.h"
-#include "/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2/Server/lib/json.hpp"
+#include "/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2_3/Server/lib/crow_all.h"
+#include "/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2_3/Server/lib/json.hpp"
 #include "/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 1/jsoncpp.cpp"
 
 using namespace std;
@@ -153,7 +153,7 @@ void from_json(const json &JSON, Usuario &us)
 
 int main()
 {
-	cargaMasiva("/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2/Server/Entradafinal.json");
+	cargaMasiva("/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2_3/Server/Entradafinal.json");
 	// ---------------------------
 	ListaSimple *lsArt = NULL;
 	ListaSimple *listar = NULL;
@@ -324,6 +324,7 @@ int main()
 
             string us = arbolito->editar(id,pwd,nick,pwd,edad);
             listar->editar(id);
+                cout<<arbolito->raiz->id<<endl;
                 arbolito->Grafo();
                 crow::json::wvalue response({{"nuevo", "done"}});
                 crow::response variable(std::move(response));

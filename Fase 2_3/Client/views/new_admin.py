@@ -1,25 +1,23 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'admin.ui'
+## Form generated from reading UI file 'new_admin.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
-import sys
-import os
 
 from PySide2.QtCore import *
 from PySide2.QtGui import *
 from PySide2.QtWidgets import *
-CPATH='/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2/Client/images'
+CPATH='/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2_3/Client/images'
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(888, 554)
+        MainWindow.resize(893, 450)
         MainWindow.setMinimumSize(QSize(400, 0))
         MainWindow.setStyleSheet(u"")
         self.centralwidget = QWidget(MainWindow)
@@ -72,7 +70,7 @@ class Ui_MainWindow(object):
         self.bt_menu.setAutoDefault(False)
         self.bt_menu.setFlat(False)
 
-        self.horizontalLayout_8.addWidget(self.bt_menu, 0, Qt.AlignLeft)
+        self.horizontalLayout_8.addWidget(self.bt_menu)
 
         self.horizontalSpacer = QSpacerItem(265, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
@@ -92,15 +90,12 @@ class Ui_MainWindow(object):
 "}\n"
 "")
         icon1 = QIcon()
-        icon1.addFile(CPATH+"images/minimizar.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon1.addFile(CPATH+"/minimizar.png", QSize(), QIcon.Normal, QIcon.Off)
         self.bt_minimizar.setIcon(icon1)
         self.bt_minimizar.setIconSize(QSize(32, 32))
         self.bt_minimizar.setFlat(False)
 
-        self.horizontalLayout_8.addWidget(self.bt_minimizar, 0, Qt.AlignRight)
-
-        # BOTON COMPRAR
-        self.bt_shop = QPushButton()
+        self.horizontalLayout_8.addWidget(self.bt_minimizar)
 
         self.bt_restaurar = QPushButton(self.frame_superior)
         self.bt_restaurar.setObjectName(u"bt_restaurar")
@@ -117,11 +112,11 @@ class Ui_MainWindow(object):
 "}\n"
 "")
         icon2 = QIcon()
-        icon2.addFile(u"images/restaurar.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon2.addFile(CPATH+"/restaurar.png", QSize(), QIcon.Normal, QIcon.Off)
         self.bt_restaurar.setIcon(icon2)
         self.bt_restaurar.setIconSize(QSize(30, 30))
 
-        self.horizontalLayout_8.addWidget(self.bt_restaurar, 0, Qt.AlignRight)
+        self.horizontalLayout_8.addWidget(self.bt_restaurar)
 
         self.bt_maximizar = QPushButton(self.frame_superior)
         self.bt_maximizar.setObjectName(u"bt_maximizar")
@@ -142,7 +137,7 @@ class Ui_MainWindow(object):
         self.bt_maximizar.setIcon(icon3)
         self.bt_maximizar.setIconSize(QSize(32, 32))
 
-        self.horizontalLayout_8.addWidget(self.bt_maximizar, 0, Qt.AlignRight)
+        self.horizontalLayout_8.addWidget(self.bt_maximizar)
 
         self.bt_cerrar = QPushButton(self.frame_superior)
         self.bt_cerrar.setObjectName(u"bt_cerrar")
@@ -163,7 +158,7 @@ class Ui_MainWindow(object):
         self.bt_cerrar.setIcon(icon4)
         self.bt_cerrar.setIconSize(QSize(32, 32))
 
-        self.horizontalLayout_8.addWidget(self.bt_cerrar, 0, Qt.AlignRight)
+        self.horizontalLayout_8.addWidget(self.bt_cerrar)
 
 
         self.verticalLayout.addWidget(self.frame_superior)
@@ -228,7 +223,7 @@ class Ui_MainWindow(object):
 "}\n"
 "")
         icon5 = QIcon()
-        icon5.addFile(CPATH+"/images/inteligencia-artificial.png", QSize(), QIcon.Normal, QIcon.Off)
+        icon5.addFile(CPATH+"/inteligencia-artificial.png", QSize(), QIcon.Normal, QIcon.Off)
         self.bt_inicio.setIcon(icon5)
         self.bt_inicio.setIconSize(QSize(32, 32))
 
@@ -288,23 +283,77 @@ class Ui_MainWindow(object):
         self.stackedWidget.setLineWidth(0)
         self.page = QWidget()
         self.page.setObjectName(u"page")
-        self.verticalLayout_9 = QVBoxLayout(self.page)
-        self.verticalLayout_9.setObjectName(u"verticalLayout_9")
+        self.verticalLayout_6 = QVBoxLayout(self.page)
+        self.verticalLayout_6.setObjectName(u"verticalLayout_6")
+        self.verticalLayout_5 = QVBoxLayout()
+        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
+
+        self.verticalLayout_6.addLayout(self.verticalLayout_5)
+
         self.label = QLabel(self.page)
         self.label.setObjectName(u"label")
-        self.label.setPixmap(QPixmap("../Fase 2/images/imagen_dos.png"))
-        self.label.setScaledContents(False)
-        self.label.setAlignment(Qt.AlignCenter)
-        self.label.setIndent(0)
+        self.label.setMinimumSize(QSize(585, 0))
+        self.label.setMaximumSize(QSize(1080, 920))
+        self.label.setTextFormat(Qt.PlainText)
+        self.label.setPixmap(QPixmap(u"../../../archivos/AVL.png"))
+        self.label.setScaledContents(True)
 
-        self.verticalLayout_9.addWidget(self.label)
+        self.verticalLayout_6.addWidget(self.label)
+
+        self.pushButton = QPushButton(self.page)
+        self.pushButton.setObjectName(u"pushButton")
+
+        self.verticalLayout_6.addWidget(self.pushButton)
 
         self.stackedWidget.addWidget(self.page)
         self.page_uno = QWidget()
         self.page_uno.setObjectName(u"page_uno")
         self.page_uno.setStyleSheet(u"background-color: rgb(255, 255, 255);")
-        self.verticalLayout_4 = QVBoxLayout(self.page_uno)
-        self.verticalLayout_4.setObjectName(u"verticalLayout_4")
+        self.gridLayout = QGridLayout(self.page_uno)
+        self.gridLayout.setObjectName(u"gridLayout")
+        self.frame = QFrame(self.page_uno)
+        self.frame.setObjectName(u"frame")
+        self.frame.setFrameShape(QFrame.StyledPanel)
+        self.frame.setFrameShadow(QFrame.Raised)
+        self.gridLayout_3 = QGridLayout(self.frame)
+        self.gridLayout_3.setObjectName(u"gridLayout_3")
+        self.label_7 = QLabel(self.frame)
+        self.label_7.setObjectName(u"label_7")
+
+        self.gridLayout_3.addWidget(self.label_7, 1, 0, 1, 1)
+
+        self.label_8 = QLabel(self.frame)
+        self.label_8.setObjectName(u"label_8")
+
+        self.gridLayout_3.addWidget(self.label_8, 1, 1, 1, 1)
+
+        self.bt_borrarUser = QPushButton(self.frame)
+        self.bt_borrarUser.setObjectName(u"bt_borrarUser")
+        icon7 = QIcon()
+        icon7.addFile(CPATH+"/trash.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.bt_borrarUser.setIcon(icon7)
+        self.bt_borrarUser.setIconSize(QSize(30, 30))
+        self.bt_borrarUser.setFlat(True)
+
+        self.gridLayout_3.addWidget(self.bt_borrarUser, 0, 1, 1, 1)
+
+        self.bt_addUser = QPushButton(self.frame)
+        self.bt_addUser.setObjectName(u"bt_addUser")
+        icon8 = QIcon()
+        icon8.addFile(CPATH+"/add.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.bt_addUser.setIcon(icon8)
+        self.bt_addUser.setIconSize(QSize(20, 20))
+        self.bt_addUser.setFlat(True)
+
+        self.gridLayout_3.addWidget(self.bt_addUser, 0, 0, 1, 1)
+
+        self.horizontalSpacer_2 = QSpacerItem(400, 20, QSizePolicy.Maximum, QSizePolicy.Minimum)
+
+        self.gridLayout_3.addItem(self.horizontalSpacer_2, 0, 2, 1, 1)
+
+
+        self.gridLayout.addWidget(self.frame, 0, 0, 1, 1)
+
         self.tableWidget = QTableWidget(self.page_uno)
         if (self.tableWidget.columnCount() < 4):
             self.tableWidget.setColumnCount(4)
@@ -318,7 +367,7 @@ class Ui_MainWindow(object):
         self.tableWidget.setHorizontalHeaderItem(3, __qtablewidgetitem3)
         self.tableWidget.setObjectName(u"tableWidget")
 
-        self.verticalLayout_4.addWidget(self.tableWidget)
+        self.gridLayout.addWidget(self.tableWidget, 1, 0, 1, 1)
 
         self.stackedWidget.addWidget(self.page_uno)
 
@@ -348,11 +397,18 @@ class Ui_MainWindow(object):
         self.bt_restaurar.setText("")
         self.bt_maximizar.setText("")
         self.bt_cerrar.setText("")
-        self.bt_shop.setText("COMPRA")
         self.bt_inicio.setText(QCoreApplication.translate("MainWindow", u"       INICIO             ", None))
         self.bt_uno.setText(QCoreApplication.translate("MainWindow", u"   BASE DE DATOS", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"By: iJosuer", None))
         self.label.setText("")
+        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
+        self.label_7.setText(QCoreApplication.translate("MainWindow", u"Agregar usuario", None))
+        self.label_8.setText(QCoreApplication.translate("MainWindow", u"Eliminar Usuario", None))
+        self.bt_borrarUser.setText("")
+#if QT_CONFIG(shortcut)
+        self.bt_borrarUser.setShortcut("")
+#endif // QT_CONFIG(shortcut)
+        self.bt_addUser.setText("")
         ___qtablewidgetitem = self.tableWidget.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"ID", None));
         ___qtablewidgetitem1 = self.tableWidget.horizontalHeaderItem(1)

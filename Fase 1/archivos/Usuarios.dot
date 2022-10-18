@@ -4,7 +4,7 @@ rankdir=LR;
  node[shape=egg,style=filled,color=khaki,fontname="Century Gothic"]; graph [bgcolor = "tan", fontname = "Century Gothic"];
 labelloc = "t;"label = "Usuarios";
 x8254[dir=both label = "Monedas = 8254\nNombre = Kristine466\nEdad = 48\n Pwd = 472655c7cbf5fbae1885c8cf5ce1546065ececfb46b74304e067a19862bf2e0f"]x8254-> x9195
-x8254-> x0
+x8254-> x4339
 x9195[dir=both label = "Monedas = 9195\nNombre = Gregory5553\nEdad = 60\n Pwd = 5627a7a8833f5e1d960bb4a6a920677ced31f639dd6f26ded940491ba0b3f8c0"]x9195[dir=both label = "Monedas = 9195\nNombre = Gregory5553\nEdad = 60\n Pwd = 5627a7a8833f5e1d960bb4a6a920677ced31f639dd6f26ded940491ba0b3f8c0"]x9195-> x7705
 x9195-> x8254
 x7705[dir=both label = "Monedas = 7705\nNombre = Lilian6779\nEdad = 24\n Pwd = f65764cb12605052fda9db41d1652e6c7056ca7cb794427e8790d3c4d8696598"]x7705[dir=both label = "Monedas = 7705\nNombre = Lilian6779\nEdad = 24\n Pwd = f65764cb12605052fda9db41d1652e6c7056ca7cb794427e8790d3c4d8696598"]x7705-> x6397
@@ -17,7 +17,7 @@ x4259[dir=both label = "Monedas = 4259\nNombre = Joan5187\nEdad = 22\n Pwd = 60d
 x4259-> x539
 x3882[dir=both label = "Monedas = 3882\nNombre = Rosemary8594\nEdad = 25\n Pwd = c696d6a440af5de3640f6691f6c5ba2d096cec908e47daab4b5b4256c18c990b"]x3882[dir=both label = "Monedas = 3882\nNombre = Rosemary8594\nEdad = 25\n Pwd = c696d6a440af5de3640f6691f6c5ba2d096cec908e47daab4b5b4256c18c990b"]x3882-> x7465
 x3882-> x4259
-x7465[dir=both label = "Monedas = 7465\nNombre = Michael8699\nEdad = 44\n Pwd = b7b18fa1f8ef56fe6a493d7931b32aff634deaa5888762ca5858e439475e2151"]x7465[dir=both label = "Monedas = 7465\nNombre = Michael8699\nEdad = 44\n Pwd = b7b18fa1f8ef56fe6a493d7931b32aff634deaa5888762ca5858e439475e2151"]x7465-> x3855
+x7465[dir=both label = "Monedas = 7465\nNombre = josue\nEdad = 21\n Pwd = 84aaf4023d8484802d34759c92a308af6842cbac1bc4f096249094b8be165f1d"]x7465[dir=both label = "Monedas = 7465\nNombre = josue\nEdad = 21\n Pwd = 84aaf4023d8484802d34759c92a308af6842cbac1bc4f096249094b8be165f1d"]x7465-> x3855
 x7465-> x3882
 x3855[dir=both label = "Monedas = 3855\nNombre = Singleton1087\nEdad = 32\n Pwd = e6dbffae5f7abdb308884d48cb92b68bbf4c583370c24838041a81ccbbabd4af"]x3855[dir=both label = "Monedas = 3855\nNombre = Singleton1087\nEdad = 32\n Pwd = e6dbffae5f7abdb308884d48cb92b68bbf4c583370c24838041a81ccbbabd4af"]x3855-> x3823
 x3855-> x7465
@@ -69,13 +69,7 @@ x9123[dir=both label = "Monedas = 9123\nNombre = Lindsay4861\nEdad = 54\n Pwd = 
 x9123-> x5320
 x6771[dir=both label = "Monedas = 6771\nNombre = Hopkins9664\nEdad = 34\n Pwd = 5e7ad09a014342182d1b38e2140d4eb95c5cae0124d515fcfe77588b2fe8e6d2"]x6771[dir=both label = "Monedas = 6771\nNombre = Hopkins9664\nEdad = 34\n Pwd = 5e7ad09a014342182d1b38e2140d4eb95c5cae0124d515fcfe77588b2fe8e6d2"]x6771-> x4339
 x6771-> x9123
-x4339[dir=both label = "Monedas = 4339\nNombre = Kate3080\nEdad = 38\n Pwd = 8f31ac1faf0b81f502bf00bda6d0b65a2f1ef18a3e37e47757c2cd0f5d0d0250"]x4339[dir=both label = "Monedas = 4339\nNombre = Kate3080\nEdad = 38\n Pwd = 8f31ac1faf0b81f502bf00bda6d0b65a2f1ef18a3e37e47757c2cd0f5d0d0250"]x4339-> x0
+x4339[dir=both label = "Monedas = 4339\nNombre = Kate3080\nEdad = 38\n Pwd = 8f31ac1faf0b81f502bf00bda6d0b65a2f1ef18a3e37e47757c2cd0f5d0d0250"]x4339-> x8254
 x4339-> x6771
-x0[dir=both label = "Monedas = 0\nNombre = josue\nEdad = 21\n Pwd = aac09534114879f13117bfd3e5a85bd0443ec7f776e737258de48f449788c4f1"]x0[dir=both label = "Monedas = 0\nNombre = josue\nEdad = 21\n Pwd = aac09534114879f13117bfd3e5a85bd0443ec7f776e737258de48f449788c4f1"]x0-> x0
-x0-> x4339
-x0[dir=both label = "Monedas = 0\nNombre = dan\nEdad = 23\n Pwd = ec4f2dbb3b140095550c9afbbb69b5d6fd9e814b9da82fad0b34e9fcbe56f1cb"]x0[dir=both label = "Monedas = 0\nNombre = dan\nEdad = 23\n Pwd = ec4f2dbb3b140095550c9afbbb69b5d6fd9e814b9da82fad0b34e9fcbe56f1cb"]x0-> x0
-x0-> x0
-x0[dir=both label = "Monedas = 0\nNombre = mike\nEdad = 43\n Pwd = 64b4d0f47c93ce23d157e68a58767356283dc9b63c459d45d0e0e39b3a64b9b9"]x0-> x8254
-x0-> x0
 }
 

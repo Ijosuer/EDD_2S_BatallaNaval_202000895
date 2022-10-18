@@ -3,7 +3,7 @@ import os
 import requests
 
 #Anexo el Directorio en donde se encuentra la clase a llamar
-sys.path.append('/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2/Client/views/')
+sys.path.append('/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2_3/Client/views/')
 #Importo la Clase
 
 from new_admin import *
@@ -13,7 +13,7 @@ from PySide2 import QtCore
 from PySide2.QtCore import QPropertyAnimation
 from PySide2 import QtCore, QtGui, QtWidgets
 
-CPATH='/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2/Client/images'
+CPATH='/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2_3/Client/images'
 PATH='/home/ijosuer/images'
 # loga = login
 base_url = "http://localhost:5000"

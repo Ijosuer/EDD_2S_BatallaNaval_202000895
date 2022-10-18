@@ -1,6 +1,6 @@
 #include <vector>
 #include <map>
-#include "/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2/Server/include/NodoB.h"
+#include "/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2_3/Server/include/NodoB.h"
 #include <iostream>
 #include "../lib/crow_all.h"
 

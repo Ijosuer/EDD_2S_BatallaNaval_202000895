@@ -5,7 +5,7 @@ import requests
 import os
 import sys
 #Anexo el Directorio en donde se encuentra la clase a llamar
-sys.path.append('/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2/Client/views/')
+sys.path.append('/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2_3/Client/views/')
 base_url = "http://localhost:5000"
 class NewBookWindow(QWidget, NewBookForm):
 
