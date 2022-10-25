@@ -10,6 +10,7 @@ class Matriz():
         self.capa = capa
         self.filas = Lista_Cabecera('fila')
         self.columnas = Lista_Cabecera('columna')
+        self.total = 0
 
      # (filas = x, columnas = y)
     def insert(self, pos_x, pos_y, caracter):
@@ -267,6 +268,7 @@ class Matriz():
         barcos+=iterator
         buqes = barcos
         print(str(buqes)+" Buqes")
+        self.total = porta + sub + buqes + destr
         i = 0     
         flag = False
         while flag==False:

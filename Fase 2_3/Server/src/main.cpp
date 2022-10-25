@@ -2,10 +2,10 @@
 #include <fstream>
 #include <map>
 #include "./listaS.cpp"
-#include "./AVL.hpp"
-#include "./Cola.hpp"
+// #include "./AVL.hpp"
+// #include "./Cola.hpp"
 
-#include "/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2_3/Server/include/ArbolB.h"
+// #include "/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2_3/Server/include/ArbolB.h"
 #include "/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2_3/Server/include/simple.hpp"
 
 #include "/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2_3/Server/lib/crow_all.h"
@@ -18,8 +18,8 @@ using json = nlohmann::json;
 ListaSimple lista;
 ListaS list_ordenar;
 ListaSimple listaArtic;
-ArbolB arbolB;
-Cola cola;
+// ArbolB arbolB;
+// Cola cola;
 
 void cargaMasiva(string _ruta){
     // Let's parse it
@@ -89,7 +89,7 @@ void cargaMasiva(string _ruta){
                         int monedas_ok =  std::stoi(monedas);
                         int idOk = std::stoi(id);
                         list_ordenar.ingresarUsuario(nick,edad_ok);
-                        arbolB.insertar(idOk,nick,password,monedas,edad);
+                        // arbolB.insertar(idOk,nick,password,monedas,edad);
                         lista.insertarAlFrente(Usuario(id,nick,password,monedas,edad));
                         // lista_aux->insertarInicio(nick,password,monedas_ok,edad_ok);
                         // listaUsuariosaux.ingresarUsuario(nick,edad_ok);
@@ -108,7 +108,7 @@ void cargaMasiva(string _ruta){
                         }else if(mem2[i] == "alto"){
                             alto = child2.asString(); //alto
                         }else if(mem2[i] == "movimientos"){
-                            cola.Enqueue(iterator,ancho,alto);
+                            // cola.Enqueue(iterator,ancho,alto);
                             iterator++;
                             for(auto& element : child2){
                                 for (int i = 0; i < element.size(); i++){
@@ -120,7 +120,7 @@ void cargaMasiva(string _ruta){
                                     }else if(mem2[i] == "y"){
                                     y = child3.asString(); //coordenada Y
                                     // std::cout<<y<<endl;
-                                    cola.Enqueue(iterator,x,y);
+                                    // cola.Enqueue(iterator,x,y);
                                     iterator++;
                                     }
                                 }
@@ -163,12 +163,12 @@ int main()
 	ListaS *ls = NULL;
 	ls = &list_ordenar;
 	// -----------------------
-    ArbolB *arbolito = NULL;
-	arbolito = &arbolB;
-    // ------------------------
-    AVL avl;
-    Cola *colita = NULL;
-    colita = &cola;
+    // ArbolB *arbolito = NULL;
+	// arbolito = &arbolB;
+    // // ------------------------
+    // AVL avl;
+    // Cola *colita = NULL;
+    // colita = &cola;
 	
 	crow::SimpleApp app;
 	CROW_ROUTE(app, "/")
@@ -193,12 +193,12 @@ int main()
 
 // TUTORIAL
 
-	CROW_ROUTE(app, "/tutorial")
-	([colita]()
-	 { 
-		std::vector<crow::json::wvalue> temp = colita->to_vector();
-		crow::json::wvalue final = std::move(temp);
-		return crow::response(std::move(final)); });
+	// CROW_ROUTE(app, "/tutorial")
+	// ([colita]()
+	//  { 
+	// 	std::vector<crow::json::wvalue> temp = colita->to_vector();
+	// 	crow::json::wvalue final = std::move(temp);
+	// 	return crow::response(std::move(final)); });
 
 // METODO LOGIN // 
 
@@ -255,37 +255,37 @@ int main()
 		return crow::response(std::move(final)); });
 
 // METODO GRAFICA AVL
-	CROW_ROUTE(app, "/graficaAVL")
-	([&avl]()
-	 { 
-		avl.graficar();
-		return crow::response(200); });
+	// CROW_ROUTE(app, "/graficaAVL")
+	// ([&avl]()
+	//  { 
+	// 	avl.graficar();
+	// 	return crow::response(200); });
 
 // METODO REGISTRAR USUARIO
-	CROW_ROUTE(app, "/guardar_usuario")
-			.methods("POST"_method)([listar,arbolito](const crow::request &req)
-								{
-		auto x = crow::json::load(req.body);
-			if (!x)
-				return crow::response(400);
-			// string id=x["id"].s();
-			// int idOk = stoi(id);
-			string nick=x["nick"].s();
-			string pass=x["password"].s();
-			string monedas=x["monedas"].s();
-			// int moneda = stoi(monedas);
-			string edad=x["edad"].s();
-			int eda = stoi(edad);
-            arbolito->insertar(eda+12,nick,pass,monedas,edad);
-			listar->insertarAlFrente(Usuario("10",nick,pass,monedas,edad));
-            crow::json::wvalue response({{"yo", "biach"}});
-            crow::response variable(std::move(response));
-            variable.code = 200;
-		    return variable;  });
+	// CROW_ROUTE(app, "/guardar_usuario")
+	// 		.methods("POST"_method)([listar,arbolito](const crow::request &req)
+	// 							{
+	// 	auto x = crow::json::load(req.body);
+	// 		if (!x)
+	// 			return crow::response(400);
+	// 		// string id=x["id"].s();
+	// 		// int idOk = stoi(id);
+	// 		string nick=x["nick"].s();
+	// 		string pass=x["password"].s();
+	// 		string monedas=x["monedas"].s();
+	// 		// int moneda = stoi(monedas);
+	// 		string edad=x["edad"].s();
+	// 		int eda = stoi(edad);
+    //         arbolito->insertar(eda+12,nick,pass,monedas,edad);
+	// 		listar->insertarAlFrente(Usuario("10",nick,pass,monedas,edad));
+    //         crow::json::wvalue response({{"yo", "biach"}});
+    //         crow::response variable(std::move(response));
+    //         variable.code = 200;
+	// 	    return variable;  });
 
 // METODO COMPRAR BARCO
 	CROW_ROUTE(app, "/comprarBarco")
-			.methods("POST"_method)([&avl, &lsArt](const crow::request &req)
+			.methods("POST"_method)([&lsArt](const crow::request &req)
 								{
 		auto x = crow::json::load(req.body);
 			if (!x)
@@ -300,7 +300,6 @@ int main()
             Usuario* us = lsArt->buscarArt(id);
             cout<<us->monedas<<" - "<<precio<<endl;
             if (us != nullptr && precio - stoi(us->monedas) >= 0){
-                avl.insertar(Compra(stoi(us->id),us->nick,stoi(us->monedas)));
                 crow::json::wvalue response({{"monedas", precio - stoi(us->monedas)}});
                 crow::response variable(std::move(response));
                 variable.code = 200;
@@ -311,7 +310,7 @@ int main()
             }});
 // METODO EDITAR USUARIO
 	CROW_ROUTE(app, "/editarUser")
-			.methods("POST"_method)([&arbolito,listar](const crow::request &req)
+			.methods("POST"_method)([listar](const crow::request &req)
 								{
 		auto x = crow::json::load(req.body);
 			if (!x)
@@ -322,10 +321,7 @@ int main()
 			string pwd=x["pwd"].s();
 			string edad=x["edad"].s();
 
-            string us = arbolito->editar(id,pwd,nick,pwd,edad);
             listar->editar(id);
-                cout<<arbolito->raiz->id<<endl;
-                arbolito->Grafo();
                 crow::json::wvalue response({{"nuevo", "done"}});
                 crow::response variable(std::move(response));
                 variable.code = 200;

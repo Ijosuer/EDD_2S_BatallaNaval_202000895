@@ -2,15 +2,15 @@ from asyncio import sleep
 import sys
 import os
 import time
-
 import requests
-
 #Anexo el Directorio en donde se encuentra la clase a llamar
 sys.path.append('/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2_3/Client/views/')
 sys.path.append('/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2_3/Client/src/')
 
 from game_template2 import *
-
+from Matriz_Dispersa import Matriz
+import otherPlayer
+# from batalla import *
 
 from PySide2 import QtCore
 from PySide2.QtCore import QPropertyAnimation
@@ -29,12 +29,16 @@ class inicio(QMainWindow):
         self.ui.setupUi(self)
         self.coins = 0
         self.vidas = 3
-        self.matriz = None
+        # self.matriz = None
+        self.matriz =None
+        self.matriz2v2 = None
         self.len = 10
         self.tutlen = 0
-
+        self.barcos2v2 = 0
+        self.window1 = otherPlayer.NewGameWindow(self)
         
-        self.ui.label_vidas.setText(str(self.vidas)+" VIDAS")
+        # window1.disparo()
+        self.ui.label_coins.setText(str(self.vidas)+" VIDAS")
         
         
         #eliminar barra y de titulo - opacidad
@@ -59,6 +63,8 @@ class inicio(QMainWindow):
 
         self.ui.bt_cuatro.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page_cuatro))			
         self.ui.bt_cinco.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page_cinco))
+        self.ui.bt_seis.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page_seis))
+        self.ui.bt_seis.clicked.connect(lambda: self.toggle_window(self.window1))
 
         #control barra de titulos
         self.ui.bt_minimizar.clicked.connect(self.control_bt_minimizar)		
@@ -75,7 +81,10 @@ class inicio(QMainWindow):
 
         # ---->JUGAR<---
         self.ui.bt_tamanio.clicked.connect(self.generarRandom)
+        self.ui.bt_tamanio2.clicked.connect(self.generarRandom2v2)
         self.ui.bt_Disparo.clicked.connect(self.getDisparo)
+        self.ui.bt_Disparo2.clicked.connect(self.sendDisparo)
+
 
         # EDITAR USUARIO
         self.ui.addButton.clicked.connect(self.editarUser)
@@ -130,6 +139,9 @@ class inicio(QMainWindow):
         #             self.ui.label_4.setPixmap(QtGui.QPixmap(GPATH+"/dispersa.png")) 
         #             sleep(1)
 
+    def grafica(self):
+        self.matriz2v2.graficarDibujo("dispersa","BATTLE SHIP")
+        self.ui.label_11.setPixmap(QtGui.QPixmap(GPATH+"/dispersa.png"))
 
     def editarUser(self):
         oldn = self.ui.oldnickLineEdit.text()
@@ -149,6 +161,53 @@ class inicio(QMainWindow):
             dlg.setWindowTitle(" ")
             dlg.setText("OCURRIO UN ERROR")
             dlg.exec_()
+
+    def disparoVs(self,x, y):
+        print('entro aka padre')
+        ans = self.matriz2v2.ubicarCoordenada(int(x),int(y))
+        if (ans == None):
+            print('No le das ni a pipas')
+        else:
+            self.matriz2v2.insert(int(x),int(y),ans.caracter)
+            print('NCCC PERRO')
+
+        self.matriz2v2.graficarDibujo("dispersa","BATTLE SHIP")
+        self.ui.label_11.setPixmap(QtGui.QPixmap(GPATH+"/dispersa.png"))
+
+
+    def sendDisparo(self):
+        x = self.ui.lineEdit_x2.text()
+        y = self.ui.lineEdit_y2.text()
+        if (int(x) > self.len or int(y) > self.len or int(x) < 1 or int(y) < 1):
+            print('error coordenada')
+        else:
+            ans = self.window1.matriz2.ubicarCoordenada(int(x),int(y))
+
+            if (ans == None):
+                self.window1.matriz2.insert(int(x),int(y)," ")
+            else:
+                # if(ans.caracter == 'D'):
+                #     self.D +=1
+                #     if(self.D == 2):
+                #         self.D = 0
+                #         # self.ventana('D destruido pa xd')
+                #     ans.caracter = "F"
+                # elif (ans.caracter == 'B'):
+                #     self.B +=1
+                #     ans.caracter = "F"
+                # elif (ans.caracter == 'S'):
+                #     self.S +=1
+                #     if(self.S == 3):
+                #         self.S = 0
+                #         print('S destruido')
+                #     ans.caracter = "F"
+                # elif (ans.caracter == 'P'):
+                #     self.P +=1
+                #     if(self.P == 4):
+                #         self.P = 0
+                #         print('P destruido')
+                    ans.caracter = "F"
+            self.window1.grafica()
 
     def getDisparo(self):
         if(self.vidas ==0):
@@ -177,7 +236,7 @@ class inicio(QMainWindow):
                 self.vidas -=1
                 self.matriz.insert(int(x),int(y)," ")
                 self.ui.label_tokens.setText("TOKENS -> "+str(self.coins))
-                self.ui.label_vidas.setText(str(self.vidas)+" VIDAS")
+                self.ui.label_coins.setText(str(self.vidas)+" VIDAS")
             else:
                 self.coins += 20
                 dlg = QtWidgets.QMessageBox(self)
@@ -192,13 +251,32 @@ class inicio(QMainWindow):
         self.ui.label_5.setPixmap(QtGui.QPixmap(GPATH+"/dispersa.png"))
 
     def generarRandom(self):
-        from Matriz_Dispersa import Matriz
+        # from Matriz_Dispersa import Matriz
         self.matriz = Matriz(0)
         x = self.ui.sizeLineEdit.text()
         self.len = int(x)
         self.matriz.generarMatrizRandom(self.len)
         self.matriz.graficarDibujo("dispersa","BATTLE SHIP")
         self.ui.label_5.setPixmap(QtGui.QPixmap(GPATH+"/dispersa.png"))
+    
+    def generarRandom2v2(self):
+        self.window1.label.setText('  '+self.ui.combo.currentText()+'  ') 
+        self.matriz2v2 = Matriz(0)
+        x = self.ui.sizeLineEdit2.text()
+        self.len = int(x)
+        self.window1.len = int(x)
+        self.matriz2v2.generarMatrizRandom(self.len)
+        self.matriz2v2.graficarDibujo("dispersa","BATTLE SHIP")
+        self.ui.label_11.setPixmap(QtGui.QPixmap(GPATH+"/dispersa.png"))
+        self.barcos2v2 = self.matriz2v2.total
+
+        # LA OTRA MATRIZ
+        self.window1.barcos2v2 = self.barcos2v2 
+        self.window1.matriz2 = Matriz(0)
+        self.window1.matriz2.generarMatrizRandom(self.len)
+        self.window1.matriz2.graficarDibujo("dispersa2","BATTLE SHIP")
+        self.window1.label_4.setPixmap(QtGui.QPixmap(GPATH+"/dispersa2.png"))
+
 
     def verGrafica(self):
         # print('entraasaaaa')
@@ -246,6 +324,7 @@ class inicio(QMainWindow):
             self.ui.tableWidget.setItem(row,2,QtWidgets.QTableWidgetItem(str(i['categoria'])))
             self.ui.tableWidget.setItem(row,3,QtWidgets.QTableWidgetItem(str(i['precio'])))
             self.ui.tableWidget.setItem(row,4,QtWidgets.QTableWidgetItem(imagen))
+            # self.ui.tableWidget.setCellWidget(row,5,(btn))
             row+=1
             contador+=1
 
@@ -259,9 +338,6 @@ class inicio(QMainWindow):
         x = requests.post(f'{base_url}/guardar_usuario', json = usuario)
         print(x.text)
     
-    def deleteUsuario(self):
-        x = requests.delete(f'{base_url}/eliminar_usuario', json = {'nick': 'josue','password':'jos'})
-        print(x.status_code)
 
 # --------------------------------------|
 # --------------------------------------|
@@ -270,14 +346,12 @@ class inicio(QMainWindow):
         self.showMinimized()		
 
     def  control_bt_normal(self): 
-        print('ESTE ES IUN BNOTON DE LA BARRA MAJE')
         self.showNormal()		
         self.ui.bt_restaurar.hide()
         self.ui.bt_maximizar.show()
 
     def  control_bt_maximizar(self): 
         self.showMaximized()
-        print('entra')
         self.ui.bt_maximizar.hide()
         self.ui.bt_restaurar.show()
 
@@ -320,9 +394,20 @@ class inicio(QMainWindow):
 # -------------------------------------|
 # -------------------------------------|
 # -------------------------------------|
-    def startMenu():
+    def toggle_window(self, window):
+        self.ui.combo.addItem('Josue')
+        self.ui.combo.addItem('Dan')
+        self.ui.combo.addItem('Mike')
+        self.ui.combo.addItem('Saul')
+        
+        if window.isVisible():
+            window.hide()
+        else:
+            window.show()
+
+    def startMenu(self):
         app2 = QApplication(sys.argv)
-        mi_app2 = inicio()
+        mi_app2 = otherPlayer()
         mi_app2.show()
         sys.exit(app2.exec_())	
 

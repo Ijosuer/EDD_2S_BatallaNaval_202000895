@@ -276,6 +276,16 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_2.addWidget(self.bt_cinco)
 
+        self.bt_seis = QPushButton(self.frame_lateral)
+        self.bt_seis.setObjectName(u"bt_seis")
+        self.bt_seis.setMinimumSize(QSize(0, 40))
+        self.bt_seis.setStyleSheet(u"color: rgb(255, 255, 255);")
+        icon14 = QIcon()
+        icon14.addFile(CPATH+"/videojuego.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.bt_seis.setIcon(icon14)
+        self.bt_seis.setIconSize(QSize(32, 32))
+
+        self.verticalLayout_2.addWidget(self.bt_seis)
         self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding)
 
         self.verticalLayout_2.addItem(self.verticalSpacer)
@@ -423,7 +433,7 @@ class Ui_MainWindow(object):
         self.comprarlineEdit.setGeometry(QRect(40, 30, 113, 23))
         self.bt_comprar = QPushButton(self.page_dos)
         self.bt_comprar.setObjectName(u"bt_comprar")
-        self.bt_comprar.setGeometry(QRect(190, 20, 100, 26))
+        self.bt_comprar.setGeometry(QRect(155, 20, 100, 26))
         self.bt_comprar.setStyleSheet(u"font: 57 italic 9pt \"Fira Sans Medium\";")
         icon12 = QIcon()
         icon12.addFile(CPATH+"/add.png", QSize(), QIcon.Normal, QIcon.Off)
@@ -432,11 +442,30 @@ class Ui_MainWindow(object):
         self.bt_comprar.setFlat(True)
         self.label_14 = QLabel(self.page_dos)
         self.label_14.setObjectName(u"label_14")
-        self.label_14.setGeometry(QRect(340, 20, 161, 20))
+        self.label_14.setGeometry(QRect(270, 20, 161, 20))
         self.label_coins = QLabel(self.page_dos)
         self.label_coins.setObjectName(u"label_coins")
-        self.label_coins.setGeometry(QRect(410, 40, 57, 15))
+        self.label_coins.setGeometry(QRect(340, 40, 57, 15))
         self.label_coins.setStyleSheet(u"color: rgb(255, 85, 0);")
+        self.btnCarrito = QPushButton(self.page_dos)
+        self.btnCarrito.setObjectName(u"pushButton")
+        self.btnCarrito.setGeometry(QRect(450, 20, 51, 31))
+        self.btnCarrito.setStyleSheet(u"color: rgb(255, 255, 255);\n"
+"background-color: rgb(59, 0, 89);\n"
+"font: 12pt \"Noto Sans Carian\";")
+        icon13 = QIcon()
+        icon13.addFile(u"../../../../../Descargas/carrito-de-compras.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btnCarrito.setIcon(icon13)
+        self.btnCarrito.setIconSize(QSize(28, 25))
+        self.label_Total = QLabel(self.page_dos)
+        self.label_Total.setObjectName(u"pushButton_4")
+        self.label_Total.setGeometry(QRect(520, 20, 101, 31))
+        self.label_Total.setStyleSheet(u"color: rgb(255, 255, 255);\n"
+"background-color: rgb(59, 0, 89);\n"
+"font: 11pt \"Noto Sans Carian\";")
+        self.label_Total.setAlignment(Qt.AlignCenter)
+
+
         self.stackedWidget.addWidget(self.page_dos)
         self.page_tres = QWidget()
         self.page_tres.setObjectName(u"page_tres")
@@ -579,6 +608,80 @@ class Ui_MainWindow(object):
         self.gridLayout.addWidget(self.bt_Disparo, 3, 0, 1, 6)
 
         self.stackedWidget.addWidget(self.page_cinco)
+# Agregamos la pagina seis de PVP
+        self.page_seis = QWidget()
+        self.page_seis.setObjectName(u"page_seis")
+        self.page_seis.setStyleSheet(u"background-color: rgb(255, 255, 255);")
+        self.gridLayout_6 = QGridLayout(self.page_seis)
+        self.gridLayout_6.setObjectName(u"gridLayout_6")
+        self.bt_y2 = QPushButton(self.page_seis)
+        self.bt_y2.setObjectName(u"bt_y2")
+        self.bt_y2.setStyleSheet(u"background-color: rgb(170, 170, 127);")
+
+        self.gridLayout_6.addWidget(self.bt_y2, 2, 3, 1, 2)
+
+        self.lineEdit_y2 = QLineEdit(self.page_seis)
+        self.lineEdit_y2.setObjectName(u"lineEdit_y2")
+
+        self.gridLayout_6.addWidget(self.lineEdit_y2, 2, 5, 1, 1)
+
+        self.bt_Disparo2 = QPushButton(self.page_seis)
+        self.bt_Disparo2.setObjectName(u"bt_Disparo2")
+        self.bt_Disparo2.setStyleSheet(u"background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(228, 73, 73, 255), stop:0.55 rgba(235, 148, 61, 255), stop:0.98 rgba(0, 0, 0, 255), stop:1 rgba(0, 0, 0, 0));")
+        icon14 = QIcon()
+        icon14.addFile(CPATH+"/shoot.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.bt_Disparo2.setIcon(icon14)
+
+        self.gridLayout_6.addWidget(self.bt_Disparo2, 3, 0, 1, 6)
+
+        self.scrollArea_4 = QScrollArea(self.page_seis)
+        self.scrollArea_4.setObjectName(u"scrollArea_4")
+        self.scrollArea_4.setWidgetResizable(True)
+        self.scrollAreaWidgetContents_1 = QWidget()
+        self.scrollAreaWidgetContents_1.setObjectName(u"scrollAreaWidgetContents_1")
+        self.scrollAreaWidgetContents_1.setGeometry(QRect(0, 0, 4139, 3455))
+        self.gridLayout_7 = QGridLayout(self.scrollAreaWidgetContents_1)
+        self.gridLayout_7.setObjectName(u"gridLayout_7")
+        self.label_11 = QLabel(self.scrollAreaWidgetContents_1)
+        self.label_11.setObjectName(u"label_11")
+        self.label_11.setPixmap(QPixmap(PATH+"/dispersa.png"))
+        self.label_11.setScaledContents(True)
+
+        self.gridLayout_7.addWidget(self.label_11, 0, 0, 1, 1)
+
+        self.scrollArea_4.setWidget(self.scrollAreaWidgetContents_1)
+
+        self.gridLayout_6.addWidget(self.scrollArea_4, 1, 0, 1, 6)
+
+        self.bt_x2 = QPushButton(self.page_seis)
+        self.bt_x2.setObjectName(u"bt_x")
+        self.bt_x2.setStyleSheet(u"background-color: rgb(170, 170, 127);")
+
+        self.gridLayout_6.addWidget(self.bt_x2, 2, 0, 1, 1)
+
+        self.lineEdit_x2 = QLineEdit(self.page_seis)
+        self.lineEdit_x2.setObjectName(u"lineEdit_x2")
+
+        self.gridLayout_6.addWidget(self.lineEdit_x2, 2, 1, 1, 2)
+
+        self.sizeLineEdit2 = QLineEdit(self.page_seis)
+        self.sizeLineEdit2.setObjectName(u"sizeLineEdit2")
+
+        self.gridLayout_6.addWidget(self.sizeLineEdit2, 0, 1, 1, 1)
+
+        self.bt_tamanio2 = QPushButton(self.page_seis)
+        self.bt_tamanio2.setObjectName(u"bt_tamanio2")
+        self.bt_tamanio2.setStyleSheet(u"background-color: rgb(194, 194, 194);\n"
+"font: 63 9pt \"Noto Serif CJK KR SemiBold\";")
+
+        self.gridLayout_6.addWidget(self.bt_tamanio2, 0, 0, 1, 1)
+
+        self.combo = QComboBox(self.page_seis)
+        self.combo.setObjectName(u"bt_combo")
+
+        self.gridLayout_6.addWidget(self.combo, 0, 5, 1, 1)
+
+        self.stackedWidget.addWidget(self.page_seis)
 
         self.verticalLayout_3.addWidget(self.stackedWidget)
 
@@ -612,6 +715,7 @@ class Ui_MainWindow(object):
         self.bt_tres.setText(QCoreApplication.translate("MainWindow", u"    VER SKINS", None))
         self.bt_cuatro.setText(QCoreApplication.translate("MainWindow", u"TUTORIAL", None))
         self.bt_cinco.setText(QCoreApplication.translate("MainWindow", u"JUGAR", None))
+        self.bt_seis.setText(QCoreApplication.translate("MainWindow", u" PVP ", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"By: iJosuer", None))
         self.label.setText("")
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-weight:600;\">Nueva Password</span></p></body></html>", None))
@@ -635,6 +739,8 @@ class Ui_MainWindow(object):
         self.bt_comprar.setText(QCoreApplication.translate("MainWindow", u" comprar", None))
         self.label_14.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-weight:600; font-style:italic;\">Monedas disponibles</span></p></body></html>", None))
         self.label_coins.setText(QCoreApplication.translate("MainWindow", u"0", None))
+        self.label_Total.setText(QCoreApplication.translate("MainWindow", u"Total   2345", None))
+        self.btnCarrito.setText(QCoreApplication.translate("MainWindow", u"10", None))
         self.label_3.setText("")
         self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u"Ver barcos", None))
         self.label_4.setText("")
@@ -649,5 +755,13 @@ class Ui_MainWindow(object):
         self.bt_y.setText(QCoreApplication.translate("MainWindow", u"Y", None))
         self.lineEdit_y.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Ingrese posicion en Y", None))
         self.bt_Disparo.setText(QCoreApplication.translate("MainWindow", u"DISPARAR", None))
+        
+        self.bt_Disparo2.setText(QCoreApplication.translate("MainWindow", u"DISPARAR", None))
+        self.bt_x2.setText(QCoreApplication.translate("MainWindow", u"X", None))
+        self.bt_y2.setText(QCoreApplication.translate("MainWindow", u"Y", None))
+        self.bt_tamanio2.setText(QCoreApplication.translate("MainWindow", u"Tama\u00f1o", None))
+        self.sizeLineEdit2.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Ingrese tama\u00f1o del tablero", None))
+        self.lineEdit_y2.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Ingrese posicion en Y", None))
+        self.lineEdit_x2.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Ingrese posicion en X", None))
     # retranslateUi
 
