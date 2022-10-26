@@ -29,14 +29,18 @@ class NewGameWindow(QWidget, NewGameForm):
         # self.ui = NewGameWindow()
         self.setupUi(self)
         self.setWindowFlag(Qt.Window)
+        self.name = ''
         self.matriz2 = None
+        self.listaAdy = None
         self.len = 0
         self.barcos2v2 = 0 
-        self.bt_Disparo.clicked.connect(lambda: self.disparo())	
+        self.dic = {'P':0,'S':0,'D':0,'B':0}
         self.S = 0		
         self.D = 0		
         self.B = 0		
         self.P = 0		
+
+        self.bt_Disparo.clicked.connect(lambda: self.disparo())	
 
     def ventana(self, text):
         dlg = QtWidgets.QMessageBox(self)
@@ -58,47 +62,58 @@ class NewGameWindow(QWidget, NewGameForm):
                 if(ans.caracter == 'D'):
                     self.D +=1
                     if(self.D == 2):
+                        self.dic['D']+=1
                         self.D = 0
                         self.parent.barcos2v2-=1
-                        self.ventana('D destruido pa xd')
                     ans.caracter = "F"
+                    self.ventana('>> Disparo!!!')
                 elif (ans.caracter == 'B'):
                     self.parent.barcos2v2-=1
+                    self.dic['B']+=1
                     self.B +=1
                     ans.caracter = "F"
+                    self.ventana('>> Disparo!!!')
                 elif (ans.caracter == 'S'):
                     self.S +=1
                     if(self.S == 3):
+                        self.dic['S']+=1
                         self.parent.barcos2v2-=1
                         self.S = 0
                         print('S destruido')
                     ans.caracter = "F"
+                    self.ventana('>> Disparo!!!')
                 elif (ans.caracter == 'P'):
                     self.P +=1
                     if(self.P == 4):
                         self.parent.barcos2v2-=1
                         self.P = 0
+                        self.dic['P']+=1
                         print('P destruido')
+                    self.ventana('>> Disparo!!!')
                     ans.caracter = "F"
             self.parent.grafica()
-            if(self.parent.barcos2v2 == 8):
-                self.ventana('GANASTE CAPOOOOO')
+            if(self.parent.barcos2v2 == 7):#cambiar pendiente
+                self.ventana('GANASTE LA PARTIDA!!!')
+                self.ventana(self.name + 'HAS DESTRUIDO:\n'+str(self.dic['P'])+' PortaAviones\n'+str(self.dic['B'])+' Buques\n'+str(self.dic['D'])+' Destructores\n' +str(self.dic['S'])+' Subamarinos\n')
+                self.ganador()
 
-    def disparoVs(self,x, y):
-        ans = self.matriz2.ubicarCoordenada(int(x),int(y))
-        if (ans == None):
-            print('No le das ni a pipas')
-        else:
-            self.matriz2.insert(int(x),int(y),ans.caracter)
-            print('NCCC PERRO')
-
-        self.matriz2v2.graficarDibujo("dispersa","BATTLE SHIP")
-        self.ui.label_11.setPixmap(QtGui.QPixmap(GPATH+"/dispersa.png"))
+    def ganador(self):#Crear lista de adyacencia si es que gana
+        self.listaAdy = self.parent.matriz2v2
+        self.listaAdy.self = self.listaAdy
+        self.listaAdy.listaAdyacencia = Matriz(0)
+        self.listaAdy.recorridoPorFila(1,"josue")
+        self.listaAdy.crearGrafo("grafo","josuixddxdd")
+        self.hide()
 
     def grafica(self):
         self.matriz2.graficarDibujo("dispersa2","BATTLE SHIP")
         self.label_4.setPixmap(QtGui.QPixmap(GPATH+"/dispersa2.png"))
 
+    def toggle_window(self):
+        if self.isVisible():
+            self.hide()
+        else:
+            self.show()
 # if __name__ == "__main__":
 #     # inicio() 
 #     app = QApplication(sys.argv)

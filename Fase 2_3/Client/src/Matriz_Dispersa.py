@@ -11,6 +11,7 @@ class Matriz():
         self.filas = Lista_Cabecera('fila')
         self.columnas = Lista_Cabecera('columna')
         self.total = 0
+        self.listaAdyacencia = None
 
      # (filas = x, columnas = y)
     def insert(self, pos_x, pos_y, caracter):
@@ -200,29 +201,149 @@ class Matriz():
             grafo.write(contenido)
         result = "/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/archivos/{}.png".format(nombre)
         os.system("neato -Tpng " + dot + " -o " + result)
+
+    def crearGrafo(self, nombre, title):
+        contenido = '''digraph G { \nsubgraph cluster_0 { style=filled;color=lightgrey; \nnode [style=filled,color=khaki];\n'''
+        contenido+='label="Grafo de movimientos '+title+'";'
+        pivote = self.listaAdyacencia.filas.primero
+        while(pivote != None):
+            contenido+= 'a{} -> a{};\n'.format(pivote.id,pivote.acceso.coordenadaY)
+            pivote.acceso = pivote.acceso.derecha
+            if(pivote.acceso == None):
+                pivote = pivote.siguiente
+        contenido+='}}'
+        dot = "/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/archivos/{}_dot.txt".format(nombre)
+        with open(dot, 'w') as grafo:
+            grafo.write(contenido)
+        result = "/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/archivos/{}.png".format(nombre)
+        os.system("dot -Tpng " + dot + " -o " + result)
+        
+
+    def graficarFilas(self, nombre,title):
+        contenido = '''digraph G{bgcolor="powderblue"
+        node[shape=box, width=0.7, height=0.7, fontname="Arial", fillcolor="white", style=filled]
+        edge[style = "bold"]
+        node[label = "''' + title +'''" fontsize=8 fillcolor="darkolivegreen1" pos = "-1,1!"]raiz;'''
+        # --graficar nodos ENCABEZADO
+        # --graficar nodos fila
+        pivote = self.filas.primero
+        posx = 0
+        while pivote != None:
+            contenido += '\n\tnode[label = "F{}" fillcolor="lightgoldenrod" pos="-1,-{}!" shape=box]x{};'.format(pivote.id, 
+            posx, pivote.id)
+            pivote = pivote.siguiente
+            posx += 1
+        pivote = self.filas.primero
+        while pivote.siguiente != None:
+            contenido += '\n\tx{}->x{};'.format(pivote.id, pivote.siguiente.id)
+            pivote = pivote.siguiente
+        contenido += '\n\traiz->x{};'.format(self.filas.primero.id)
+
+        # # --graficar nodos columna
+        # pivotey = self.columnas.primero
+        # posy = 0
+        # while pivotey != None:
+        #     contenido += '\n\tnode[label = "C{}" fillcolor="lightgoldenrod" pos = "{},1!" shape=box]y{};'.format(pivotey.id, 
+        #     posy, pivotey.id)
+        #     pivotey = pivotey.siguiente
+        #     posy += 1
+        # pivotey = self.columnas.primero
+        # while pivotey.siguiente != None:
+        #     contenido += '\n\ty{}->y{};'.format(pivotey.id, pivotey.siguiente.id)
+        #     contenido += '\n\ty{}->y{}[dir=back];'.format(pivotey.id, pivotey.siguiente.id)
+        #     pivotey = pivotey.siguiente
+        # contenido += '\n\traiz->y{};'.format(self.columnas.primero.id)
+
+        # ya con las cabeceras graficadas, lo siguiente es los nodos internos, o nodosCelda
+        pivote = self.filas.primero
+        posx = 0
+        while pivote != None:
+            pivote_celda : Nodos_internos = pivote.acceso
+            while pivote_celda != None:
+                # --- buscamos posy
+                pivotey = self.columnas.primero
+                posy_celda = 0
+                while pivotey != None:
+                    if pivotey.id == pivote_celda.coordenadaY: break
+                    posy_celda += 1
+                    pivotey = pivotey.siguiente
+                if pivote_celda.caracter == 'F':
+                    contenido += '\n\tnode[label="'+str(pivote_celda.coordenadaY)+'" fontcolor="black" fillcolor="red" pos="{},-{}!" shape=box]i{}_{};'.format( #pos="{},-{}!"
+                        posy_celda, posx, pivote_celda.coordenadaX, pivote_celda.coordenadaY
+                    )
+                elif pivote_celda.caracter == 'S':
+                    pass
+                elif pivote_celda.caracter == 'B':
+                    pass
+                    
+                elif pivote_celda.caracter == 'D':
+                    pass
+
+                elif pivote_celda.caracter == 'P':
+                    pass
+                else:
+                    contenido += '\n\tnode[label="'+str(pivote_celda.coordenadaY)+' " fontcolor="white" fillcolor="black" pos="{},-{}!" shape=box]i{}_{};'.format( # pos="{},-{}!"
+                        posy_celda, posx, pivote_celda.coordenadaX, pivote_celda.coordenadaY
+                    ) 
+                    # pass
+                pivote_celda = pivote_celda.derecha
+            
+            pivote_celda = pivote.acceso
+            while pivote_celda != None:
+                if pivote_celda.derecha != None:
+                    contenido += '\n\ti{}_{}->i{}_{};'.format(pivote_celda.coordenadaX, pivote_celda.coordenadaY,
+                    pivote_celda.derecha.coordenadaX, pivote_celda.derecha.coordenadaY)
+                    
+                    
+                pivote_celda = pivote_celda.derecha
+        
+            contenido += '\n\tx{}->i{}_{};'.format(pivote.id, pivote.acceso.coordenadaX, pivote.acceso.coordenadaY)
+            pivote = pivote.siguiente
+            posx += 1
+        
+        # pivote = self.columnas.primero
+        # while pivote != None:
+        #     pivote_celda : Nodos_internos = pivote.acceso
+        #     while pivote_celda != None:
+        #         if pivote_celda.abajo != None:
+        #             contenido += '\n\ti{}_{}->i{}_{};'.format(pivote_celda.coordenadaX, pivote_celda.coordenadaY,
+        #             pivote_celda.abajo.coordenadaX, pivote_celda.abajo.coordenadaY)
+        #             contenido += '\n\ti{}_{}->i{}_{}[dir=back];'.format(pivote_celda.coordenadaX, pivote_celda.coordenadaY,
+        #             pivote_celda.abajo.coordenadaX, pivote_celda.abajo.coordenadaY) 
+        #         pivote_celda = pivote_celda.abajo
+        #     contenido += '\n\ty{}->i{}_{};'.format(pivote.id, pivote.acceso.coordenadaX, pivote.acceso.coordenadaY)
+        #     contenido += '\n\ty{}->i{}_{}[dir=back];'.format(pivote.id, pivote.acceso.coordenadaX, pivote.acceso.coordenadaY)
+        #     pivote = pivote.siguiente
+            
+        contenido += '\n}'
+        #--- se genera DOT y se procede a ecjetuar el comando
+        dot = "/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/archivos/{}_dot.txt".format(nombre)
+        with open(dot, 'w') as grafo:
+            grafo.write(contenido)
+        result = "/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/archivos/{}.png".format(nombre)
+        os.system("neato -Tpng " + dot + " -o " + result)
         # webbrowser.open(result)
 
-    def recorridoPorFila(self, fila):
+    def recorridoPorFila(self, fila, name):
         inicio : Nodo_Cabecera = self.filas.getCabecera(fila)
         if inicio == None:
             print('Esa coordenada de filas no existe')
             return None
         else:
-            return True
-
-        # tmp : Nodos_internos = inicio.getAcceso()
-        # #tmp = self.filas.getCabecera(fila).getAcceso()
-        # while tmp != None:
-        #     print(tmp.caracter)
-        #     tmp = tmp.getDerecha()
-
+            while(inicio != None):
+                tmp = inicio.acceso
+                while(tmp != None):
+                    if(tmp.caracter == 'F' or tmp.caracter == ' '):
+                        self.listaAdyacencia.insert(tmp.coordenadaX,tmp.coordenadaY,tmp.caracter)
+                    tmp = tmp.derecha
+                inicio = inicio.siguiente
+        self.listaAdyacencia.graficarFilas(name,"Lista de\nAdyacencia")
     
     def recorridoPorColumna(self, columna):
         inicio : Nodo_Cabecera = self.columnas.getCabecera(columna)
         if inicio == None:
             print('Esa coordenada de columna no existe')
             return None
-
         tmp : Nodos_internos = inicio.getAcceso()
         #tmp = self.filas.getCabecera(fila).getAcceso()
         while tmp != None:
@@ -253,6 +374,7 @@ class Matriz():
         except:
             # print('Coordenada no encontrada')
             return None
+    
     def generarMatrizRandom(self, x):
         puerta = False
         barcos = int(((x-1)/10) + 1)
@@ -456,24 +578,25 @@ class Matriz():
         
 # if __name__ == "__main__":
 #     self = Matriz(0)   
+#     self.listaAdyacencia = Matriz(0)
 #     muerte = 0
-#     self.generarMatrizRandom(24)
-#     while True:
-#         xx = int(input('Ingrese en exis: '))
-#         yy = int(input('Ingrese en ye: '))
-#         # xx = (random.randint(1,x))
-#         # yy = (random.randint(1,x))
-#         ans = self.ubicarCoordenada(xx,yy)
-#         if(ans == None):
-#             self.insert(xx,yy," ")
-#         else:
-#             ans.caracter = "F"
-#             muerte +=1
-#         if(muerte == 4):
-#             self.graficarDibujo("dispersa","BATTLE SHIP")
-#             print(muerte)
-#             break;
-#         self.graficarDibujo("dispersa","BATTLE SHIP")
+#     self.generarMatrizRandom(10)
+#     self.listaAdyacencia.insert(0,3,"P")
+#     self.listaAdyacencia.insert(1,1,"P")
+#     self.listaAdyacencia.insert(1,8,"P")
+#     self.listaAdyacencia.insert(2,7,"S")
+#     self.listaAdyacencia.insert(3,5," ")
+#     self.listaAdyacencia.insert(4,3,"D")
+#     self.listaAdyacencia.insert(4,8,"D")
+#     self.listaAdyacencia.insert(6,1,"X")
+#     self.listaAdyacencia.insert(6,5,"X")
+#     self.listaAdyacencia.insert(7,2,"D")
+#     self.listaAdyacencia.insert(7,9,"D")
+#     self.listaAdyacencia.insert(9,1,"D")
+#     self.listaAdyacencia.insert(9,6,"D")
+    
+#     self.recorridoPorFila(1, "mike")
+#     self.crearGrafo("grafo","josue")
 
         
     # self.insert(9,9,"B")

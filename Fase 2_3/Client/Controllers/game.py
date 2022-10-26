@@ -10,6 +10,7 @@ sys.path.append('/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2_3
 from game_template2 import *
 from Matriz_Dispersa import Matriz
 import otherPlayer
+import Shopcar
 # from batalla import *
 
 from PySide2 import QtCore
@@ -29,14 +30,21 @@ class inicio(QMainWindow):
         self.ui.setupUi(self)
         self.coins = 0
         self.vidas = 3
+        self.name = ''
         # self.matriz = None
         self.matriz =None
         self.matriz2v2 = None
+        self.listaAdy = None
         self.len = 10
         self.tutlen = 0
         self.barcos2v2 = 0
         self.window1 = otherPlayer.NewGameWindow(self)
-        
+        self.window2 = Shopcar.NewCarListWindow(self)
+        self.dic = {'P':0,'S':0,'D':0,'B':0}
+        self.S = 0		
+        self.D = 0		
+        self.B = 0		
+        self.P = 0	
         # window1.disparo()
         self.ui.label_coins.setText(str(self.vidas)+" VIDAS")
         
@@ -66,6 +74,8 @@ class inicio(QMainWindow):
         self.ui.bt_seis.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page_seis))
         self.ui.bt_seis.clicked.connect(lambda: self.toggle_window(self.window1))
 
+        self.ui.btnCarrito.clicked.connect(lambda: self.toggle_shoplist(self.window2))
+        
         #control barra de titulos
         self.ui.bt_minimizar.clicked.connect(self.control_bt_minimizar)		
         self.ui.bt_restaurar.clicked.connect(self.control_bt_normal)
@@ -93,51 +103,55 @@ class inicio(QMainWindow):
         self.ui.pushButton_2.clicked.connect(self.tutorialR)
 
     def tutorialR(self):
-        x = requests.get(f'{base_url}/tutorial')
-        for i in x.json():
-            num = int(i['x'])
-            break;
-        # from Matriz_Dispersa import Matriz
-        # self.matriz = Matriz(0)
-        # self.matriz.generarMatrizRandom(num)
-        # for j in x.json():
-        #     if(self.vidas ==0):
-        #         dlg = QtWidgets.QMessageBox(self)
-        #         dlg.setWindowTitle(" ")
-        #         dlg.setText(":( HAS PERDIDO !")
-        #         dlg.exec_()
-        #         break
-        #     x = j['x']
-        #     y = j['y']
-        #     if (int(x)>num or int(y)>num ):
-        #         dlg = QtWidgets.QMessageBox(self)
-        #         dlg.setWindowTitle(" ")
-        #         dlg.setText("INGRESE VALORES CORRECTOS!")
-        #         dlg.exec_()
-        #         sleep(1)
-        #     elif (int(x)<1 or int(y)<1):
-        #         dlg = QtWidgets.QMessageBox(self)
-        #         dlg.setWindowTitle(" ")
-        #         dlg.setText("INGRESE VALORES CORRECTOS!")
-        #         dlg.exec_()
-        #         sleep(1)
-        #     else:
-        #         ans = self.matriz.ubicarCoordenada(int(x),int(y))
-        #         if(ans == None): 
-        #             self.vidas -=1
-        #             self.matriz.insert(int(x),int(y)," ")
-        #             self.matriz.graficarDibujo("dispersa","BATTLE SHIP")
-        #             self.ui.label_4.setPixmap(QtGui.QPixmap(GPATH+"/dispersa.png")) 
-        #             sleep(1)
-        #         else:
-        #             dlg = QtWidgets.QMessageBox(self)
-        #             dlg.setWindowTitle(" ")
-        #             dlg.setText("DISPARO!")
-        #             ans.caracter = "F"
-        #             dlg.exec_()
-        #             self.matriz.graficarDibujo("dispersa","BATTLE SHIP")
-        #             self.ui.label_4.setPixmap(QtGui.QPixmap(GPATH+"/dispersa.png")) 
-        #             sleep(1)
+        pass
+
+    #     self.matriz = Matriz(0)
+    #     self.matriz.generarMatrizRandom(num)
+    #     for j in x.json():
+    #         if(self.vidas ==0):
+    #             dlg = QtWidgets.QMessageBox(self)
+    #             dlg.setWindowTitle(" ")
+    #             dlg.setText(":( HAS PERDIDO !")
+    #             dlg.exec_()
+    #             break
+    #         x = j['x']
+    #         y = j['y']
+    #         if (int(x)>num or int(y)>num ):
+    #             dlg = QtWidgets.QMessageBox(self)
+    #             dlg.setWindowTitle(" ")
+    #             dlg.setText("INGRESE VALORES CORRECTOS!")
+    #             dlg.exec_()
+    #             sleep(1)
+    #         elif (int(x)<1 or int(y)<1):
+    #             dlg = QtWidgets.QMessageBox(self)
+    #             dlg.setWindowTitle(" ")
+    #             dlg.setText("INGRESE VALORES CORRECTOS!")
+    #             dlg.exec_()
+    #             sleep(1)
+    #         else:
+    #             ans = self.matriz.ubicarCoordenada(int(x),int(y))
+    #             if(ans == None): 
+    #                 self.vidas -=1
+    #                 self.matriz.insert(int(x),int(y)," ")
+    #                 self.matriz.graficarDibujo("dispersa","BATTLE SHIP")
+    #                 self.ui.label_4.setPixmap(QtGui.QPixmap(GPATH+"/dispersa.png")) 
+    #                 sleep(1)
+    #             else:
+    #                 dlg = QtWidgets.QMessageBox(self)
+    #                 dlg.setWindowTitle(" ")
+    #                 dlg.setText("DISPARO!")
+    #                 ans.caracter = "F"
+    #                 dlg.exec_()
+    #                 self.matriz.graficarDibujo("dispersa","BATTLE SHIP")
+    #                 self.ui.label_4.setPixmap(QtGui.QPixmap(GPATH+"/dispersa.png")) 
+    #                 sleep(1)
+    def ganador(self):
+        self.listaAdy = self.window1.matriz2
+        self.listaAdy.self = self.listaAdy
+        self.listaAdy.listaAdyacencia = Matriz(0)
+        self.listaAdy.recorridoPorFila(1,"Josuep")
+        self.listaAdy.crearGrafo("ganador","Lista de\nAdyacencia")
+        self.toggle_window(self.window1)
 
     def grafica(self):
         self.matriz2v2.graficarDibujo("dispersa","BATTLE SHIP")
@@ -162,18 +176,6 @@ class inicio(QMainWindow):
             dlg.setText("OCURRIO UN ERROR")
             dlg.exec_()
 
-    def disparoVs(self,x, y):
-        print('entro aka padre')
-        ans = self.matriz2v2.ubicarCoordenada(int(x),int(y))
-        if (ans == None):
-            print('No le das ni a pipas')
-        else:
-            self.matriz2v2.insert(int(x),int(y),ans.caracter)
-            print('NCCC PERRO')
-
-        self.matriz2v2.graficarDibujo("dispersa","BATTLE SHIP")
-        self.ui.label_11.setPixmap(QtGui.QPixmap(GPATH+"/dispersa.png"))
-
 
     def sendDisparo(self):
         x = self.ui.lineEdit_x2.text()
@@ -186,28 +188,47 @@ class inicio(QMainWindow):
             if (ans == None):
                 self.window1.matriz2.insert(int(x),int(y)," ")
             else:
-                # if(ans.caracter == 'D'):
-                #     self.D +=1
-                #     if(self.D == 2):
-                #         self.D = 0
-                #         # self.ventana('D destruido pa xd')
-                #     ans.caracter = "F"
-                # elif (ans.caracter == 'B'):
-                #     self.B +=1
-                #     ans.caracter = "F"
-                # elif (ans.caracter == 'S'):
-                #     self.S +=1
-                #     if(self.S == 3):
-                #         self.S = 0
-                #         print('S destruido')
-                #     ans.caracter = "F"
-                # elif (ans.caracter == 'P'):
-                #     self.P +=1
-                #     if(self.P == 4):
-                #         self.P = 0
-                #         print('P destruido')
+                if(ans.caracter == 'D'):
+                    self.D +=1
+                    if(self.D == 2):
+                        self.dic['D']+=1
+                        self.D = 0
+                        self.barcos2v2-=1
+                    ans.caracter = "F"
+                    self.ventana('>> Disparo!!!')
+                elif (ans.caracter == 'B'):
+                    self.barcos2v2-=1
+                    self.dic['B']+=1
+                    self.B +=1
+                    ans.caracter = "F"
+                    self.ventana('>> Disparo!!!')
+                elif (ans.caracter == 'S'):
+                    self.S +=1
+                    if(self.S == 3):
+                        self.dic['S']+=1
+                        self.barcos2v2-=1
+                        self.S = 0
+                    ans.caracter = "F"
+                    self.ventana('>> Disparo!!!')
+                elif (ans.caracter == 'P'):
+                    self.P +=1
+                    if(self.P == 4):
+                        self.barcos2v2-=1
+                        self.P = 0
+                        self.dic['P']+=1
+                    self.ventana('>> Disparo!!!')
                     ans.caracter = "F"
             self.window1.grafica()
+            if(self.barcos2v2 == 8):#cambiar pendiente
+                self.ventana('GANASTE LA PARTIDA!!!')
+                self.ventana('HAS DESTRUIDO:\n'+str(self.dic['P'])+' PortaAviones\n'+str(self.dic['B'])+' Buques\n'+str(self.dic['D'])+' Destructores\n' +str(self.dic['S'])+' Subamarinos\n')
+                self.ganador()
+
+    def ventana(self, text):
+        dlg = QtWidgets.QMessageBox(self)
+        dlg.setWindowTitle(" ")
+        dlg.setText(text)
+        dlg.exec_()
 
     def getDisparo(self):
         if(self.vidas ==0):
@@ -299,6 +320,10 @@ class inicio(QMainWindow):
             self.coins = a['monedas']
             self.ui.label_coins.setText(str(self.coins))
         else:
+            # self.ui.tableWidget.setItem(0,0,QtWidgets.QTableWidgetItem("hi"))
+            self.window2.tableWidget.setRowCount(5)
+            self.window2.tableWidget.setItem(0,0,QtWidgets.QTableWidgetItem("hi"))
+            
             dlg = QtWidgets.QMessageBox(self)
             dlg.setWindowTitle(" ")
             dlg.setText("NO se puedo realizar la compra D:")
@@ -399,6 +424,13 @@ class inicio(QMainWindow):
         self.ui.combo.addItem('Dan')
         self.ui.combo.addItem('Mike')
         self.ui.combo.addItem('Saul')
+        
+        if window.isVisible():
+            window.hide()
+        else:
+            window.show()
+
+    def toggle_shoplist(self, window):
         
         if window.isVisible():
             window.hide()
