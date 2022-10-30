@@ -1,0 +1,11 @@
+digraph {
+  node [ shape=none fontname=Helvetica ]
+n3 [ label = <
+    <table border="1">
+       <tr><td colspan="1" bgcolor="Peru">id</td><td colspan="1" bgcolor="Peru">name</td><td colspan="1" bgcolor="Peru">index</td></tr><tr><td bgcolor="yellow">5</td><td bgcolor="orange">josue </td><td bgcolor="orange">0</td></tr>
+	<tr><td bgcolor="yellow">2</td><td bgcolor="orange">luca </td><td bgcolor="orange">2</td></tr>
+	<tr><td bgcolor="yellow">10</td><td bgcolor="orange">dani </td><td bgcolor="orange">3</td></tr>
+	<tr><td bgcolor="yellow">15</td><td bgcolor="orange">kpngi </td><td bgcolor="orange">4</td></tr>
+		</table> 
+>]
+}

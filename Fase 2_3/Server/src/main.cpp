@@ -298,9 +298,10 @@ int main()
 			string moneda=x["monedas"].s();
 			int precio = stoi(moneda);
             Usuario* us = lsArt->buscarArt(id);
-            cout<<us->monedas<<" - "<<precio<<endl;
+            // cout<<us->monedas<<" - "<<precio<<endl;
             if (us != nullptr && precio - stoi(us->monedas) >= 0){
-                crow::json::wvalue response({{"monedas", precio - stoi(us->monedas)}});
+                crow::json::wvalue response({{"monedas", precio - stoi(us->monedas)},{"id",us->id},{"name",us->nick},
+                {"categoria",us->password},{"precio",us->monedas},{"src",us->edad}});
                 crow::response variable(std::move(response));
                 variable.code = 200;
                 return variable;  

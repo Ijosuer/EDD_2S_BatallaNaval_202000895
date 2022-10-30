@@ -101,7 +101,7 @@ class inicio(QMainWindow):
 
         #tutorial
         self.ui.pushButton_2.clicked.connect(self.tutorialR)
-
+        self.rowshop = 0
     def tutorialR(self):
         pass
 
@@ -313,12 +313,19 @@ class inicio(QMainWindow):
 
         if(x.status_code == 200):
             dlg = QtWidgets.QMessageBox(self)
-            dlg.setWindowTitle(" ")
-            dlg.setText("COMPRA REALIZADA!")
-            dlg.exec_()
+            # dlg.setWindowTitle(" ")
+            # dlg.setText("COMPRA REALIZADA!")
+            # dlg.exec_()
             a = x.json()
+            print(a)
+            
             self.coins = a['monedas']
             self.ui.label_coins.setText(str(self.coins))
+            self.window2.tableWidget.setRowCount(5)
+            self.window2.tableWidget.setItem(self.rowshop,0,QtWidgets.QTableWidgetItem(a['id']))
+            self.window2.tableWidget.setItem(self.rowshop,1,QtWidgets.QTableWidgetItem(a['name']))
+            self.window2.tableWidget.setItem(self.rowshop,2,QtWidgets.QTableWidgetItem(a['precio']))
+            self.rowshop +=1
         else:
             # self.ui.tableWidget.setItem(0,0,QtWidgets.QTableWidgetItem("hi"))
             self.window2.tableWidget.setRowCount(5)
@@ -345,8 +352,8 @@ class inicio(QMainWindow):
             imagen.setIcon(icon)
             
             self.ui.tableWidget.setItem(row,0,QtWidgets.QTableWidgetItem(str(i['id'])))
-            self.ui.tableWidget.setItem(row,1,QtWidgets.QTableWidgetItem(i["nombre"]))
-            self.ui.tableWidget.setItem(row,2,QtWidgets.QTableWidgetItem(str(i['categoria'])))
+            self.ui.tableWidget.setItem(row,1,QtWidgets.QTableWidgetItem(i["categoria"]))
+            self.ui.tableWidget.setItem(row,2,QtWidgets.QTableWidgetItem(str(i['nombre'])))
             self.ui.tableWidget.setItem(row,3,QtWidgets.QTableWidgetItem(str(i['precio'])))
             self.ui.tableWidget.setItem(row,4,QtWidgets.QTableWidgetItem(imagen))
             # self.ui.tableWidget.setCellWidget(row,5,(btn))
