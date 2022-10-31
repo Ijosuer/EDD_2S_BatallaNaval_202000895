@@ -22,9 +22,8 @@ from PySide2 import QtCore, QtGui, QtWidgets
 CPATH='/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2_3/Client'
 PATH = '/home/ijosuer/images'
 GPATH = '/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/archivos'
-
+from PruebaTrabajo import Blockchain
 base_url = "http://localhost:5000"
-
 class inicio(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -34,7 +33,8 @@ class inicio(QMainWindow):
         self.vidas = 3
         self.cantidad = 0
         self.total = 0
-
+        self.blockchain = Blockchain()
+        
         self.nameUser = ''
         self.pwdUser = ''
         self.idUser= ''

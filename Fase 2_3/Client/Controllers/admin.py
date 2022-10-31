@@ -7,6 +7,7 @@ sys.path.append('/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2_3
 #Importo la Clase
 
 from new_admin import *
+# from game import inicio
 from new_user import NewBookWindow
 # from callme import login
 from PySide2 import QtCore
@@ -23,7 +24,7 @@ class admin(QMainWindow):
         super().__init__()
         self.ui = Ui_MainWindow() 
         self.ui.setupUi(self)
-
+        self.objeto = None
         window1 = NewBookWindow(self)
         
 

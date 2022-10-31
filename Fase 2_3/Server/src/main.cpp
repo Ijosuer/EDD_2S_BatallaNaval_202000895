@@ -2,10 +2,7 @@
 #include <fstream>
 #include <map>
 #include "./listaS.cpp"
-// #include "./AVL.hpp"
-// #include "./Cola.hpp"
 
-// #include "/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2_3/Server/include/ArbolB.h"
 #include "/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2_3/Server/include/simple.hpp"
 
 #include "/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2_3/Server/lib/crow_all.h"

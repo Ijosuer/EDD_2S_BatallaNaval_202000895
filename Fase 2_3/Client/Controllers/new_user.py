@@ -44,19 +44,22 @@ class NewBookWindow(QWidget, NewBookForm):
             
         
     def add_book(self):
-        nick = self.titleLineEdit.text()
-        pwd = self.categoryLineEdit.text()
-        coins = str(self.pageQtySpinBox.value())
-        age = str(self.filePathLineEdit.text())
+        self.parent.objeto.prefijo = self.titleLineEdit.text()
+        self.parent.objeto.data = self.categoryLineEdit.text()
+        self.parent.objeto.writeBlock()
+        self.parent.objeto.graficar()
+        
+        # coins = str(self.pageQtySpinBox.value())
+        # age = str(self.filePathLineEdit.text())
 
-        if self.check_inputs():
-            data = (nick, pwd, coins, age)
-            self.clean_inputs()
-            usuario = {'nick': nick,'password':pwd,'monedas':coins,'edad':age}
-            x = requests.post(f'{base_url}/guardar_usuario', json = usuario)
-            # dicc = {}
-            if x.status_code ==200:
-              self.parent.tableData()
+        # if self.check_inputs():
+        #     data = (nick, pwd, coins, age)
+        #     self.clean_inputs()
+        #     usuario = {'nick': nick,'password':pwd,'monedas':coins,'edad':age}
+        #     x = requests.post(f'{base_url}/guardar_usuario', json = usuario)
+        #     # dicc = {}
+        #     if x.status_code ==200:
+        #       self.parent.tableData()
               
               # print(users.json())
               # for i in users.json():

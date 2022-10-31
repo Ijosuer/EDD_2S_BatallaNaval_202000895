@@ -51,11 +51,11 @@ class Merkle:
 	def preOrder(self,tmp):
 		if(tmp != None):
 			if(isinstance(tmp, Node)):
-				print('DB:',tmp.data)
+				print('')
 				return
 				# self.preOrder(tmp)
 			else:
-				print(tmp.hash)
+				print('')
 				
 			self.preOrder(tmp.left)
 			self.preOrder(tmp.right)
@@ -101,24 +101,28 @@ class Merkle:
 					grafo.write(self.dot)
 			result = "/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/archivos/{}.png".format('MerkleTree')
 			os.system("dot -Tpng " + dot + " -o " + result)
+			self.dot = ''
+			self.dataBlock = []
+			self.tophash = None
+			self.index = 0
 			
-if __name__ == "__main__":
-	print('MERKLE TREE')
-	m = Merkle()
-	m.add('7')
-	m.add('8')	
-	# m.add('9 Amarillo tier2 2/11/2022')
-	m.auth()
-	m.show()
-	print(m.tophash.hash)
-	m.dot = 'digraph G {rankdir=BT;node [shape=box]'
-	m.dotgen(m.tophash)
-	m.dot+='}'
-	dot = "./{}_dot.txt".format('merkle')
-	with open(dot, 'w') as grafo:
-			grafo.write(m.dot)
-	result = "./{}.png".format('merkle')
-	os.system("dot -Tpng " + dot + " -o " + result)
+# if __name__ == "__main__":
+# 	print('MERKLE TREE')
+# 	m = Merkle()
+# 	m.add('7')
+# 	m.add('8')	
+# 	# m.add('9 Amarillo tier2 2/11/2022')
+# 	m.auth()
+# 	m.show()
+# 	print(m.tophash.hash)
+# 	m.dot = 'digraph G {rankdir=BT;node [shape=box]'
+# 	m.dotgen(m.tophash)
+# 	m.dot+='}'
+# 	dot = "./{}_dot.txt".format('merkle')
+# 	with open(dot, 'w') as grafo:
+# 			grafo.write(m.dot)
+# 	result = "./{}.png".format('merkle')
+# 	os.system("dot -Tpng " + dot + " -o " + result)
 
 
 

@@ -4,12 +4,12 @@ import json
 from hashlib import sha256
 
 class Blockchain:
-  def __init__(self,Data,prefijo):
-    self.data = Data
+  def __init__(self):
+    self.data = ""
     self.previousHash = "0000"
     self.rootMerkle = ""
     self.index = 0
-    self.prefijo = prefijo
+    self.prefijo = "0000"
     self.hash = ""
     self.nonce = 0
     self.time = ''
@@ -25,15 +25,6 @@ class Blockchain:
         # print(self.nonce, sha256(self.hash.encode('utf-8')).hexdigest())
         self.hash = sha256(self.hash.encode('utf-8')).hexdigest()
         break;
-  
-  # def add(self):
-  #   print(self.hash)
-  #   merkle.add('josue123 4:30')
-  #   merkle.add('mikeas23 4:33')
-  #   merkle.add('masmdfmas 4:40')
-  #   merkle.auth()
-  #   self.rootMerkle = merkle.tophash.hash
-  #   self.writeBlock()
 
   def writeBlock(self):
     self.generar()
@@ -64,11 +55,11 @@ class Blockchain:
     flag = False 
     for i in self.listaBlock:
       if(flag == True):
-        text+='x'+str(itera)+'[shape = "record", label="Index = '+str(i['INDEX'])+'|PrevHash = '+str(i["PREVIOUSHASH"])+'|Hash = '+str(i['HASH'])+'"]\n'
+        text+='x'+str(itera)+'[shape = "record", label="Index = '+str(i['INDEX'])+'|PrevHash = '+str(i["PREVIOUSHASH"])+'|Hash = '+str(i['HASH'])+'|rootMerkle = '+str(i['ROOTMERKLE'])+'|TIMESTAMP = '+str(i['TIME'])+'"]\n'
       elif (len(self.listaBlock) == 1):
-        text+='x'+str(itera)+'[shape = "record", label="Index = '+str(i['INDEX'])+'|PrevHash = '+str(i["PREVIOUSHASH"])+'|Hash = '+str(i['HASH'])+'"]\n'
+        text+='x'+str(itera)+'[shape = "record", label="Index = '+str(i['INDEX'])+'|PrevHash = '+str(i["PREVIOUSHASH"])+'|Hash = '+str(i['HASH'])+'|rootMerkle = '+str(i['ROOTMERKLE'])+'|TIMESTAMP = '+str(i['TIME'])+'"]\n'
       else:
-        text+='x'+str(itera)+'[shape = "record", label="Index = '+str(i['INDEX'])+'|PrevHash = '+str(i["PREVIOUSHASH"])+'|Hash = '+str(i['HASH'])+'"]x'+str(itera)+'->x'+str(itera+1)+'\n'
+        text+='x'+str(itera)+'[shape = "record", label="Index = '+str(i['INDEX'])+'|PrevHash = '+str(i["PREVIOUSHASH"])+'|Hash = '+str(i['HASH'])+'|rootMerkle = '+str(i['ROOTMERKLE'])+'|TIMESTAMP = '+str(i['TIME'])+'"]x'+str(itera)+'->x'+str(itera+1)+'\n'
         itera+=1
       if(itera+1 == len(self.listaBlock)):
         flag = True

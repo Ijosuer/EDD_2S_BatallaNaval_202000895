@@ -3,16 +3,22 @@ digraph G{bgcolor="powderblue"
         edge[style = "bold"]
         node[label = "Lista de
 Adyacencia" fontsize=8 fillcolor="darkolivegreen1" pos = "-1,1!"]raiz;
-	node[label = "F2" fillcolor="lightgoldenrod" pos="-1,-0!" shape=box]x2;
-	raiz->x2;
-	node[label="2" fontcolor="black" fillcolor="red" pos="0,-0!" shape=box]i2_2;
-	node[label="3" fontcolor="black" fillcolor="red" pos="1,-0!" shape=box]i2_3;
-	node[label="4" fontcolor="black" fillcolor="red" pos="2,-0!" shape=box]i2_4;
-	node[label="5" fontcolor="black" fillcolor="red" pos="3,-0!" shape=box]i2_5;
-	node[label="6" fontcolor="black" fillcolor="red" pos="4,-0!" shape=box]i2_6;
-	i2_2->i2_3;
-	i2_3->i2_4;
-	i2_4->i2_5;
-	i2_5->i2_6;
-	x2->i2_2;
+	node[label = "F1" fillcolor="lightgoldenrod" pos="-1,-0!" shape=box]x1;
+	node[label = "F2" fillcolor="lightgoldenrod" pos="-1,-1!" shape=box]x2;
+	node[label = "F3" fillcolor="lightgoldenrod" pos="-1,-2!" shape=box]x3;
+	x1->x2;
+	x2->x3;
+	raiz->x1;
+	node[label="7" fontcolor="black" fillcolor="red" pos="0,-0!" shape=box]i1_7;
+	node[label="8" fontcolor="black" fillcolor="red" pos="1,-0!" shape=box]i1_8;
+	i1_7->i1_8;
+	x1->i1_7;
+	node[label="7" fontcolor="black" fillcolor="red" pos="0,-1!" shape=box]i2_7;
+	node[label="8" fontcolor="black" fillcolor="red" pos="1,-1!" shape=box]i2_8;
+	node[label="9" fontcolor="black" fillcolor="red" pos="2,-1!" shape=box]i2_9;
+	i2_7->i2_8;
+	i2_8->i2_9;
+	x2->i2_7;
+	node[label="7" fontcolor="black" fillcolor="red" pos="0,-2!" shape=box]i3_7;
+	x3->i3_7;
 }

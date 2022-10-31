@@ -1,4 +1,4 @@
-import time
+from datetime import datetime
 from PySide2.QtWidgets import QWidget, QFileDialog
 from PySide2.QtCore import Qt
 from PySide2 import QtCore, QtGui, QtWidgets
@@ -12,11 +12,9 @@ sys.path.append('/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2_3
 sys.path.append('/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2_3/Client/src/')
 from Thash import Hash
 from Merkle import Merkle
-from PruebaTrabajo import Blockchain
 
 base_url = "http://localhost:5000"
 
-merkle = Merkle()
 hashito = Hash(13,20,80)
 
 class NewCarListWindow(QWidget, Ui_NewBookWindow):
@@ -25,12 +23,12 @@ class NewCarListWindow(QWidget, Ui_NewBookWindow):
         super().__init__(parent)
         self.parent = parent
         self.setupUi(self)
+        self.window1 = PrivateKey.NewKeyWindow(self)
         self.iduser = self.parent.idUser
         self.nickuser = self.parent.nameUser
         self.pwduser = self.parent.pwdUser
-        self.blockchain = Blockchain("",0000)
+        # self.parent.blockchain.inser
         self.setWindowFlag(Qt.Window)
-        self.window1 = PrivateKey.NewKeyWindow(self)
         self.addButton.clicked.connect(lambda:self.toogle(self.window1))
 
     def toogle(self,window):
@@ -40,6 +38,8 @@ class NewCarListWindow(QWidget, Ui_NewBookWindow):
             window.show()
 
     def pagar(self):
+        self.merkle = Merkle()
+        date = datetime.now()
         if (self.window1.flag == True):
             for row in range(self.tableWidget.rowCount()):
                 id = self.tableWidget.item(row, 0)
@@ -49,9 +49,16 @@ class NewCarListWindow(QWidget, Ui_NewBookWindow):
                 self.parent.cantidad = 0
                 self.parent.ui.btnCarrito.setText('0')
                 self.parent.ui.label_Total.setText('Total    0')
+                texto = str(id.text())+str(name.text())+str(date)
+                self.merkle.add(texto)
             hashito.grafica()
+            self.merkle.auth()
             self.parent.rowshop=0
-            # self.tableWidget.clear()
+            self.parent.blockchain.data = id.text()+name.text()
+            self.parent.blockchain.rootMerkle = self.merkle.tophash.hash
+            self.parent.blockchain.writeBlock()
+            self.parent.blockchain.graficar()
+            self.merkle.graficar()
         else:
             dlg = QtWidgets.QMessageBox(self)
             dlg.setWindowTitle(" ")

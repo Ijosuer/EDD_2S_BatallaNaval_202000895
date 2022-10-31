@@ -56,7 +56,7 @@ class login(QMainWindow):
             if self.isVisible():        
                 self.hide()
                 self.mainWindow.coins = int(user['monedas'])
-                self.mainWindow.pwdUser = str(user['pwd'])
+                self.mainWindow.pwdUser = text2
                 self.mainWindow.nameUser = str(user['nick'])
                 self.mainWindow.idUser = str(user['id'])
                 self.mainWindow.show()
@@ -67,6 +67,7 @@ class login(QMainWindow):
                 self.ui.cargando.setText('Cargando...')
             if self.isVisible():        
                 self.hide()
+                self.adminWindow.objeto = self.mainWindow.blockchain
                 self.adminWindow.show()
         else:
             self.ui.usuario_incorrecto.setText('ERROR EN USUARIO')

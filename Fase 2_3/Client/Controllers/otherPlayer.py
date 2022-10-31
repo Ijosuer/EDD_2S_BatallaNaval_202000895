@@ -102,7 +102,7 @@ class NewGameWindow(QWidget, NewGameForm):
         self.listaAdy.self = self.listaAdy
         self.listaAdy.listaAdyacencia = Matriz(0)
         self.listaAdy.recorridoPorFila(1,"josue")
-        self.listaAdy.crearGrafo("grafo","josuixddxdd")
+        self.listaAdy.crearGrafo("grafo","")
         self.hide()
 
     def grafica(self):
