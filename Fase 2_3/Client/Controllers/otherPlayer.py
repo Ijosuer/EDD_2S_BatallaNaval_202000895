@@ -92,7 +92,7 @@ class NewGameWindow(QWidget, NewGameForm):
                     self.ventana('>> Disparo!!!')
                     ans.caracter = "F"
             self.parent.grafica()
-            if(self.parent.barcos2v2 == 7):#cambiar pendiente
+            if(self.parent.barcos2v2 == 0):#cambiar pendiente
                 self.ventana('GANASTE LA PARTIDA!!!')
                 self.ventana(self.name + 'HAS DESTRUIDO:\n'+str(self.dic['P'])+' PortaAviones\n'+str(self.dic['B'])+' Buques\n'+str(self.dic['D'])+' Destructores\n' +str(self.dic['S'])+' Subamarinos\n')
                 self.ganador()
@@ -101,7 +101,7 @@ class NewGameWindow(QWidget, NewGameForm):
         self.listaAdy = self.parent.matriz2v2
         self.listaAdy.self = self.listaAdy
         self.listaAdy.listaAdyacencia = Matriz(0)
-        self.listaAdy.recorridoPorFila(1,"josue")
+        self.listaAdy.recorridoPorFila(1,"ListaAdy")
         self.listaAdy.crearGrafo("grafo","")
         self.hide()
 

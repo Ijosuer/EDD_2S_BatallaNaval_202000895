@@ -246,7 +246,6 @@ class inicio(QMainWindow):
             self.close()
         x = self.ui.lineEdit_x.text()
         y = self.ui.lineEdit_y.text()
-        print(self.len)
         if (int(x)>self.len or int(y)>self.len ):
             dlg = QtWidgets.QMessageBox(self)
             dlg.setWindowTitle(" ")
@@ -325,8 +324,7 @@ class inicio(QMainWindow):
             # dlg.setWindowTitle(" ")
             # dlg.setText("COMPRA REALIZADA!")
             # dlg.exec_()
-            a = x.json()
-            print(a)
+            a = x.json() 
             price = a['precio']
             self.total+= int(price)
             self.coins = a['monedas']
