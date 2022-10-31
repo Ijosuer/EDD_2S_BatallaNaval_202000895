@@ -142,53 +142,53 @@ public:
 // int main()
 // {
     LinkedList *list1 = new LinkedList();
-    //Primera Pila
-                                // list1->addNodoPila(1,1,1);
-                                // list1->addNodoPila(2,2,2);
-                                // list1->addNodoPila(3,2,0);
-                                // list1->addStart();
-        // list1->addNodoPila(3,1,1);
-        // list1->addNodoPila(6,1,1);
-        // list1->addNodoPila(7,2,2);
-        // list1->addNodoPila(8,3,3);
-        // list1->addNodoPila(9,4,4);
-        // list1->addStart();
+//     // Primera Pila
+//                                 list1->addNodoPila(1,1,1);
+//                                 list1->addNodoPila(2,2,2);
+//                                 list1->addNodoPila(3,2,0);
+//                                 list1->addStart();
+//         list1->addNodoPila(3,1,1);
+//         list1->addNodoPila(6,1,1);
+//         list1->addNodoPila(7,2,2);
+//         list1->addNodoPila(8,3,3);
+//         list1->addNodoPila(9,4,4);
+//         list1->addStart();
         
-    // //Segunda Pila
-                                    // list1->addNodoPila(4,5,5);
-                                    // list1->addNodoPila(5,6,6);
-                                    // list1->addNodoPila(6,6,6);
-                                    //     list1->addStart();
-                                    // list1->addNodoPila(7,1,0);
-                                    // list1->addNodoPila(8,6,6);
-                                    // list1->addNodoPila(9,6,4);
-                                    //     list1->addStart();
-                                    // list1->addNodoPila(10,2,8);
-                                    // list1->addNodoPila(11,3,3);
-                                    // list1->addNodoPila(12,0,7);
-                                    //     list1->addStart();
+//     //Segunda Pila
+//                                     list1->addNodoPila(4,5,5);
+//                                     list1->addNodoPila(5,6,6);
+//                                     list1->addNodoPila(6,6,6);
+//                                         list1->addStart();
+//                                     list1->addNodoPila(7,1,0);
+//                                     list1->addNodoPila(8,6,6);
+//                                     list1->addNodoPila(9,6,4);
+//                                         list1->addStart();
+//                                     list1->addNodoPila(10,2,8);
+//                                     list1->addNodoPila(11,3,3);
+//                                     list1->addNodoPila(12,0,7);
+//                                         list1->addStart();
    
-    // //Tercera Pila
-    // list1->addNodoPila(6,7,7);
-    // list1->addNodoPila(7,8,8);
-    // list1->addNodoPila(8,9,9);
-    // list1->addStart();
+//     //Tercera Pila
+//     list1->addNodoPila(6,7,7);
+//     list1->addNodoPila(7,8,8);
+//     list1->addNodoPila(8,9,9);
+//     list1->addStart();
     
-    // //Cuarta Pila
-    // list1->addNodoPila(9,10,10);
-    // list1->addNodoPila(10,11,11);
-    // list1->addNodoPila(11,12,12);
-    // list1->addStart();
+//     //Cuarta Pila
+//     list1->addNodoPila(9,10,10);
+//     list1->addNodoPila(10,11,11);
+//     list1->addNodoPila(11,12,12);
+//     list1->addStart();
   
-    // //Quinra Pila
-    // list1->addNodoPila(12,13,13);
-    // list1->addStart();
-    // list1->show();
-    // std::cout<<"Este es el primero de mi lista"<<list1->head->accesoPila->id<<endl;
-    // std::cout<<"Este es el primero->sig "<<list1->head->next->accesoPila->next->id<<endl;
-    // list1->crearGrafica();
-    // string x = list1->toReport();
-    // std::cout<<x;
+//     //Quinra Pila
+//     list1->addNodoPila(12,13,13);
+//     list1->addStart();
+//     list1->show();
+//     std::cout<<"Este es el primero de mi lista"<<list1->head->accesoPila->id<<endl;
+//     std::cout<<"Este es el primero->sig "<<list1->head->next->accesoPila->next->id<<endl;
+//     list1->crearGrafica();
+//     // string x = list1->toReport();
+//     // std::cout<<x;
 
 //     return 0;
 // }

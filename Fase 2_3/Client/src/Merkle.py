@@ -15,7 +15,7 @@ class Merkle:
 	def __init__(self):
 		self.tophash = None
 		self.dataBlock = []
-		self.dot = ""
+		self.dot = 'digraph G {rankdir=BT;node [shape=box]\n'
 		self.index = 0
 
 	def add(self, value):
@@ -55,8 +55,8 @@ class Merkle:
 				return
 				# self.preOrder(tmp)
 			else:
-				# print(tmp.hash)
 				print(tmp.hash)
+				
 			self.preOrder(tmp.left)
 			self.preOrder(tmp.right)
 
@@ -67,7 +67,7 @@ class Merkle:
 			exp +=1 
 		i = len(self.dataBlock)
 		for i in range(pow(2,exp)-len(self.dataBlock)):
-			print('iterator es: '+str(i))
+			# print('iterator es: '+str(i))
 			self.dataBlock.append(Node(-10))
 		self.index = pow(2,exp)
 		self.createTree(exp)
@@ -91,25 +91,34 @@ class Merkle:
 				# return
 			self.dotgen(tmp.left)
 			self.dotgen(tmp.right)
-			#--- se genera DOT y se procede a ecjetuar el comando
 			
-# if __name__ == "__main__":
-# 	print('MERKLE TREE')
-# 	m = Merkle()
-# 	m.add('7 BarcoPeral 13/11/2022')
-# 	m.add('8 NEgro 25/11/2022')	
-# 	m.add('9 Amarillo tier2 2/11/2022')
-# 	m.auth()
-# 	m.show()
-# 	print(m.tophash.hash)
-# 	m.dot = 'digraph G {rankdir=BT;node [shape=box]'
-# 	m.dotgen(m.tophash)
-# 	m.dot+='}'
-# 	dot = "/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/archivos/{}_dot.txt".format('merkle')
-# 	with open(dot, 'w') as grafo:
-# 			grafo.write(m.dot)
-# 	result = "./{}.png".format('merkle')
-# 	os.system("dot -Tpng " + dot + " -o " + result)
+	def graficar(self):
+			self.dotgen(self.tophash)
+			self.dot+= '}'
+			#--- se genera DOT y se procede a ecjetuar el comando
+			dot = "/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/archivos/{}_dot.txt".format('merkle')
+			with open(dot, 'w') as grafo:
+					grafo.write(self.dot)
+			result = "/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/archivos/{}.png".format('MerkleTree')
+			os.system("dot -Tpng " + dot + " -o " + result)
+			
+if __name__ == "__main__":
+	print('MERKLE TREE')
+	m = Merkle()
+	m.add('7')
+	m.add('8')	
+	# m.add('9 Amarillo tier2 2/11/2022')
+	m.auth()
+	m.show()
+	print(m.tophash.hash)
+	m.dot = 'digraph G {rankdir=BT;node [shape=box]'
+	m.dotgen(m.tophash)
+	m.dot+='}'
+	dot = "./{}_dot.txt".format('merkle')
+	with open(dot, 'w') as grafo:
+			grafo.write(m.dot)
+	result = "./{}.png".format('merkle')
+	os.system("dot -Tpng " + dot + " -o " + result)
 
 
 

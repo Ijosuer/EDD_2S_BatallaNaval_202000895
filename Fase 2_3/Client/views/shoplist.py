@@ -33,18 +33,14 @@ class Ui_NewBookWindow(object):
         self.verticalLayout.addWidget(self.label)
 
         self.tableWidget = QTableWidget(self.widget)
-        if (self.tableWidget.columnCount() < 5):
-            self.tableWidget.setColumnCount(5)
+        if (self.tableWidget.columnCount() < 3):
+            self.tableWidget.setColumnCount(3)
         __qtablewidgetitem = QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(0, __qtablewidgetitem)
         __qtablewidgetitem1 = QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(1, __qtablewidgetitem1)
         __qtablewidgetitem2 = QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(2, __qtablewidgetitem2)
-        __qtablewidgetitem3 = QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(3, __qtablewidgetitem3)
-        __qtablewidgetitem4 = QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(4, __qtablewidgetitem4)
         self.tableWidget.setObjectName(u"tableWidget")
         self.tableWidget.setStyleSheet(u"background-color: rgb(241, 241, 241);")
 
@@ -119,10 +115,6 @@ class Ui_NewBookWindow(object):
         ___qtablewidgetitem1.setText(QCoreApplication.translate("NewBookWindow", u"NAME", None));
         ___qtablewidgetitem2 = self.tableWidget.horizontalHeaderItem(2)
         ___qtablewidgetitem2.setText(QCoreApplication.translate("NewBookWindow", u"PRICE", None));
-        ___qtablewidgetitem3 = self.tableWidget.horizontalHeaderItem(3)
-        ___qtablewidgetitem3.setText(QCoreApplication.translate("NewBookWindow", u"IDK2", None));
-        ___qtablewidgetitem4 = self.tableWidget.horizontalHeaderItem(4)
-        ___qtablewidgetitem4.setText(QCoreApplication.translate("NewBookWindow", u"IDK", None));
         self.addButton.setText(QCoreApplication.translate("NewBookWindow", u"PAGAR", None))
         self.cancelButton.setText(QCoreApplication.translate("NewBookWindow", u"CANCELAR", None))
     # retranslateUi

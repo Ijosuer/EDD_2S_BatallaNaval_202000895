@@ -1,0 +1,9 @@
+digraph G { 
+subgraph cluster_0 { style=filled;color=lightgrey; 
+node [style=filled,color=khaki];
+label="Grafo de movimientos josuixddxdd";a2 -> a2;
+a2 -> a3;
+a2 -> a4;
+a2 -> a5;
+a2 -> a6;
+}}

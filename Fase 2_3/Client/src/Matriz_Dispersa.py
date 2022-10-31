@@ -212,10 +212,10 @@ class Matriz():
             if(pivote.acceso == None):
                 pivote = pivote.siguiente
         contenido+='}}'
-        dot = "/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/archivos/{}_dot.txt".format(nombre)
+        dot = "/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/archivos/Grafo/{}_dot.txt".format(nombre)
         with open(dot, 'w') as grafo:
             grafo.write(contenido)
-        result = "/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/archivos/{}.png".format(nombre)
+        result = "/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/archivos/Grafo/{}.png".format(nombre)
         os.system("dot -Tpng " + dot + " -o " + result)
         
 
@@ -317,10 +317,10 @@ class Matriz():
             
         contenido += '\n}'
         #--- se genera DOT y se procede a ecjetuar el comando
-        dot = "/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/archivos/{}_dot.txt".format(nombre)
+        dot = "/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/archivos/Grafo/{}_dot.txt".format(nombre)
         with open(dot, 'w') as grafo:
             grafo.write(contenido)
-        result = "/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/archivos/{}.png".format(nombre)
+        result = "/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/archivos/Grafo/{}.png".format(nombre)
         os.system("neato -Tpng " + dot + " -o " + result)
         # webbrowser.open(result)
 

@@ -2,5 +2,8 @@ digraph G {
 
 rankdir=LR; 
  labelloc = "t;"label = "Lista de Movimientos";
-
+x11[shape = "record", label="13,13"]x11->x10
+x10[shape = "record", label="12,12|11,11|10,10"]x10->x9
+x9[shape = "record", label="9,9|8,8|7,7"]x9->x8
+x8[shape = "record", label="0,7|3,3|2,8"]
 }

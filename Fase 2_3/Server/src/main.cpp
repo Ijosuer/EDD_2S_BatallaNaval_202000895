@@ -225,7 +225,7 @@ int main()
 			// cout<<"nick: "<<usuario->nick<<endl;
 			// cout<<"nick: "<<usuario->password<<endl;
 			// crow::json::wvalue cuerpo(&usuario);
-			crow::json::wvalue cuerpo({{"nick",usuario->nick},{"monedas",usuario->monedas}});
+			crow::json::wvalue cuerpo({{"nick",usuario->nick},{"monedas",usuario->monedas},{"id",usuario->id},{"pwd",usuario->password}});
 			crow::response send(std::move(cuerpo));
 			send.code =200;
         	return send;

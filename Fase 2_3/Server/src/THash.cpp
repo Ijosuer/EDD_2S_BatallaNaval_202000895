@@ -58,7 +58,6 @@ public:
     int len = (n*100)/m;
     if (len >= max)
     {
-      cout<<len<<"ENTRA"<<endl;
       // Array copy
       // int temp[sizeof(lista)/lista[0]];
       int temp[m];
@@ -107,21 +106,21 @@ public:
 };
 
 
-int main(){
-  hashi hash(5,20,80);
+// int main(){
+//   hashi hash(5,20,80);
   // int lista[11];
   // cout<<sizeof(lista)/sizeof(lista[0])<<endl;
-  try
-  {
-  hash.insert(0);
-  hash.insert(1);
-  hash.insert(2);
-  hash.insert(3);
-  hash.insert(5);
-  hash.insert(4);
-  hash.insert(5);
-  hash.insert(6);
-  hash.insert(7);
+  // try
+  // {
+  // hash.insert(0);
+  // hash.insert(1);
+  // hash.insert(2);
+  // hash.insert(3);
+  // hash.insert(5);
+  // hash.insert(4);
+  // hash.insert(5);
+  // hash.insert(6);
+  // hash.insert(7);
   // hash.insert(8);
   // hash.insert(9);
   // hash.insert(10);
@@ -143,10 +142,10 @@ int main(){
   // hash.insert(20);
   // hash.insert(25);
   // hash.insert(30);
-  }
-  catch(const std::exception& e)
-  {
-    std::cerr << e.what() << '\n';
-  }
-  return 1;
-}
+//   }
+//   catch(const std::exception& e)
+//   {
+//     std::cerr << e.what() << '\n';
+//   }
+//   return 1;
+// }

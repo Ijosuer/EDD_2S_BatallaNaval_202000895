@@ -9,6 +9,8 @@ sys.path.append('/home/ijosuer/Escritorio/EDD_2S_BatallaNaval_202000895/Fase 2_3
 
 from game_template2 import *
 from Matriz_Dispersa import Matriz
+# from PruebaTrabajo import Blockchain
+
 import otherPlayer
 import Shopcar
 # from batalla import *
@@ -30,7 +32,12 @@ class inicio(QMainWindow):
         self.ui.setupUi(self)
         self.coins = 0
         self.vidas = 3
-        self.name = ''
+        self.cantidad = 0
+        self.total = 0
+
+        self.nameUser = ''
+        self.pwdUser = ''
+        self.idUser= ''
         # self.matriz = None
         self.matriz =None
         self.matriz2v2 = None
@@ -149,7 +156,7 @@ class inicio(QMainWindow):
         self.listaAdy = self.window1.matriz2
         self.listaAdy.self = self.listaAdy
         self.listaAdy.listaAdyacencia = Matriz(0)
-        self.listaAdy.recorridoPorFila(1,"Josuep")
+        self.listaAdy.recorridoPorFila(1,"Grafo")
         self.listaAdy.crearGrafo("ganador","Lista de\nAdyacencia")
         self.toggle_window(self.window1)
 
@@ -312,25 +319,26 @@ class inicio(QMainWindow):
         
 
         if(x.status_code == 200):
-            dlg = QtWidgets.QMessageBox(self)
+            self.cantidad+=1
+            self.ui.btnCarrito.setText(str(self.cantidad))
+            # dlg = QtWidgets.QMessageBox(self)
             # dlg.setWindowTitle(" ")
             # dlg.setText("COMPRA REALIZADA!")
             # dlg.exec_()
             a = x.json()
             print(a)
-            
+            price = a['precio']
+            self.total+= int(price)
             self.coins = a['monedas']
+            self.ui.label_Total.setText('Total   '+str(self.total))
+
             self.ui.label_coins.setText(str(self.coins))
-            self.window2.tableWidget.setRowCount(5)
+            self.window2.tableWidget.setRowCount(self.cantidad)
             self.window2.tableWidget.setItem(self.rowshop,0,QtWidgets.QTableWidgetItem(a['id']))
             self.window2.tableWidget.setItem(self.rowshop,1,QtWidgets.QTableWidgetItem(a['name']))
             self.window2.tableWidget.setItem(self.rowshop,2,QtWidgets.QTableWidgetItem(a['precio']))
             self.rowshop +=1
         else:
-            # self.ui.tableWidget.setItem(0,0,QtWidgets.QTableWidgetItem("hi"))
-            self.window2.tableWidget.setRowCount(5)
-            self.window2.tableWidget.setItem(0,0,QtWidgets.QTableWidgetItem("hi"))
-            
             dlg = QtWidgets.QMessageBox(self)
             dlg.setWindowTitle(" ")
             dlg.setText("NO se puedo realizar la compra D:")

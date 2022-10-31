@@ -1,0 +1,6 @@
+digraph G {
+        rankdir=LR; 
+        labelloc = "t;"label = "BLOCKCHAIN";x0[shape = "record", label="Index = 0|PrevHash = 0000|Hash = 0000c56fbc7686e2f18a5a12534e9dfcb1ddd9109dadb1f9905b3f6860503052"]x0->x1
+x1[shape = "record", label="Index = 1|PrevHash = 0000c56fbc7686e2f18a5a12534e9dfcb1ddd9109dadb1f9905b3f6860503052|Hash = 0000f08ac46ae58978dc90761e7f79dea012893b6f5c35ceb17b8d5dade6e69b"]x1->x2
+x2[shape = "record", label="Index = 2|PrevHash = 0000f08ac46ae58978dc90761e7f79dea012893b6f5c35ceb17b8d5dade6e69b|Hash = 0000eed33a6221fc1bd33067179e41a90014325b13d14d530af7d1b333547cb7"]
+}

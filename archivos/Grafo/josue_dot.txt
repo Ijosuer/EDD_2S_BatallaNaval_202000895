@@ -1,0 +1,18 @@
+digraph G{bgcolor="powderblue"
+        node[shape=box, width=0.7, height=0.7, fontname="Arial", fillcolor="white", style=filled]
+        edge[style = "bold"]
+        node[label = "Lista de
+Adyacencia" fontsize=8 fillcolor="darkolivegreen1" pos = "-1,1!"]raiz;
+	node[label = "F2" fillcolor="lightgoldenrod" pos="-1,-0!" shape=box]x2;
+	raiz->x2;
+	node[label="2" fontcolor="black" fillcolor="red" pos="0,-0!" shape=box]i2_2;
+	node[label="3" fontcolor="black" fillcolor="red" pos="1,-0!" shape=box]i2_3;
+	node[label="4" fontcolor="black" fillcolor="red" pos="2,-0!" shape=box]i2_4;
+	node[label="5" fontcolor="black" fillcolor="red" pos="3,-0!" shape=box]i2_5;
+	node[label="6" fontcolor="black" fillcolor="red" pos="4,-0!" shape=box]i2_6;
+	i2_2->i2_3;
+	i2_3->i2_4;
+	i2_4->i2_5;
+	i2_5->i2_6;
+	x2->i2_2;
+}

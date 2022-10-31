@@ -1,0 +1,24 @@
+[
+    {
+        "INDEX": 0,
+        "TIME": "2022-10-30 17:55:46.687483",
+        "NONCE": 65634,
+        "DATA": [
+            {
+                "Skin": "1",
+                "Value": "0"
+            },
+            {
+                "Skin": "2",
+                "Value": "100"
+            },
+            {
+                "Skin": "3",
+                "Value": "200"
+            }
+        ],
+        "PREVIOUSHASH": "0000",
+        "ROOTMERKLE": "097e10fab35cea6e6dd665401e74e2ad6fe89db7064c144b8e2e2fc3f0bf66bc",
+        "HASH": "0000c56fbc7686e2f18a5a12534e9dfcb1ddd9109dadb1f9905b3f6860503052"
+    }
+]

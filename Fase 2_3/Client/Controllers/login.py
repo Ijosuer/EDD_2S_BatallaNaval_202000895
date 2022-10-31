@@ -19,6 +19,8 @@ class login(QMainWindow):
         self.adminWindow = admin()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        self.id = ''
+        self.pwd = ''
         # self.setWindowFlag(Qt.FramelessWindowHint)
         self.setMaximumSize(800,700)
         # 
@@ -53,8 +55,10 @@ class login(QMainWindow):
                 self.ui.cargando.setText('Cargando...')
             if self.isVisible():        
                 self.hide()
-                print(user['monedas'])
                 self.mainWindow.coins = int(user['monedas'])
+                self.mainWindow.pwdUser = str(user['pwd'])
+                self.mainWindow.nameUser = str(user['nick'])
+                self.mainWindow.idUser = str(user['id'])
                 self.mainWindow.show()
         elif text == "admin" and text2 == "admin":
             for i in range(0,99):
